@@ -26,13 +26,6 @@ public class GameManager : MonoBehaviour
     
     }
 
-    public void OnOptions()
-    {
-    
-
-    
-    }
-
     public void OnHelp()
     {
     
@@ -68,4 +61,5 @@ public class GameManager : MonoBehaviour
         Animator.SetTrigger("Confirmation");
 
     }
+
 }
