@@ -70,4 +70,37 @@ public class GameManager : MonoBehaviour
 
     }
 
+    public void OnBack()
+    {
+
+        int _index = SceneManager.GetActiveScene().buildIndex;
+        if (_index != 3)
+        {
+
+            OnLoadScene(1);
+
+        }
+        else
+        {
+
+            OnLoadScene(2);
+
+        }
+
+    }
+
+    public void OnNewCareer()
+    {
+
+
+
+    }
+
+    public void OnLoadCareer()
+    {
+
+
+
+    }
+
 }
