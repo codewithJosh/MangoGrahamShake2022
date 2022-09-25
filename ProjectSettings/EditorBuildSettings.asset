@@ -11,4 +11,22 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/StartMenuScene.unity
     guid: 7d2c714854d1de24b83dad90f15f3912
+  - enabled: 1
+    path: Assets/Scenes/PlayScene.unity
+    guid: 0f8565b9ed365a64d9b6d79ecc425aa4
+  - enabled: 1
+    path: Assets/Scenes/NewCareerScene.unity
+    guid: ff3064f6857b7014bb7e5772070009d5
+  - enabled: 1
+    path: Assets/Scenes/InGamePreparationPhase.unity
+    guid: 874bf0f41e6b81841bc66f931d13825f
+  - enabled: 1
+    path: Assets/Scenes/InGameSellingPhase.unity
+    guid: 85ae532118f561340b800653e143175b
+  - enabled: 1
+    path: Assets/Scenes/HelpScene.unity
+    guid: ac77136342fc2654683c57cd135cfaba
+  - enabled: 1
+    path: Assets/Scenes/AboutScene.unity
+    guid: f75d8ac41445e954cbc43704ece661e0
   m_configObjects: {}

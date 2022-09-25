@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -21,30 +22,23 @@ public class GameManager : MonoBehaviour
 
     public void OnPlay()
     {
-    
 
-    
-    }
+        OnLoadScene(2);
 
-    public void OnOptions()
-    {
-    
-
-    
     }
 
     public void OnHelp()
     {
-    
 
-    
+        OnLoadScene(6);
+
     }
 
     public void OnAbout()
     {
-    
 
-    
+        OnLoadScene(7);
+
     }
 
     public void OnExit()
@@ -68,4 +62,12 @@ public class GameManager : MonoBehaviour
         Animator.SetTrigger("Confirmation");
 
     }
+
+    private void OnLoadScene(int _index)
+    {
+
+        SceneManager.LoadScene(_index);
+
+    }
+
 }
