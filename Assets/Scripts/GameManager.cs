@@ -30,8 +30,8 @@ public class GameManager : MonoBehaviour
     public void OnHelp()
     {
 
+        OnLoadScene(6);
 
-    
     }
 
     public void OnAbout()
