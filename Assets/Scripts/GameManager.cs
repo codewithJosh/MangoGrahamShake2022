@@ -99,7 +99,8 @@ public class GameManager : MonoBehaviour
     public void OnLoadCareer()
     {
 
-
+        PlayerPrefs.SetInt("index", 4);
+        OnLoadScene(0);
 
     }
 
