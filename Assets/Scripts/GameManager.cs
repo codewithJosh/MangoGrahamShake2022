@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -28,16 +29,16 @@ public class GameManager : MonoBehaviour
 
     public void OnHelp()
     {
-    
+
 
     
     }
 
     public void OnAbout()
     {
-    
 
-    
+        OnLoadScene(7);
+
     }
 
     public void OnExit()
@@ -59,6 +60,13 @@ public class GameManager : MonoBehaviour
     {
 
         Animator.SetTrigger("Confirmation");
+
+    }
+
+    private void OnLoadScene(int _index)
+    {
+
+        SceneManager.LoadScene(_index);
 
     }
 
