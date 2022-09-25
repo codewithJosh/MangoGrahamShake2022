@@ -92,7 +92,7 @@ public class GameManager : MonoBehaviour
     public void OnNewCareer()
     {
 
-
+        OnLoadScene(3);
 
     }
 
