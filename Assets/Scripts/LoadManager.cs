@@ -16,17 +16,17 @@ public class LoadManager : MonoBehaviour
 
     }
 
-    public void LoadScene(int sceneIndex)
+    public void LoadScene(int _index)
     {
 
-        StartCoroutine(LoadAsynchronously(sceneIndex));
+        StartCoroutine(LoadAsynchronously(_index));
 
     }
 
-    IEnumerator LoadAsynchronously(int sceneIndex)
+    IEnumerator LoadAsynchronously(int _index)
     {
 
-        AsyncOperation operation = SceneManager.LoadSceneAsync(sceneIndex);
+        AsyncOperation operation = SceneManager.LoadSceneAsync(_index);
 
         while (!operation.isDone)
         {

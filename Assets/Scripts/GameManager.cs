@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
 
-    public Animator Animator;
+    public Animator animator;
 
     // Start is called before the first frame update
     void Start()
@@ -44,7 +44,7 @@ public class GameManager : MonoBehaviour
     public void OnExit()
     {
 
-        Animator.SetTrigger("Confirmation");
+        animator.SetTrigger("Confirmation");
 
     }
 
@@ -59,7 +59,7 @@ public class GameManager : MonoBehaviour
     public void OnConfirmationFalse()
     {
 
-        Animator.SetTrigger("Confirmation");
+        animator.SetTrigger("Confirmation");
 
     }
 
@@ -107,7 +107,49 @@ public class GameManager : MonoBehaviour
     public void OnStartNewCareer()
     {
 
+        PlayerModel player = Database.LoadPlayer();
+
+        if (player != null)
+        {
+
+            animator.SetTrigger("Warning");
+
+        }
+        else
+        {
+
+            OnNewPlayer();
+
+        }
+
+    }
+
+    private void OnNewPlayer()
+    {
+
+        FindObjectOfType<Player>().NewPlayer();
         OnLoadCareer();
+
+    }
+
+    public void OnRequiredOK()
+    {
+
+        animator.SetTrigger("Required");
+
+    }
+
+    public void OnWarningTrue()
+    {
+
+        OnNewPlayer();
+
+    }
+
+    public void OnWarningFalse()
+    {
+
+        animator.SetTrigger("Warning");
 
     }
 
