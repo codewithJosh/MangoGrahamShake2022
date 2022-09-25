@@ -22,9 +22,9 @@ public class GameManager : MonoBehaviour
 
     public void OnPlay()
     {
-    
 
-    
+        OnLoadScene(2);
+
     }
 
     public void OnHelp()
