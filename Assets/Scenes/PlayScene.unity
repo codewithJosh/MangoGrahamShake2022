@@ -217,7 +217,7 @@ GameObject:
   - component: {fileID: 385305515}
   - component: {fileID: 385305517}
   m_Layer: 5
-  m_Name: NewCareerButton
+  m_Name: NewCareerNavButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
