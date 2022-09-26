@@ -1142,7 +1142,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 333
+  m_Text: 
 --- !u!222 &281025969
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1827,6 +1827,27 @@ MonoBehaviour:
   currentTemperature: 0
   currentPopularity: 0.1
   currentSatisfaction: 1
+--- !u!114 &675712370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 675712367}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a29c106d0930e4643bc1ca8e0c832445, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerCapital: {fileID: 1177406345}
+  resourceMango: {fileID: 1217759130}
+  resourceGraham: {fileID: 1176299088}
+  resourceMilk: {fileID: 949591492}
+  resourceIceCubes: {fileID: 281025968}
+  resourceCups: {fileID: 791946861}
+  currentTemperature: {fileID: 702411999}
+  fillCurrentPopularity: {fileID: 1831696436}
+  fillCurrentSatisfaction: {fileID: 88111972}
 --- !u!1 &686884239
 GameObject:
   m_ObjectHideFlags: 0
@@ -2031,7 +2052,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "Temp 70 \xB0C"
+  m_Text: 
 --- !u!222 &702412000
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2193,7 +2214,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 333
+  m_Text: 
 --- !u!222 &791946862
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2727,7 +2748,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 333
+  m_Text: 
 --- !u!222 &949591493
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3097,7 +3118,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 333
+  m_Text: 
 --- !u!222 &1176299089
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3177,7 +3198,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Php 99, 999.00
+  m_Text: 
 --- !u!222 &1177406346
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3390,7 +3411,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 333
+  m_Text: 
 --- !u!222 &1217759131
 CanvasRenderer:
   m_ObjectHideFlags: 0
