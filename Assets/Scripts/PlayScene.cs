@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,18 +5,19 @@ public class PlayScene : MonoBehaviour
 {
 
     public GameObject playerName;
+    public Button button;
 
     // Start is called before the first frame update
     void Start()
     {
 
         PlayerModel player = Database.LoadPlayer();
-        
+
         if (player == null)
         {
 
             playerName.GetComponent<Text>().text = "NO SAVED GAME";
-            
+            button.interactable = false;
 
         }
         else
@@ -33,6 +32,6 @@ public class PlayScene : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }
