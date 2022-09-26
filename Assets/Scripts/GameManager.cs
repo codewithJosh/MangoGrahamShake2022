@@ -6,18 +6,6 @@ public class GameManager : MonoBehaviour
 
     public Animator animator;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     public void OnPlay()
     {
 
@@ -42,11 +30,11 @@ public class GameManager : MonoBehaviour
     public void OnExit()
     {
 
-        animator.SetTrigger("Confirmation");
+        animator.SetTrigger("ConfirmationExit");
 
     }
 
-    public void OnConfirmationTrue()
+    public void OnConfirmationExitTrue()
     {
 
         PlayerPrefs.SetInt("index", 1);
@@ -54,10 +42,10 @@ public class GameManager : MonoBehaviour
 
     }
 
-    public void OnConfirmationFalse()
+    public void OnConfirmationExitFalse()
     {
 
-        animator.SetTrigger("Confirmation");
+        animator.SetTrigger("ConfirmationExit");
 
     }
 
@@ -110,7 +98,7 @@ public class GameManager : MonoBehaviour
         if (player != null)
         {
 
-            animator.SetTrigger("Warning");
+            animator.SetTrigger("WarningOverwrite");
 
         }
         else
@@ -130,24 +118,70 @@ public class GameManager : MonoBehaviour
 
     }
 
-    public void OnRequiredOK()
+    public void OnRequiredPlayerNameOK()
     {
 
-        animator.SetTrigger("Required");
+        animator.SetTrigger("RequiredPlayerName");
 
     }
 
-    public void OnWarningTrue()
+    public void OnWarningOverwriteTrue()
     {
 
         OnNewPlayer();
 
     }
 
-    public void OnWarningFalse()
+    public void OnWarningOverwriteFalse()
     {
 
-        animator.SetTrigger("Warning");
+        animator.SetTrigger("WarningOverwrite");
+
+    }
+
+    public void OnStartDay()
+    {
+
+
+
+    }
+
+    public void OnMainMenu()
+    {
+
+        animator.SetTrigger("ConfirmationMainMenu");
+
+    }
+
+    public void OnWarningSaveGame()
+    {
+
+        animator.SetTrigger("WarningSaveGame");
+
+    }
+
+    public void OnConfirmationMainMenuTrue()
+    {
+
+        OnMainMenu();
+        OnWarningSaveGame();
+
+    }
+
+    public void OnWarningSaveGameTrue()
+    {
+
+        FindObjectOfType<Player>().SavePlayer();
+        OnWarningSaveGameFalse();
+
+    }
+
+    public void OnWarningSaveGameFalse()
+    {
+
+        OnWarningSaveGame();
+        PlayerPrefs.SetInt("index", 1);
+        OnLoadScene(0);
 
     }
 
