@@ -1,7 +1,6 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
-using System;
 using UnityEngine.UI;
 
 public class Player : MonoBehaviour
@@ -61,7 +60,7 @@ public class Player : MonoBehaviour
     {
 
         playerName = inputField.GetComponent<InputField>().text;
-        
+
         if (playerName.Equals(""))
         {
 

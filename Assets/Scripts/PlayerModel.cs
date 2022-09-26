@@ -1,7 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using System;
+using System.Collections.Generic;
 
 [System.Serializable]
 public class PlayerModel
@@ -20,7 +18,7 @@ public class PlayerModel
     public float currentPopularity;
     public float currentSatisfaction;
 
-    public PlayerModel (Player _player)
+    public PlayerModel(Player _player)
     {
 
         playerName = _player.playerName;
