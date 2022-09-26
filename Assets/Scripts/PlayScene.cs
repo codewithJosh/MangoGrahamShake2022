@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class PlayScene : MonoBehaviour
 {
 
-    public GameObject playerName;
+    public Text playerName;
     public Button button;
 
     // Start is called before the first frame update
@@ -16,14 +16,14 @@ public class PlayScene : MonoBehaviour
         if (player == null)
         {
 
-            playerName.GetComponent<Text>().text = "NO SAVED GAME";
+            playerName.text = "NO SAVED GAME";
             button.interactable = false;
 
         }
         else
         {
 
-            playerName.GetComponent<Text>().text = player.playerName;
+            playerName.text = player.playerName;
 
         }
 

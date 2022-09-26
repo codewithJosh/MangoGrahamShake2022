@@ -1016,7 +1016,7 @@ GameObject:
   - component: {fileID: 1708863547}
   - component: {fileID: 1708863546}
   m_Layer: 5
-  m_Name: OnConfirmationTrueButton
+  m_Name: OnConfirmationExitTrueButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1088,7 +1088,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 162032842}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: OnConfirmationTrue
+        m_MethodName: OnConfirmationExitTrue
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1149,7 +1149,7 @@ GameObject:
   - component: {fileID: 1774420981}
   - component: {fileID: 1774420980}
   m_Layer: 5
-  m_Name: OnConfirmationFalseButton
+  m_Name: OnConfirmationExitFalseButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1221,7 +1221,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 162032842}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: OnConfirmationFalse
+        m_MethodName: OnConfirmationExitFalse
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1428,7 +1428,7 @@ GameObject:
   - component: {fileID: 2136120975}
   - component: {fileID: 2136120977}
   m_Layer: 5
-  m_Name: Confirmation
+  m_Name: ConfirmationExit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1539,7 +1539,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 162032842}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: OnConfirmationFalse
+        m_MethodName: OnConfirmationExitFalse
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

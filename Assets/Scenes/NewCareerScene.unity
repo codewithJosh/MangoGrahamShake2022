@@ -204,7 +204,7 @@ GameObject:
   - component: {fileID: 102091999}
   - component: {fileID: 102091998}
   m_Layer: 5
-  m_Name: OnWarningTrueButton
+  m_Name: OnWarningOverwriteTrueButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -276,7 +276,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1241947404}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: OnWarningTrue
+        m_MethodName: OnWarningOverwriteTrue
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -631,7 +631,7 @@ GameObject:
   - component: {fileID: 708459985}
   - component: {fileID: 708459984}
   m_Layer: 5
-  m_Name: Required
+  m_Name: RequiredPlayerName
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -704,7 +704,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1241947404}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: OnRequiredOK
+        m_MethodName: OnRequiredPlayerNameOK
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -845,7 +845,7 @@ GameObject:
   - component: {fileID: 906917588}
   - component: {fileID: 906917587}
   m_Layer: 5
-  m_Name: OnWarningFalseButton
+  m_Name: OnWarningOverwriteFalseButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -917,7 +917,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1241947404}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: OnWarningFalse
+        m_MethodName: OnWarningOverwriteFalse
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1057,7 +1057,7 @@ GameObject:
   - component: {fileID: 1026514148}
   - component: {fileID: 1026514147}
   m_Layer: 5
-  m_Name: OnRequiredOKButton
+  m_Name: OnRequiredPlayerNameOKButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1129,7 +1129,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1241947404}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: OnRequiredOK
+        m_MethodName: OnRequiredPlayerNameOK
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1727,7 +1727,7 @@ GameObject:
   - component: {fileID: 2013082286}
   - component: {fileID: 2013082285}
   m_Layer: 5
-  m_Name: Warning
+  m_Name: WarningOverwrite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1800,7 +1800,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1241947404}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: OnWarningFalse
+        m_MethodName: OnWarningOverwriteFalse
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

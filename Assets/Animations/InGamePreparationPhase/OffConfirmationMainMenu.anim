@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: OffConfirmation
+  m_Name: OffConfirmationMainMenu
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -51,7 +51,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_IsActive
-    path: Background/Confirmation
+    path: Background/ConfirmationMainMenu
     classID: 1
     script: {fileID: 0}
   - curve:
@@ -88,7 +88,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_SizeDelta.x
-    path: Background/Confirmation/DialogBox
+    path: Background/ConfirmationMainMenu/DialogBox
     classID: 224
     script: {fileID: 0}
   - curve:
@@ -125,7 +125,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_SizeDelta.y
-    path: Background/Confirmation/DialogBox
+    path: Background/ConfirmationMainMenu/DialogBox
     classID: 224
     script: {fileID: 0}
   - curve:
@@ -162,7 +162,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_SizeDelta.x
-    path: Background/Confirmation/DialogBox/OnConfirmationFalseButton
+    path: Background/ConfirmationMainMenu/DialogBox/OnConfirmationMainMenuFalseButton
     classID: 224
     script: {fileID: 0}
   - curve:
@@ -199,7 +199,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_SizeDelta.y
-    path: Background/Confirmation/DialogBox/OnConfirmationFalseButton
+    path: Background/ConfirmationMainMenu/DialogBox/OnConfirmationMainMenuFalseButton
     classID: 224
     script: {fileID: 0}
   - curve:
@@ -236,7 +236,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_SizeDelta.x
-    path: Background/Confirmation/DialogBox/OnConfirmationTrueButton
+    path: Background/ConfirmationMainMenu/DialogBox/OnConfirmationMainMenuTrueButton
     classID: 224
     script: {fileID: 0}
   - curve:
@@ -273,7 +273,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_SizeDelta.y
-    path: Background/Confirmation/DialogBox/OnConfirmationTrueButton
+    path: Background/ConfirmationMainMenu/DialogBox/OnConfirmationMainMenuTrueButton
     classID: 224
     script: {fileID: 0}
   - curve:
@@ -301,7 +301,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Alpha
-    path: Background/StartMenu
+    path: Background/InGamePreparationPhase
     classID: 225
     script: {fileID: 0}
   m_PPtrCurves: []
@@ -313,56 +313,56 @@ AnimationClip:
   m_ClipBindingConstant:
     genericBindings:
     - serializedVersion: 2
-      path: 3002700369
+      path: 3064993251
       attribute: 2086281974
       script: {fileID: 0}
       typeID: 1
       customType: 0
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 3569123080
+      path: 2652288095
       attribute: 38095219
       script: {fileID: 0}
       typeID: 224
       customType: 28
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 551514205
+      path: 2013971815
       attribute: 38095219
       script: {fileID: 0}
       typeID: 224
       customType: 28
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 22478809
+      path: 3165639908
       attribute: 38095219
       script: {fileID: 0}
       typeID: 224
       customType: 28
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 4155043039
+      path: 386058895
       attribute: 1574349066
       script: {fileID: 0}
       typeID: 225
       customType: 0
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 3569123080
+      path: 2652288095
       attribute: 1967290853
       script: {fileID: 0}
       typeID: 224
       customType: 28
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 551514205
+      path: 2013971815
       attribute: 1967290853
       script: {fileID: 0}
       typeID: 224
       customType: 28
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 22478809
+      path: 3165639908
       attribute: 1967290853
       script: {fileID: 0}
       typeID: 224
@@ -424,7 +424,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_IsActive
-    path: Background/Confirmation
+    path: Background/ConfirmationMainMenu
     classID: 1
     script: {fileID: 0}
   - curve:
@@ -461,7 +461,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_SizeDelta.x
-    path: Background/Confirmation/DialogBox
+    path: Background/ConfirmationMainMenu/DialogBox
     classID: 224
     script: {fileID: 0}
   - curve:
@@ -498,7 +498,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_SizeDelta.y
-    path: Background/Confirmation/DialogBox
+    path: Background/ConfirmationMainMenu/DialogBox
     classID: 224
     script: {fileID: 0}
   - curve:
@@ -535,7 +535,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_SizeDelta.x
-    path: Background/Confirmation/DialogBox/OnConfirmationFalseButton
+    path: Background/ConfirmationMainMenu/DialogBox/OnConfirmationMainMenuFalseButton
     classID: 224
     script: {fileID: 0}
   - curve:
@@ -572,7 +572,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_SizeDelta.y
-    path: Background/Confirmation/DialogBox/OnConfirmationFalseButton
+    path: Background/ConfirmationMainMenu/DialogBox/OnConfirmationMainMenuFalseButton
     classID: 224
     script: {fileID: 0}
   - curve:
@@ -609,7 +609,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_SizeDelta.x
-    path: Background/Confirmation/DialogBox/OnConfirmationTrueButton
+    path: Background/ConfirmationMainMenu/DialogBox/OnConfirmationMainMenuTrueButton
     classID: 224
     script: {fileID: 0}
   - curve:
@@ -646,7 +646,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_SizeDelta.y
-    path: Background/Confirmation/DialogBox/OnConfirmationTrueButton
+    path: Background/ConfirmationMainMenu/DialogBox/OnConfirmationMainMenuTrueButton
     classID: 224
     script: {fileID: 0}
   - curve:
@@ -674,7 +674,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Alpha
-    path: Background/StartMenu
+    path: Background/InGamePreparationPhase
     classID: 225
     script: {fileID: 0}
   m_EulerEditorCurves: []
