@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,7 +12,7 @@ public class PlayScene : MonoBehaviour
     {
 
         PlayerModel player = Database.LoadPlayer();
-        
+
         if (player == null)
         {
 
@@ -34,6 +32,6 @@ public class PlayScene : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }
