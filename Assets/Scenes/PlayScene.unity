@@ -337,6 +337,11 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!1 &518496432 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2046675910685524158, guid: 7f000a473f6ad8946b56adaa2acdc543, type: 3}
+  m_PrefabInstance: {fileID: 2046675911599954950}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1141528087 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2057825018230150473, guid: 451e7d59cf6107f4a8363b411030df65, type: 3}
@@ -404,12 +409,30 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4523036711977842232, guid: 4b9ff0ac566f5f34884879498b368c50, type: 3}
   m_PrefabInstance: {fileID: 1351088259}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1351088261}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2c8580091ca481b4395ff53f4eccc5fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1351088261 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4523036711977842235, guid: 4b9ff0ac566f5f34884879498b368c50, type: 3}
+  m_PrefabInstance: {fileID: 1351088259}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1351088262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1351088261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38c0a3c101e34e144a41c6c41c489bad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerName: {fileID: 518496432}
 --- !u!1 &1402635785
 GameObject:
   m_ObjectHideFlags: 0
@@ -904,6 +927,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1889639668}
     m_Modifications:
+    - target: {fileID: 2046675910685524156, guid: 7f000a473f6ad8946b56adaa2acdc543, type: 3}
+      propertyPath: m_Text
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2046675911320383926, guid: 7f000a473f6ad8946b56adaa2acdc543, type: 3}
       propertyPath: m_Name
       value: PlayerNameBackground
