@@ -400,7 +400,7 @@ GameObject:
   - component: {fileID: 351994784}
   - component: {fileID: 351994786}
   m_Layer: 5
-  m_Name: HelpButton
+  m_Name: HelpNavButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -533,7 +533,7 @@ GameObject:
   - component: {fileID: 405262678}
   - component: {fileID: 405262680}
   m_Layer: 5
-  m_Name: PlayButton
+  m_Name: PlayNavButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -883,7 +883,7 @@ GameObject:
   - component: {fileID: 1499476632}
   - component: {fileID: 1499476634}
   m_Layer: 5
-  m_Name: AboutButton
+  m_Name: AboutNavButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
