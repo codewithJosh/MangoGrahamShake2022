@@ -135,7 +135,6 @@ GameObject:
   - component: {fileID: 71732180}
   - component: {fileID: 71732179}
   - component: {fileID: 71732178}
-  - component: {fileID: 71732182}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -225,26 +224,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!95 &71732182
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 71732177}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: af8cb641dc3aed34d9be1748aad38745, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &625889710
 GameObject:
   m_ObjectHideFlags: 0
@@ -274,7 +253,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 795843751}
   m_RootOrder: 2
@@ -478,7 +457,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 795843751}
   m_RootOrder: 1
@@ -581,6 +560,7 @@ GameObject:
   - component: {fileID: 1200513197}
   - component: {fileID: 1200513196}
   - component: {fileID: 1200513195}
+  - component: {fileID: 1200513198}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -655,6 +635,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1200513198
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1200513194}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 915a5c201217b1c42ae03492c57af68d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1426746428
 GameObject:
   m_ObjectHideFlags: 0
@@ -896,7 +896,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 795843751}
   m_RootOrder: 6
@@ -1094,7 +1094,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 795843751}
   m_RootOrder: 4
@@ -1215,7 +1215,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 795843751}
   m_RootOrder: 3
@@ -1336,7 +1336,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 795843751}
   m_RootOrder: 5
@@ -1506,11 +1506,11 @@ PrefabInstance:
     - target: {fileID: 4523036711977842232, guid: 4b9ff0ac566f5f34884879498b368c50, type: 3}
       propertyPath: Animator
       value: 
-      objectReference: {fileID: 71732182}
+      objectReference: {fileID: 0}
     - target: {fileID: 4523036711977842232, guid: 4b9ff0ac566f5f34884879498b368c50, type: 3}
       propertyPath: animator
       value: 
-      objectReference: {fileID: 71732182}
+      objectReference: {fileID: 0}
     - target: {fileID: 4523036711977842233, guid: 4b9ff0ac566f5f34884879498b368c50, type: 3}
       propertyPath: m_RootOrder
       value: 0
