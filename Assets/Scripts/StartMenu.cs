@@ -12,6 +12,8 @@ public class StartMenu : MonoBehaviour
     private void Start()
     {
 
+        FindObjectOfType<GameManager>().OnAnimateFromNewCareer("startMenu");
+
         PlayerModel player = Database.LoadPlayer();
 
         if (player == null)

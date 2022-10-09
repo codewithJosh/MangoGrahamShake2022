@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -67,47 +68,71 @@ public class GameManager : MonoBehaviour
 
     }
 
-    public void OnHelp()
+    public void OnNewCareer()
     {
 
-        OnLoadScene(6);
+        int countdown = 3;
+        StartCoroutine(NewCareerToStart(countdown));
 
     }
 
-    public void OnAbout()
+    IEnumerator NewCareerToStart(int _countdown)
     {
 
-        OnLoadScene(7);
+        FindObjectOfType<GameManager>().OnAnimateFromStartMenu(0);
 
-    }
+        while (_countdown > 0)
+        {
 
-    private void OnLoadScene(int _index)
-    {
+            if (_countdown == 3)
+            {
 
-        SceneManager.LoadScene(_index);
+                OnAnimateFromNewCareer("startMenu");
+
+            }
+
+            yield return new WaitForSeconds(1f);
+
+            _countdown--;
+
+        }
+
+        PlayerPrefs.SetInt("index", 2);
+        SceneManager.LoadScene(0);
 
     }
 
     public void OnLoadCareer()
     {
 
-        PlayerPrefs.SetInt("index", 4);
-        OnLoadScene(0);
+        int countdown = 3;
+        StartCoroutine(LoadCareerToStart(countdown));
 
     }
 
-    private void OnNewPlayer()
+    IEnumerator LoadCareerToStart(int _countdown)
     {
 
-        FindObjectOfType<Player>().NewPlayer();
-        OnLoadCareer();
+        OnAnimateFromNewCareer("startMenu");
+
+        while (_countdown > 0)
+        {
+
+            yield return new WaitForSeconds(1f);
+
+            _countdown--;
+
+        }
+
+        PlayerPrefs.SetInt("index", 2);
+        SceneManager.LoadScene(0);
 
     }
 
     public void OnWarningOverwriteTrue()
     {
 
-        OnNewPlayer();
+        //OnNewPlayer();
 
     }
 
@@ -160,7 +185,7 @@ public class GameManager : MonoBehaviour
 
         OnWarningSaveGame();
         PlayerPrefs.SetInt("index", 1);
-        OnLoadScene(0);
+        //OnLoadScene(0);
 
     }
 
