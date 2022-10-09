@@ -4,13 +4,51 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
 
-    public Animator animator;
+    [SerializeField] private Animator animator;
+
+    private enum startMenuStates { idle, newCareer, options, help, about, exit };
+    private startMenuStates startMenuState = startMenuStates.idle;
+
+    public void OnAnimate(int _startMenuState)
+    {
+
+        startMenuState = GetStartMenuState(_startMenuState);
+        animator.SetInteger("startMenuState", (int) startMenuState);
+
+
+    }
+
+    private startMenuStates GetStartMenuState(int _startMenuState)
+    {
+       
+        switch (_startMenuState)
+        {
+
+            case 1:
+                return startMenuStates.newCareer;
+
+            case 2:
+                return startMenuStates.options;
+
+            case 3:
+                return startMenuStates.help;
+
+            case 4:
+                return startMenuStates.about;
+
+            case 5:
+                return startMenuStates.exit;
+
+        }
+
+        return startMenuStates.idle;
+
+    }
 
     public void OnPlay()
     {
 
         OnLoadScene(2);
-
     }
 
     public void OnHelp()

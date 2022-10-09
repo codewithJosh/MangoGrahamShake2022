@@ -74,7 +74,7 @@ public class Player : MonoBehaviour
         if (playerName.Equals(""))
         {
 
-            FindObjectOfType<GameManager>().animator.SetTrigger("RequiredPlayerName");
+            //FindObjectOfType<GameManager>().animator.SetTrigger("RequiredPlayerName");
 
         }
         else
