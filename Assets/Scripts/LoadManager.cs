@@ -2,24 +2,37 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 
 public class LoadManager : MonoBehaviour
 {
 
-    public Image fill;
+    [SerializeField] private Image fill;
+    [SerializeField] private TextMeshProUGUI text;
 
     private void Start()
     {
 
-        int index = PlayerPrefs.GetInt("index", 1);
-        LoadScene(index);
+        text.text = "0%";
+        int countdown = 5;
+        StartCoroutine(LoadingToStart(countdown));
 
     }
 
-    public void LoadScene(int _index)
+    IEnumerator LoadingToStart(int _countdown)
     {
 
-        StartCoroutine(LoadAsynchronously(_index));
+        while (_countdown > 0)
+        {
+
+            yield return new WaitForSeconds(1f);
+
+            _countdown--;
+
+        }
+
+        int index = PlayerPrefs.GetInt("index", 1);
+        StartCoroutine(LoadAsynchronously(index));
 
     }
 
@@ -34,6 +47,7 @@ public class LoadManager : MonoBehaviour
             float progress = Mathf.Clamp01(operation.progress / .9f);
 
             fill.fillAmount = progress;
+            text.text = progress * 100f + "%";
 
             yield return null;
 

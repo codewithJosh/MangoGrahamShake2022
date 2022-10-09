@@ -1,15 +1,94 @@
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
 
-    public Animator animator;
+    [SerializeField] private Animator animator;
+    [SerializeField] private TextMeshProUGUI playerNameUIText;
+    [SerializeField] private Button loadCareerUIButton;
 
-    public void OnPlay()
+    private enum startMenuStates { idle, newCareer, options, help, about, exit };
+    private startMenuStates startMenuState = startMenuStates.idle;
+
+    public void OnAnimateFromStartMenu(int _startMenuState)
     {
 
-        OnLoadScene(2);
+        startMenuState = GetStartMenuState(_startMenuState);
+        animator.SetInteger("startMenuState", (int) startMenuState);
+
+    }
+
+    private startMenuStates GetStartMenuState(int _startMenuState)
+    {
+       
+        switch (_startMenuState)
+        {
+
+            case 1:
+                return startMenuStates.newCareer;
+
+            case 2:
+                return startMenuStates.options;
+
+            case 3:
+                return startMenuStates.help;
+
+            case 4:
+                return startMenuStates.about;
+
+            case 5:
+                return startMenuStates.exit;
+
+        }
+
+        return startMenuStates.idle;
+
+    }
+
+    public void OnExitAffirmative()
+    {
+
+        OnAnimateFromStartMenu(0);
+        PlayerPrefs.SetInt("index", 1);
+        Application.Quit();
+
+    }
+
+    public void OnBack()
+    {
+
+        OnAnimateFromStartMenu(0);
+
+    }
+
+    public void OnAnimateFromNewCareer(string _trigger)
+    {
+
+        animator.SetTrigger(_trigger);
+
+    }
+
+    private void Start()
+    {
+
+        PlayerModel player = Database.LoadPlayer();
+
+        if (player == null)
+        {
+
+            playerNameUIText.text = "NO SAVED GAME";
+            loadCareerUIButton.interactable = false;
+
+        }
+        else
+        {
+
+            playerNameUIText.text = player.playerName;
+
+        }
 
     }
 
@@ -27,58 +106,10 @@ public class GameManager : MonoBehaviour
 
     }
 
-    public void OnExit()
-    {
-
-        animator.SetTrigger("ConfirmationExit");
-
-    }
-
-    public void OnConfirmationExitTrue()
-    {
-
-        PlayerPrefs.SetInt("index", 1);
-        Application.Quit();
-
-    }
-
-    public void OnConfirmationExitFalse()
-    {
-
-        animator.SetTrigger("ConfirmationExit");
-
-    }
-
     private void OnLoadScene(int _index)
     {
 
         SceneManager.LoadScene(_index);
-
-    }
-
-    public void OnBack()
-    {
-
-        int _index = SceneManager.GetActiveScene().buildIndex;
-        if (_index != 3)
-        {
-
-            OnLoadScene(1);
-
-        }
-        else
-        {
-
-            OnLoadScene(2);
-
-        }
-
-    }
-
-    public void OnNewCareer()
-    {
-
-        OnLoadScene(3);
 
     }
 
@@ -115,13 +146,6 @@ public class GameManager : MonoBehaviour
 
         FindObjectOfType<Player>().NewPlayer();
         OnLoadCareer();
-
-    }
-
-    public void OnRequiredPlayerNameOK()
-    {
-
-        animator.SetTrigger("RequiredPlayerName");
 
     }
 
