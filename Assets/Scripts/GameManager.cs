@@ -96,26 +96,6 @@ public class GameManager : MonoBehaviour
 
     }
 
-    public void OnStartNewCareer()
-    {
-
-        PlayerModel player = Database.LoadPlayer();
-
-        if (player != null)
-        {
-
-            animator.SetTrigger("WarningOverwrite");
-
-        }
-        else
-        {
-
-            OnNewPlayer();
-
-        }
-
-    }
-
     private void OnNewPlayer()
     {
 
