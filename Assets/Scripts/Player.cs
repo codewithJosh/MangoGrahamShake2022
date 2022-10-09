@@ -34,7 +34,7 @@ public class Player : MonoBehaviour
     IEnumerator AnimateToStart(int _countdown)
     {
 
-        FindObjectOfType<GameManager>().OnAnimate(0);
+        FindObjectOfType<GameManager>().OnAnimateFromStartMenu(0);
 
         while (_countdown > 0)
         {
@@ -46,6 +46,26 @@ public class Player : MonoBehaviour
         }
 
         playerNameHUD.GetComponent<TMP_InputField>().text = "";
+
+    }
+
+    public void OnStartFromNewCareer()
+    {
+
+        playerName = playerNameHUD.GetComponent<TMP_InputField>().text;
+
+        if (playerName.Equals(""))
+        {
+
+            FindObjectOfType<GameManager>().OnAnimateFromNewCareer("requiredPlayerName");
+
+        }
+        else
+        {
+
+            Debug.Log(playerName);
+
+        }
 
     }
 
@@ -91,26 +111,6 @@ public class Player : MonoBehaviour
         currentTemperature = player.currentTemperature;
         currentPopularity = player.currentPopularity;
         currentSatisfaction = player.currentSatisfaction;
-
-    }
-
-    public void OnStorePlayerName()
-    {
-
-        /*playerName = inputField.GetComponent<InputField>().text;
-
-        if (playerName.Equals(""))
-        {
-
-            //FindObjectOfType<GameManager>().animator.SetTrigger("RequiredPlayerName");
-
-        }
-        else
-        {
-
-            FindObjectOfType<GameManager>().OnStartNewCareer();
-
-        }*/
 
     }
 

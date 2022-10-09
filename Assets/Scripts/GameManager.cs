@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,7 +10,7 @@ public class GameManager : MonoBehaviour
     private enum startMenuStates { idle, newCareer, options, help, about, exit };
     private startMenuStates startMenuState = startMenuStates.idle;
 
-    public void OnAnimate(int _startMenuState)
+    public void OnAnimateFromStartMenu(int _startMenuState)
     {
 
         startMenuState = GetStartMenuState(_startMenuState);
@@ -47,7 +48,7 @@ public class GameManager : MonoBehaviour
     public void OnExitAffirmative()
     {
 
-        OnAnimate(0);
+        OnAnimateFromStartMenu(0);
         PlayerPrefs.SetInt("index", 1);
         Application.Quit();
 
@@ -56,8 +57,14 @@ public class GameManager : MonoBehaviour
     public void OnBack()
     {
 
-        OnAnimate(0);
+        OnAnimateFromStartMenu(0);
 
+    }
+
+    public void OnAnimateFromNewCareer(string _trigger)
+    {
+
+        animator.SetTrigger(_trigger);
 
     }
 
