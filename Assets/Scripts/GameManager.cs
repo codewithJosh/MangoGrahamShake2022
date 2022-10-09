@@ -15,7 +15,6 @@ public class GameManager : MonoBehaviour
         startMenuState = GetStartMenuState(_startMenuState);
         animator.SetInteger("startMenuState", (int) startMenuState);
 
-
     }
 
     private startMenuStates GetStartMenuState(int _startMenuState)
@@ -42,6 +41,15 @@ public class GameManager : MonoBehaviour
         }
 
         return startMenuStates.idle;
+
+    }
+
+    public void OnExitAffirmative()
+    {
+
+        OnAnimate(0);
+        PlayerPrefs.SetInt("index", 1);
+        Application.Quit();
 
     }
 
@@ -75,8 +83,7 @@ public class GameManager : MonoBehaviour
     public void OnConfirmationExitTrue()
     {
 
-        PlayerPrefs.SetInt("index", 1);
-        Application.Quit();
+        
 
     }
 
