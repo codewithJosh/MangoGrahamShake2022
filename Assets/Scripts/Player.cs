@@ -2,11 +2,13 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
+using System.Collections;
 
 public class Player : MonoBehaviour
 {
 
-    public GameObject inputField;
+    [SerializeField] private GameObject playerNameHUD;
 
     public string playerName;
     public float playerCapital;
@@ -20,6 +22,32 @@ public class Player : MonoBehaviour
     public int currentTemperature;
     public float currentPopularity;
     public float currentSatisfaction;
+
+    public void OnBackFromNewCareer()
+    {
+
+        int countdown = 1;
+        StartCoroutine(AnimateToStart(countdown));
+
+    }
+
+    IEnumerator AnimateToStart(int _countdown)
+    {
+
+        FindObjectOfType<GameManager>().OnAnimate(0);
+
+        while (_countdown > 0)
+        {
+
+            yield return new WaitForSeconds(1f);
+
+            _countdown--;
+
+        }
+
+        playerNameHUD.GetComponent<TMP_InputField>().text = "";
+
+    }
 
     public void NewPlayer()
     {
@@ -69,7 +97,7 @@ public class Player : MonoBehaviour
     public void OnStorePlayerName()
     {
 
-        playerName = inputField.GetComponent<InputField>().text;
+        /*playerName = inputField.GetComponent<InputField>().text;
 
         if (playerName.Equals(""))
         {
@@ -82,7 +110,7 @@ public class Player : MonoBehaviour
 
             FindObjectOfType<GameManager>().OnStartNewCareer();
 
-        }
+        }*/
 
     }
 

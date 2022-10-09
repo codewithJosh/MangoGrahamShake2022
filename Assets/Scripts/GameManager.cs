@@ -53,6 +53,14 @@ public class GameManager : MonoBehaviour
 
     }
 
+    public void OnBack()
+    {
+
+        OnAnimate(0);
+
+
+    }
+
     public void OnPlay()
     {
 
@@ -98,25 +106,6 @@ public class GameManager : MonoBehaviour
     {
 
         SceneManager.LoadScene(_index);
-
-    }
-
-    public void OnBack()
-    {
-
-        int _index = SceneManager.GetActiveScene().buildIndex;
-        if (_index != 3)
-        {
-
-            OnLoadScene(1);
-
-        }
-        else
-        {
-
-            OnLoadScene(2);
-
-        }
 
     }
 
