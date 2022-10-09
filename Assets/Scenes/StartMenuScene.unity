@@ -1315,6 +1315,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 1200513198}
+  playerNameUIText: {fileID: 1426746430}
+  loadCareerUIButton: {fileID: 625889714}
 --- !u!114 &1016382060
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1701,7 +1703,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1016382059}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: OnAnimate
+        m_MethodName: OnAnimateFromStartMenu
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
