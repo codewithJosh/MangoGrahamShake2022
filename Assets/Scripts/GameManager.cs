@@ -1,14 +1,10 @@
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using TMPro;
 
 public class GameManager : MonoBehaviour
 {
 
     [SerializeField] private Animator animator;
-    [SerializeField] private TextMeshProUGUI playerNameUIText;
-    [SerializeField] private Button loadCareerUIButton;
 
     private enum startMenuStates { idle, newCareer, options, help, about, exit };
     private startMenuStates startMenuState = startMenuStates.idle;
@@ -68,27 +64,6 @@ public class GameManager : MonoBehaviour
     {
 
         animator.SetTrigger(_trigger);
-
-    }
-
-    private void Start()
-    {
-
-        PlayerModel player = Database.LoadPlayer();
-
-        if (player == null)
-        {
-
-            playerNameUIText.text = "NO SAVED GAME";
-            loadCareerUIButton.interactable = false;
-
-        }
-        else
-        {
-
-            playerNameUIText.text = player.playerName;
-
-        }
 
     }
 

@@ -1279,6 +1279,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1016382058}
   - component: {fileID: 1016382059}
+  - component: {fileID: 1016382061}
   - component: {fileID: 1016382060}
   m_Layer: 0
   m_Name: GameManager
@@ -1315,8 +1316,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 1200513198}
-  playerNameUIText: {fileID: 1426746430}
-  loadCareerUIButton: {fileID: 625889714}
 --- !u!114 &1016382060
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1339,6 +1338,20 @@ MonoBehaviour:
   currentTemperature: 0
   currentPopularity: 0
   currentSatisfaction: 0
+--- !u!114 &1016382061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1016382057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42e1b96023f7df04cb8a42182178ad58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerNameUIText: {fileID: 1426746430}
+  loadCareerUIButton: {fileID: 625889714}
 --- !u!1 &1064379241
 GameObject:
   m_ObjectHideFlags: 0
