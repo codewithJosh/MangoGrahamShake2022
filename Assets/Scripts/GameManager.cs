@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -93,12 +92,6 @@ public class GameManager : MonoBehaviour
 
     }
 
-    public void OnPlay()
-    {
-
-        OnLoadScene(2);
-    }
-
     public void OnHelp()
     {
 
@@ -113,38 +106,10 @@ public class GameManager : MonoBehaviour
 
     }
 
-    public void OnExit()
-    {
-
-        animator.SetTrigger("ConfirmationExit");
-
-    }
-
-    public void OnConfirmationExitTrue()
-    {
-
-        
-
-    }
-
-    public void OnConfirmationExitFalse()
-    {
-
-        animator.SetTrigger("ConfirmationExit");
-
-    }
-
     private void OnLoadScene(int _index)
     {
 
         SceneManager.LoadScene(_index);
-
-    }
-
-    public void OnNewCareer()
-    {
-
-        OnLoadScene(3);
 
     }
 
@@ -181,13 +146,6 @@ public class GameManager : MonoBehaviour
 
         FindObjectOfType<Player>().NewPlayer();
         OnLoadCareer();
-
-    }
-
-    public void OnRequiredPlayerNameOK()
-    {
-
-        animator.SetTrigger("RequiredPlayerName");
 
     }
 
