@@ -10,7 +10,8 @@ public class GameManager : MonoBehaviour
 
     private enum startMenuStates { idle, newCareer, options, help, about, exit };
     private startMenuStates startMenuState = startMenuStates.idle;
-
+    private enum inGamePreparationPhaseStates { idle, mainMenu, warningSave };
+    private inGamePreparationPhaseStates inGamePreparationPhaseState = inGamePreparationPhaseStates.idle;
     public void OnAnimateFromStartMenu(int _startMenuState)
     {
 
@@ -182,49 +183,53 @@ public class GameManager : MonoBehaviour
 
     }
 
+    public void OnAnimateFromInGamePreparationPhase(int _inGamePreparationPhaseState)
+    {
+
+        inGamePreparationPhaseState = GetInGamePreparationPhaseState(_inGamePreparationPhaseState);
+        animator.SetInteger("inGamePreparationPhaseState", (int) inGamePreparationPhaseState);
+
+    }
+
+    private inGamePreparationPhaseStates GetInGamePreparationPhaseState(int _inGamePreparationPhaseState)
+    {
+
+        switch (_inGamePreparationPhaseState)
+        {
+
+            case 1:
+                return inGamePreparationPhaseStates.mainMenu;
+
+            case 2:
+                return inGamePreparationPhaseStates.warningSave;
+
+        }
+
+        return inGamePreparationPhaseStates.idle;
+
+    }
+
+    public void OnWarningSaveAffirmative()
+    {
+
+        FindObjectOfType<Player>().SavePlayer();
+        OnWarningSaveNegative();
+
+    }
+
+    public void OnWarningSaveNegative()
+    {
+
+        OnAnimateFromInGamePreparationPhase(0);
+        PlayerPrefs.SetInt("index", 1);
+        SceneManager.LoadScene(0);
+
+    }
+
     public void OnStartDay()
     {
 
 
-
-    }
-
-    public void OnMainMenu()
-    {
-
-        animator.SetTrigger("ConfirmationMainMenu");
-
-    }
-
-    public void OnWarningSaveGame()
-    {
-
-        animator.SetTrigger("WarningSaveGame");
-
-    }
-
-    public void OnConfirmationMainMenuTrue()
-    {
-
-        OnMainMenu();
-        OnWarningSaveGame();
-
-    }
-
-    public void OnWarningSaveGameTrue()
-    {
-
-        FindObjectOfType<Player>().SavePlayer();
-        OnWarningSaveGameFalse();
-
-    }
-
-    public void OnWarningSaveGameFalse()
-    {
-
-        OnWarningSaveGame();
-        PlayerPrefs.SetInt("index", 1);
-        //OnLoadScene(0);
 
     }
 
