@@ -80,7 +80,7 @@ public class Player : MonoBehaviour
     public void NewPlayer()
     {
 
-        resourceMango = new();
+        resourceMango = new Dictionary<DateTime, int>();
         playerCapital = 2000.00f;
         resourceGraham = 0;
         resourceMilk = 0;
