@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4523036711977842235
+--- !u!1 &5051276427330420289
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,8 +8,9 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4523036711977842233}
-  - component: {fileID: 4523036711977842232}
+  - component: {fileID: 5051276427330420290}
+  - component: {fileID: 5051276427330420291}
+  - component: {fileID: 5051276427330420292}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -17,31 +18,53 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4523036711977842233
+--- !u!4 &5051276427330420290
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4523036711977842235}
+  m_GameObject: {fileID: 5051276427330420289}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 321.41495, y: 792.3374, z: -13.67392}
+  m_LocalPosition: {x: 540, y: 960, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4523036711977842232
+--- !u!114 &5051276427330420291
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4523036711977842235}
+  m_GameObject: {fileID: 5051276427330420289}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2c8580091ca481b4395ff53f4eccc5fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Animator: {fileID: 0}
+  animator: {fileID: 0}
+--- !u!114 &5051276427330420292
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5051276427330420289}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 950c661f1ac08bd40a42f06d82ff43cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerNameHUD: {fileID: 0}
+  playerName: 
+  playerCapital: 0
+  resourceGraham: 0
+  resourceMilk: 0
+  resourceIceCubes: 0
+  resourceCups: 0
+  currentTemperature: 0
+  currentPopularity: 0
+  currentSatisfaction: 0
