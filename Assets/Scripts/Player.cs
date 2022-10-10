@@ -53,6 +53,7 @@ public class Player : MonoBehaviour
     {
 
         playerName = playerNameHUD.GetComponent<TMP_InputField>().text;
+        PlayerModel player = Database.LoadPlayer();
 
         if (playerName.Equals(""))
         {
@@ -60,10 +61,17 @@ public class Player : MonoBehaviour
             FindObjectOfType<GameManager>().OnAnimateFromNewCareer("requiredPlayerName");
 
         }
+        else if (player != null)
+        {
+
+            FindObjectOfType<GameManager>().OnAnimateFromNewCareer("warningOverwrite");
+
+        }
         else
         {
 
-            Debug.Log(playerName);
+            NewPlayer();
+            FindObjectOfType<GameManager>().OnNewCareer();
 
         }
 

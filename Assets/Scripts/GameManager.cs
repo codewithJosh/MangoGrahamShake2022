@@ -1,14 +1,11 @@
+using System.Collections;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using TMPro;
 
 public class GameManager : MonoBehaviour
 {
 
     [SerializeField] private Animator animator;
-    [SerializeField] private TextMeshProUGUI playerNameUIText;
-    [SerializeField] private Button loadCareerUIButton;
 
     private enum startMenuStates { idle, newCareer, options, help, about, exit };
     private startMenuStates startMenuState = startMenuStates.idle;
@@ -71,88 +68,71 @@ public class GameManager : MonoBehaviour
 
     }
 
-    private void Start()
+    public void OnNewCareer()
     {
 
-        PlayerModel player = Database.LoadPlayer();
+        int countdown = 3;
+        StartCoroutine(NewCareerToStart(countdown));
 
-        if (player == null)
+    }
+
+    IEnumerator NewCareerToStart(int _countdown)
+    {
+
+        FindObjectOfType<GameManager>().OnAnimateFromStartMenu(0);
+
+        while (_countdown > 0)
         {
 
-            playerNameUIText.text = "NO SAVED GAME";
-            loadCareerUIButton.interactable = false;
+            if (_countdown == 3)
+            {
+
+                OnAnimateFromNewCareer("startMenu");
+
+            }
+
+            yield return new WaitForSeconds(1f);
+
+            _countdown--;
 
         }
-        else
-        {
 
-            playerNameUIText.text = player.playerName;
-
-        }
-
-    }
-
-    public void OnHelp()
-    {
-
-        OnLoadScene(6);
-
-    }
-
-    public void OnAbout()
-    {
-
-        OnLoadScene(7);
-
-    }
-
-    private void OnLoadScene(int _index)
-    {
-
-        SceneManager.LoadScene(_index);
+        PlayerPrefs.SetInt("index", 2);
+        SceneManager.LoadScene(0);
 
     }
 
     public void OnLoadCareer()
     {
 
-        PlayerPrefs.SetInt("index", 4);
-        OnLoadScene(0);
+        int countdown = 3;
+        StartCoroutine(LoadCareerToStart(countdown));
 
     }
 
-    public void OnStartNewCareer()
+    IEnumerator LoadCareerToStart(int _countdown)
     {
 
-        PlayerModel player = Database.LoadPlayer();
+        OnAnimateFromNewCareer("startMenu");
 
-        if (player != null)
+        while (_countdown > 0)
         {
 
-            animator.SetTrigger("WarningOverwrite");
+            yield return new WaitForSeconds(1f);
 
-        }
-        else
-        {
-
-            OnNewPlayer();
+            _countdown--;
 
         }
 
-    }
-
-    private void OnNewPlayer()
-    {
-
-        FindObjectOfType<Player>().NewPlayer();
-        OnLoadCareer();
+        PlayerPrefs.SetInt("index", 2);
+        SceneManager.LoadScene(0);
 
     }
 
     public void OnWarningOverwriteTrue()
     {
 
-        OnNewPlayer();
+        //OnNewPlayer();
 
     }
 
@@ -205,7 +185,7 @@ public class GameManager : MonoBehaviour
 
         OnWarningSaveGame();
         PlayerPrefs.SetInt("index", 1);
-        OnLoadScene(0);
+        //OnLoadScene(0);
 
     }
 

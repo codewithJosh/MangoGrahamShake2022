@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: OffExit
+  m_Name: OffWarningOverwrite
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -125,7 +125,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_IsActive
-    path: Canvas/Background/Background/ExitSection
+    path: Canvas/Background/Background/WarningOverwriteSection
     classID: 1
     script: {fileID: 0}
   - curve:
@@ -162,7 +162,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_IsActive
-    path: Canvas/Background/Background/ExitSection/AffirmativeUIButton
+    path: Canvas/Background/Background/WarningOverwriteSection/AffirmativeUIButton
     classID: 1
     script: {fileID: 0}
   - curve:
@@ -199,7 +199,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_AnchoredPosition.y
-    path: Canvas/Background/Background/ExitSection/AffirmativeUIButton
+    path: Canvas/Background/Background/WarningOverwriteSection/AffirmativeUIButton
     classID: 224
     script: {fileID: 0}
   - curve:
@@ -236,7 +236,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_IsActive
-    path: Canvas/Background/Background/ExitSection/DialogBox
+    path: Canvas/Background/Background/WarningOverwriteSection/DialogBox
     classID: 1
     script: {fileID: 0}
   - curve:
@@ -273,7 +273,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_AnchoredPosition.y
-    path: Canvas/Background/Background/ExitSection/DialogBox
+    path: Canvas/Background/Background/WarningOverwriteSection/DialogBox
     classID: 224
     script: {fileID: 0}
   - curve:
@@ -310,7 +310,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_IsActive
-    path: Canvas/Background/Background/ExitSection/NegativeUIButton
+    path: Canvas/Background/Background/WarningOverwriteSection/NegativeUIButton
     classID: 1
     script: {fileID: 0}
   - curve:
@@ -347,7 +347,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_AnchoredPosition.y
-    path: Canvas/Background/Background/ExitSection/NegativeUIButton
+    path: Canvas/Background/Background/WarningOverwriteSection/NegativeUIButton
     classID: 224
     script: {fileID: 0}
   m_PPtrCurves: []
@@ -373,49 +373,49 @@ AnimationClip:
       customType: 0
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 559437693
+      path: 4135119053
       attribute: 2086281974
       script: {fileID: 0}
       typeID: 1
       customType: 0
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 2320419674
+      path: 2055372994
       attribute: 2086281974
       script: {fileID: 0}
       typeID: 1
       customType: 0
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 2320419674
+      path: 2055372994
       attribute: 538195251
       script: {fileID: 0}
       typeID: 224
       customType: 28
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 3410645474
+      path: 1165199882
       attribute: 2086281974
       script: {fileID: 0}
       typeID: 1
       customType: 0
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 3410645474
+      path: 1165199882
       attribute: 538195251
       script: {fileID: 0}
       typeID: 224
       customType: 28
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 2539923280
+      path: 2120562739
       attribute: 2086281974
       script: {fileID: 0}
       typeID: 1
       customType: 0
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 2539923280
+      path: 2120562739
       attribute: 538195251
       script: {fileID: 0}
       typeID: 224
@@ -551,7 +551,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_IsActive
-    path: Canvas/Background/Background/ExitSection
+    path: Canvas/Background/Background/WarningOverwriteSection
     classID: 1
     script: {fileID: 0}
   - curve:
@@ -588,7 +588,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_IsActive
-    path: Canvas/Background/Background/ExitSection/AffirmativeUIButton
+    path: Canvas/Background/Background/WarningOverwriteSection/AffirmativeUIButton
     classID: 1
     script: {fileID: 0}
   - curve:
@@ -625,7 +625,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_AnchoredPosition.y
-    path: Canvas/Background/Background/ExitSection/AffirmativeUIButton
+    path: Canvas/Background/Background/WarningOverwriteSection/AffirmativeUIButton
     classID: 224
     script: {fileID: 0}
   - curve:
@@ -662,7 +662,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_IsActive
-    path: Canvas/Background/Background/ExitSection/DialogBox
+    path: Canvas/Background/Background/WarningOverwriteSection/DialogBox
     classID: 1
     script: {fileID: 0}
   - curve:
@@ -699,7 +699,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_AnchoredPosition.y
-    path: Canvas/Background/Background/ExitSection/DialogBox
+    path: Canvas/Background/Background/WarningOverwriteSection/DialogBox
     classID: 224
     script: {fileID: 0}
   - curve:
@@ -736,7 +736,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_IsActive
-    path: Canvas/Background/Background/ExitSection/NegativeUIButton
+    path: Canvas/Background/Background/WarningOverwriteSection/NegativeUIButton
     classID: 1
     script: {fileID: 0}
   - curve:
@@ -773,7 +773,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_AnchoredPosition.y
-    path: Canvas/Background/Background/ExitSection/NegativeUIButton
+    path: Canvas/Background/Background/WarningOverwriteSection/NegativeUIButton
     classID: 224
     script: {fileID: 0}
   m_EulerEditorCurves: []
