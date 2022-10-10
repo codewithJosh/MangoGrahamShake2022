@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -48,7 +49,32 @@ public class GameManager : MonoBehaviour
     public void OnExitAffirmative()
     {
 
+        int countdown = 3;
+        StartCoroutine(ExitToStart(countdown));
+
+    }
+
+    IEnumerator ExitToStart(int _countdown)
+    {
+
         OnAnimateFromStartMenu(0);
+
+        while (_countdown > 0)
+        {
+
+            if (_countdown == 3)
+            {
+
+                OnAnimateFromNewCareer("startMenu");
+
+            }
+
+            yield return new WaitForSeconds(1f);
+
+            _countdown--;
+
+        }
+
         PlayerPrefs.SetInt("index", 1);
         Application.Quit();
 
@@ -79,7 +105,7 @@ public class GameManager : MonoBehaviour
     IEnumerator NewCareerToStart(int _countdown)
     {
 
-        FindObjectOfType<GameManager>().OnAnimateFromStartMenu(0);
+        OnAnimateFromStartMenu(0);
 
         while (_countdown > 0)
         {
@@ -129,17 +155,30 @@ public class GameManager : MonoBehaviour
 
     }
 
-    public void OnWarningOverwriteTrue()
+    public void OnWarningOverwriteAffirmative()
     {
 
-        //OnNewPlayer();
+        FindObjectOfType<Player>().NewPlayer();
+        int countdown = 1;
+        StartCoroutine(WarningOverwriteAffirmativeToStart(countdown));
 
     }
 
-    public void OnWarningOverwriteFalse()
+    IEnumerator WarningOverwriteAffirmativeToStart(int _countdown)
     {
 
-        animator.SetTrigger("WarningOverwrite");
+        OnAnimateFromNewCareer("warningOverwrite");
+
+        while (_countdown > 0)
+        {
+
+            yield return new WaitForSeconds(1f);
+
+            _countdown--;
+
+        }
+
+        OnNewCareer();
 
     }
 
