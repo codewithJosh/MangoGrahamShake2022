@@ -951,9 +951,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 650cf9226a47de142958a874505277f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _img: {fileID: 533760295}
-  _x: 0.1
-  _y: 0.1
+  animatedBackground: {fileID: 533760295}
+  x: 0.1
+  y: 0.1
 --- !u!222 &533760294
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1903,9 +1903,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 650cf9226a47de142958a874505277f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _img: {fileID: 1210453923}
-  _x: 0.1
-  _y: 0.1
+  animatedBackground: {fileID: 1210453923}
+  x: 0.1
+  y: 0.1
 --- !u!222 &1210453922
 CanvasRenderer:
   m_ObjectHideFlags: 0
