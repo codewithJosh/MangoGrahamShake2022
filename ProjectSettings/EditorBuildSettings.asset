@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/StartMenuScene.unity
     guid: 7d2c714854d1de24b83dad90f15f3912
   - enabled: 1
-    path: Assets/Scenes/InGamePreparationPhase.unity
+    path: Assets/Scenes/InGamePreparationPhaseScene.unity
     guid: 874bf0f41e6b81841bc66f931d13825f
   - enabled: 1
     path: Assets/Scenes/InGameSellingPhase.unity

@@ -1,36 +1,37 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
+using TMPro;
 
 public class InGamePreparationPhase : MonoBehaviour
 {
 
-    public Text playerCapital;
-    public Text resourceMango;
-    public Text resourceGraham;
-    public Text resourceMilk;
-    public Text resourceIceCubes;
-    public Text resourceCups;
-    public Text currentTemperature;
-    public Image fillCurrentPopularity;
-    public Image fillCurrentSatisfaction;
+    [SerializeField] private TextMeshProUGUI mangoUIText;
+    [SerializeField] private TextMeshProUGUI grahamUIText;
+    [SerializeField] private TextMeshProUGUI milkUIText;
+    [SerializeField] private TextMeshProUGUI iceCubesUIText;
+    [SerializeField] private TextMeshProUGUI cupsUIText;
+    [SerializeField] private TextMeshProUGUI dateUIText;
+    [SerializeField] private TextMeshProUGUI temperatureUIText;
+    [SerializeField] private TextMeshProUGUI capitalUIText;
+    [SerializeField] private Image popularityFillHUD;
+    [SerializeField] private Image satisfactionFillHUD;
 
     // Start is called before the first frame update
     void Start()
     {
         FindObjectOfType<Player>().LoadPlayer();
 
-        playerCapital.text = "Php " + FindObjectOfType<Player>().playerCapital.ToString("0.00");
-        resourceMango.text = handleResourceMango(FindObjectOfType<Player>().resourceMango).ToString();
-        resourceGraham.text = FindObjectOfType<Player>().resourceGraham.ToString();
-        resourceMilk.text = FindObjectOfType<Player>().resourceMilk.ToString();
-        resourceIceCubes.text = FindObjectOfType<Player>().resourceIceCubes.ToString();
-        resourceCups.text = FindObjectOfType<Player>().resourceCups.ToString();
-        currentTemperature.text = "Temp " + FindObjectOfType<Player>().currentTemperature.ToString() + " °C";
-        fillCurrentPopularity.fillAmount = FindObjectOfType<Player>().currentPopularity;
-        fillCurrentSatisfaction.fillAmount = FindObjectOfType<Player>().currentSatisfaction;
+        capitalUIText.text = "Php " + FindObjectOfType<Player>().playerCapital.ToString("0.00");
+        mangoUIText.text = handleResourceMango(FindObjectOfType<Player>().resourceMango).ToString();
+        grahamUIText.text = FindObjectOfType<Player>().resourceGraham.ToString();
+        milkUIText.text = FindObjectOfType<Player>().resourceMilk.ToString();
+        iceCubesUIText.text = FindObjectOfType<Player>().resourceIceCubes.ToString();
+        cupsUIText.text = FindObjectOfType<Player>().resourceCups.ToString();
+        temperatureUIText.text = "Temp " + FindObjectOfType<Player>().currentTemperature.ToString() + " °C";
+        popularityFillHUD.fillAmount = FindObjectOfType<Player>().currentPopularity;
+        satisfactionFillHUD.fillAmount = FindObjectOfType<Player>().currentSatisfaction;
 
     }
 
