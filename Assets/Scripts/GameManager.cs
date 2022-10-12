@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -8,10 +7,10 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private Animator animator;
 
-    private enum startMenuStates { idle, newCareer, options, help, about, exit };
-    private startMenuStates startMenuState = startMenuStates.idle;
-    private enum inGamePreparationPhaseStates { idle, mainMenu, warningSave };
-    private inGamePreparationPhaseStates inGamePreparationPhaseState = inGamePreparationPhaseStates.idle;
+    private enum StartMenuStates { idle, newCareer, options, help, about, exit };
+    private StartMenuStates startMenuState = StartMenuStates.idle;
+    private enum InGamePreparationPhaseStates { idle, mainMenu, warningSave };
+    private InGamePreparationPhaseStates inGamePreparationPhaseState = InGamePreparationPhaseStates.idle;
     public void OnAnimateFromStartMenu(int _startMenuState)
     {
 
@@ -20,30 +19,25 @@ public class GameManager : MonoBehaviour
 
     }
 
-    private startMenuStates GetStartMenuState(int _startMenuState)
+    private StartMenuStates GetStartMenuState(int _startMenuState)
     {
-       
-        switch (_startMenuState)
+
+        return _startMenuState switch
         {
 
-            case 1:
-                return startMenuStates.newCareer;
+            1 => StartMenuStates.newCareer,
 
-            case 2:
-                return startMenuStates.options;
+            2 => StartMenuStates.options,
 
-            case 3:
-                return startMenuStates.help;
+            3 => StartMenuStates.help,
 
-            case 4:
-                return startMenuStates.about;
+            4 => StartMenuStates.about,
 
-            case 5:
-                return startMenuStates.exit;
+            5 => StartMenuStates.exit,
 
-        }
+            _ => StartMenuStates.idle,
 
-        return startMenuStates.idle;
+        };
 
     }
 
@@ -191,21 +185,19 @@ public class GameManager : MonoBehaviour
 
     }
 
-    private inGamePreparationPhaseStates GetInGamePreparationPhaseState(int _inGamePreparationPhaseState)
+    private InGamePreparationPhaseStates GetInGamePreparationPhaseState(int _inGamePreparationPhaseState)
     {
 
-        switch (_inGamePreparationPhaseState)
+        return _inGamePreparationPhaseState switch
         {
 
-            case 1:
-                return inGamePreparationPhaseStates.mainMenu;
+            1 => InGamePreparationPhaseStates.mainMenu,
 
-            case 2:
-                return inGamePreparationPhaseStates.warningSave;
+            2 => InGamePreparationPhaseStates.warningSave,
 
-        }
+            _ => InGamePreparationPhaseStates.idle,
 
-        return inGamePreparationPhaseStates.idle;
+        };
 
     }
 
@@ -223,6 +215,13 @@ public class GameManager : MonoBehaviour
         OnAnimateFromInGamePreparationPhase(0);
         PlayerPrefs.SetInt("index", 1);
         SceneManager.LoadScene(0);
+
+    }
+
+    public Animator GetAnimator
+    {
+
+        get { return animator; }
 
     }
 

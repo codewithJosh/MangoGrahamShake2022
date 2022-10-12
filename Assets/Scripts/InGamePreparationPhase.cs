@@ -18,13 +18,26 @@ public class InGamePreparationPhase : MonoBehaviour
     [SerializeField] private Image popularityFillHUD;
     [SerializeField] private Image satisfactionFillHUD;
 
-    // Start is called before the first frame update
+    private enum NavigationToRightStates { results, upgrades, staff, marketing, recipe, supplies };
+    private NavigationToRightStates navigationToRightState = NavigationToRightStates.results;
+
+    private enum NavigationToLeftStates { results, upgrades, staff, marketing, recipe, supplies };
+    private NavigationToLeftStates navigationToLeftState = NavigationToLeftStates.results;
+
+    private enum ResultsStates { yesterdaysResults, charts, profitAndLoss, balanceSheet };
+    private ResultsStates resultsState = ResultsStates.yesterdaysResults;
+
+    private enum SuppliesStates { yesterdaysResults, charts, profitAndLoss, balanceSheet };
+    private SuppliesStates suppliesState = SuppliesStates.yesterdaysResults;
+
+    private NavigationToRightStates lastNavigationToRightState = NavigationToRightStates.results;
+
     void Start()
     {
         FindObjectOfType<Player>().LoadPlayer();
 
         capitalUIText.text = "Php " + FindObjectOfType<Player>().playerCapital.ToString("0.00");
-        mangoUIText.text = handleResourceMango(FindObjectOfType<Player>().resourceMango).ToString();
+        mangoUIText.text = HandleResourceMango(FindObjectOfType<Player>().resourceMango).ToString();
         grahamUIText.text = FindObjectOfType<Player>().resourceGraham.ToString();
         milkUIText.text = FindObjectOfType<Player>().resourceMilk.ToString();
         iceCubesUIText.text = FindObjectOfType<Player>().resourceIceCubes.ToString();
@@ -41,7 +54,7 @@ public class InGamePreparationPhase : MonoBehaviour
         
     }
 
-    private int handleResourceMango(Dictionary<DateTime, int> _resourceMango)
+    private int HandleResourceMango(Dictionary<DateTime, int> _resourceMango)
     {
 
         int mangoes = 0;
@@ -54,6 +67,97 @@ public class InGamePreparationPhase : MonoBehaviour
         }
 
         return mangoes;
+
+    }
+
+    public void OnNavigation()
+    {
+
+        string navigation = FindObjectOfType<Navigation>().GetNavigation;
+        navigationToRightState = GetNavigationToRight(navigation);
+        navigationToLeftState = GetNavigationToLeft(navigation);
+        FindObjectOfType<BottomNavigationState>().SetBottomNavigationState(GetNavigation(navigation));
+
+        if (lastNavigationToRightState < navigationToRightState)
+        {
+
+            FindObjectOfType<GameManager>().GetAnimator.SetInteger("navigationToRightState", (int) navigationToRightState);
+            lastNavigationToRightState = navigationToRightState;
+
+        }
+        else if (lastNavigationToRightState > navigationToRightState)
+        {
+
+            FindObjectOfType<GameManager>().GetAnimator.SetInteger("navigationToLeftState", (int) navigationToLeftState);
+            lastNavigationToRightState = navigationToRightState;
+
+        }
+
+    }
+
+    private NavigationToRightStates GetNavigationToRight(string _navigation)
+    {
+
+        return _navigation switch
+        {
+
+            "UpgradesUINavButton" => NavigationToRightStates.upgrades,
+
+            "StaffUINavButton" => NavigationToRightStates.staff,
+
+            "MarketingUINavButton" => NavigationToRightStates.marketing,
+
+            "RecipeUINavButton" => NavigationToRightStates.recipe,
+
+            "SuppliesUINavButton" => NavigationToRightStates.supplies,
+
+            _ => NavigationToRightStates.results,
+
+        };
+
+    }
+    
+    private NavigationToLeftStates GetNavigationToLeft(string _navigation)
+    {
+
+        return _navigation switch
+        {
+
+            "UpgradesUINavButton" => NavigationToLeftStates.upgrades,
+
+            "StaffUINavButton" => NavigationToLeftStates.staff,
+
+            "MarketingUINavButton" => NavigationToLeftStates.marketing,
+
+            "RecipeUINavButton" => NavigationToLeftStates.recipe,
+
+            "SuppliesUINavButton" => NavigationToLeftStates.supplies,
+
+            _ => NavigationToLeftStates.results,
+
+        };
+
+    }
+    
+    private string GetNavigation(string _navigation)
+    {
+
+        return _navigation switch
+        {
+
+            "UpgradesUINavButton" => "Upgrades",
+
+            "StaffUINavButton" => "Staff",
+
+            "MarketingUINavButton" => "Marketing",
+
+            "RecipeUINavButton" => "Recipe",
+
+            "SuppliesUINavButton" => "Supplies",
+
+            _ => "",
+
+        };
 
     }
 
