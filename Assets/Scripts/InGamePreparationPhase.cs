@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 using TMPro;
+using System.Linq;
 
 public class InGamePreparationPhase : MonoBehaviour
 {
@@ -15,8 +16,11 @@ public class InGamePreparationPhase : MonoBehaviour
     [SerializeField] private TextMeshProUGUI dateUIText;
     [SerializeField] private TextMeshProUGUI temperatureUIText;
     [SerializeField] private TextMeshProUGUI capitalUIText;
+    [SerializeField] private TextMeshProUGUI bottomNavigationStateUIText;
     [SerializeField] private Image popularityFillHUD;
     [SerializeField] private Image satisfactionFillHUD;
+    [SerializeField] private ToggleGroup navigationPanel;
+    [SerializeField] private ToggleGroup suppliesNavigationPanel;
 
     private enum NavigationToRightStates { results, upgrades, staff, marketing, recipe, supplies };
     private NavigationToRightStates navigationToRightState = NavigationToRightStates.results;
@@ -27,8 +31,8 @@ public class InGamePreparationPhase : MonoBehaviour
     private enum ResultsStates { yesterdaysResults, charts, profitAndLoss, balanceSheet };
     private ResultsStates resultsState = ResultsStates.yesterdaysResults;
 
-    private enum SuppliesStates { yesterdaysResults, charts, profitAndLoss, balanceSheet };
-    private SuppliesStates suppliesState = SuppliesStates.yesterdaysResults;
+    private enum SuppliesNavigationStates { mango, graham, milk, iceCubes, cups };
+    private SuppliesNavigationStates suppliesNavigationState = SuppliesNavigationStates.mango;
 
     private NavigationToRightStates lastNavigationToRightState = NavigationToRightStates.results;
 
@@ -73,10 +77,10 @@ public class InGamePreparationPhase : MonoBehaviour
     public void OnNavigation()
     {
 
-        string navigation = FindObjectOfType<Navigation>().GetNavigation;
+        string navigation = GetNavigation(navigationPanel);
         navigationToRightState = GetNavigationToRight(navigation);
         navigationToLeftState = GetNavigationToLeft(navigation);
-        FindObjectOfType<BottomNavigationState>().SetBottomNavigationState(GetNavigation(navigation));
+        SetBottomNavigationState(GetNavigation(navigation));
 
         if (lastNavigationToRightState < navigationToRightState)
         {
@@ -156,6 +160,50 @@ public class InGamePreparationPhase : MonoBehaviour
             "SuppliesUINavButton" => "Supplies",
 
             _ => "",
+
+        };
+
+    }
+
+    public string GetNavigation(ToggleGroup _toggleGroup)
+    {
+
+        Toggle navigation = _toggleGroup.ActiveToggles().FirstOrDefault();
+        return navigation.name.ToString();
+
+    }
+
+    public void SetBottomNavigationState(string _bottomNavigationState)
+    {
+
+        bottomNavigationStateUIText.text = _bottomNavigationState;
+
+    }
+
+    public void OnSuppliesNavigation()
+    {
+
+        string navigation = GetNavigation(suppliesNavigationPanel);
+        suppliesNavigationState = GetSuppliesNavigation(navigation);
+        FindObjectOfType<GameManager>().GetAnimator.SetInteger("suppliesNavigationState", (int)suppliesNavigationState);
+
+    }
+
+    private SuppliesNavigationStates GetSuppliesNavigation(string _navigation)
+    {
+
+        return _navigation switch
+        {
+
+            "GrahamUINavButton" => SuppliesNavigationStates.graham,
+
+            "MilkUINavButton" => SuppliesNavigationStates.milk,
+
+            "IceCubesUINavButton" => SuppliesNavigationStates.iceCubes,
+
+            "CupsUINavButton" => SuppliesNavigationStates.cups,
+
+            _ => SuppliesNavigationStates.mango,
 
         };
 

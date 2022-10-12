@@ -438,13 +438,13 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1210917695}
   toggleTransition: 1
   graphic: {fileID: 1586597325}
-  m_Group: {fileID: 86921084}
+  m_Group: {fileID: 961560058}
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1132799837}
         m_TargetAssemblyTypeName: InGamePreparationPhase, Assembly-CSharp
-        m_MethodName: OnNavigation
+        m_MethodName: OnSuppliesNavigation
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -468,7 +468,6 @@ GameObject:
   - component: {fileID: 86921082}
   - component: {fileID: 86921081}
   - component: {fileID: 86921084}
-  - component: {fileID: 86921085}
   m_Layer: 5
   m_Name: NavigationPanel
   m_TagString: Untagged
@@ -579,18 +578,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_AllowSwitchOff: 0
---- !u!114 &86921085
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 86921079}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21f750d777dcf06488b9e84a90ee2df3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &108748993
 GameObject:
   m_ObjectHideFlags: 0
@@ -1828,13 +1815,13 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 471016268}
   toggleTransition: 1
   graphic: {fileID: 877339790}
-  m_Group: {fileID: 86921084}
+  m_Group: {fileID: 961560058}
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1132799837}
         m_TargetAssemblyTypeName: InGamePreparationPhase, Assembly-CSharp
-        m_MethodName: OnNavigation
+        m_MethodName: OnSuppliesNavigation
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2617,13 +2604,13 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 919910321}
   toggleTransition: 1
   graphic: {fileID: 1685684544}
-  m_Group: {fileID: 86921084}
+  m_Group: {fileID: 961560058}
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1132799837}
         m_TargetAssemblyTypeName: InGamePreparationPhase, Assembly-CSharp
-        m_MethodName: OnNavigation
+        m_MethodName: OnSuppliesNavigation
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5911,6 +5898,7 @@ GameObject:
   m_Component:
   - component: {fileID: 961560055}
   - component: {fileID: 961560056}
+  - component: {fileID: 961560058}
   m_Layer: 5
   m_Name: SuppliesNavigationPanel
   m_TagString: Untagged
@@ -5969,6 +5957,19 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &961560058
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 961560054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fafe2cfe61f6974895a912c3755e8f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AllowSwitchOff: 0
 --- !u!1 &962770870
 GameObject:
   m_ObjectHideFlags: 0
@@ -6529,6 +6530,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20433d2925406a54ea31fa8247643617, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bottomNavigationStateUIText: {fileID: 0}
 --- !u!1 &1019605516
 GameObject:
   m_ObjectHideFlags: 0
@@ -6985,8 +6987,11 @@ MonoBehaviour:
   dateUIText: {fileID: 111072885}
   temperatureUIText: {fileID: 149888340}
   capitalUIText: {fileID: 150527292}
+  bottomNavigationStateUIText: {fileID: 1004829497}
   popularityFillHUD: {fileID: 914593759}
   satisfactionFillHUD: {fileID: 466612014}
+  navigationPanel: {fileID: 86921084}
+  suppliesNavigationPanel: {fileID: 961560058}
 --- !u!114 &1132799838 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5051276427330420291, guid: 0942bf90451ea3a439d1162639e5ba20, type: 3}
@@ -11154,13 +11159,13 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2143538450}
   toggleTransition: 1
   graphic: {fileID: 314700930}
-  m_Group: {fileID: 86921084}
+  m_Group: {fileID: 961560058}
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1132799837}
         m_TargetAssemblyTypeName: InGamePreparationPhase, Assembly-CSharp
-        m_MethodName: OnNavigation
+        m_MethodName: OnSuppliesNavigation
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -11683,13 +11688,13 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1689591314}
   toggleTransition: 1
   graphic: {fileID: 739723197}
-  m_Group: {fileID: 86921084}
+  m_Group: {fileID: 961560058}
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1132799837}
         m_TargetAssemblyTypeName: InGamePreparationPhase, Assembly-CSharp
-        m_MethodName: OnNavigation
+        m_MethodName: OnSuppliesNavigation
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
