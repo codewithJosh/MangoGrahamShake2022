@@ -445,11 +445,11 @@ MonoBehaviour:
       - m_Target: {fileID: 1132799837}
         m_TargetAssemblyTypeName: InGamePreparationPhase, Assembly-CSharp
         m_MethodName: OnSuppliesNavigation
-        m_Mode: 1
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 3
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -1670,7 +1670,7 @@ GameObject:
   - component: {fileID: 255593682}
   - component: {fileID: 255593681}
   m_Layer: 5
-  m_Name: SupplyHUD
+  m_Name: LargeSupplyHUD
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1822,11 +1822,11 @@ MonoBehaviour:
       - m_Target: {fileID: 1132799837}
         m_TargetAssemblyTypeName: InGamePreparationPhase, Assembly-CSharp
         m_MethodName: OnSuppliesNavigation
-        m_Mode: 1
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -2611,11 +2611,11 @@ MonoBehaviour:
       - m_Target: {fileID: 1132799837}
         m_TargetAssemblyTypeName: InGamePreparationPhase, Assembly-CSharp
         m_MethodName: OnSuppliesNavigation
-        m_Mode: 1
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -3414,7 +3414,7 @@ GameObject:
   - component: {fileID: 488106778}
   - component: {fileID: 488106777}
   m_Layer: 5
-  m_Name: SupplyHUD
+  m_Name: SmallSupplyHUD
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3490,7 +3490,7 @@ GameObject:
   - component: {fileID: 514759640}
   - component: {fileID: 514759639}
   m_Layer: 5
-  m_Name: QuantityUIText
+  m_Name: SmallQuantityUIText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5824,7 +5824,7 @@ GameObject:
   - component: {fileID: 954624348}
   - component: {fileID: 954624347}
   m_Layer: 5
-  m_Name: SupplyHUD
+  m_Name: MediumSupplyHUD
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6259,7 +6259,7 @@ GameObject:
   - component: {fileID: 996795026}
   - component: {fileID: 996795025}
   m_Layer: 5
-  m_Name: QuantityUIText
+  m_Name: LargeQuantityUIText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6393,7 +6393,6 @@ GameObject:
   - component: {fileID: 1004829496}
   - component: {fileID: 1004829498}
   - component: {fileID: 1004829497}
-  - component: {fileID: 1004829499}
   m_Layer: 5
   m_Name: BottomNavigationStateUIText
   m_TagString: Untagged
@@ -6518,19 +6517,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1004829495}
   m_CullTransparentMesh: 1
---- !u!114 &1004829499
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1004829495}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 20433d2925406a54ea31fa8247643617, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bottomNavigationStateUIText: {fileID: 0}
 --- !u!1 &1019605516
 GameObject:
   m_ObjectHideFlags: 0
@@ -6988,10 +6974,25 @@ MonoBehaviour:
   temperatureUIText: {fileID: 149888340}
   capitalUIText: {fileID: 150527292}
   bottomNavigationStateUIText: {fileID: 1004829497}
+  smallPriceUIText: {fileID: 1271263271}
+  smallQuantityUIText: {fileID: 514759639}
+  mediumPriceUIText: {fileID: 2118155679}
+  mediumQuantityUIText: {fileID: 1336877531}
+  largePriceUIText: {fileID: 1591754789}
+  largeQuantityUIText: {fileID: 996795025}
   popularityFillHUD: {fileID: 914593759}
   satisfactionFillHUD: {fileID: 466612014}
+  smallSupplyHUD: {fileID: 488106777}
+  mediumSupplyHUD: {fileID: 954624347}
+  largeSupplyHUD: {fileID: 255593681}
   navigationPanel: {fileID: 86921084}
   suppliesNavigationPanel: {fileID: 961560058}
+  resources:
+  - {fileID: 21300000, guid: ec8fc53de3feb954c8098a6d28352706, type: 3}
+  - {fileID: 21300000, guid: 242e8756f89c1624ea6afa1e50d78e3a, type: 3}
+  - {fileID: 21300000, guid: 815f71291fb0cb843a6ec3fae493da19, type: 3}
+  - {fileID: 21300000, guid: 594a1a1c57157fa4aa25d84e687aad06, type: 3}
+  - {fileID: 21300000, guid: 7b3d852c77a25574db9755c7ccf6cd5a, type: 3}
 --- !u!114 &1132799838 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5051276427330420291, guid: 0942bf90451ea3a439d1162639e5ba20, type: 3}
@@ -7085,7 +7086,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1160337585}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1132799837}
+        m_TargetAssemblyTypeName: InGamePreparationPhase, Assembly-CSharp
+        m_MethodName: OnDecrement
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1160337585
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7439,7 +7452,7 @@ GameObject:
   - component: {fileID: 1271263272}
   - component: {fileID: 1271263271}
   m_Layer: 5
-  m_Name: PriceUIText
+  m_Name: SmallPriceUIText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7611,7 +7624,7 @@ GameObject:
   - component: {fileID: 1336877532}
   - component: {fileID: 1336877531}
   m_Layer: 5
-  m_Name: QuantityUIText
+  m_Name: MediumQuantityUIText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8551,7 +8564,7 @@ GameObject:
   - component: {fileID: 1591754790}
   - component: {fileID: 1591754789}
   m_Layer: 5
-  m_Name: PriceUIText
+  m_Name: LargePriceUIText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9028,7 +9041,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  m_IsOn: 0
+  m_IsOn: 1
 --- !u!1 &1607409060
 GameObject:
   m_ObjectHideFlags: 0
@@ -10183,7 +10196,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1868266089}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1132799837}
+        m_TargetAssemblyTypeName: InGamePreparationPhase, Assembly-CSharp
+        m_MethodName: OnIncrement
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1868266089
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11166,7 +11191,7 @@ MonoBehaviour:
       - m_Target: {fileID: 1132799837}
         m_TargetAssemblyTypeName: InGamePreparationPhase, Assembly-CSharp
         m_MethodName: OnSuppliesNavigation
-        m_Mode: 1
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -11175,7 +11200,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  m_IsOn: 0
+  m_IsOn: 1
 --- !u!1 &2056131837
 GameObject:
   m_ObjectHideFlags: 0
@@ -11695,11 +11720,11 @@ MonoBehaviour:
       - m_Target: {fileID: 1132799837}
         m_TargetAssemblyTypeName: InGamePreparationPhase, Assembly-CSharp
         m_MethodName: OnSuppliesNavigation
-        m_Mode: 1
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 4
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -11717,7 +11742,7 @@ GameObject:
   - component: {fileID: 2118155680}
   - component: {fileID: 2118155679}
   m_Layer: 5
-  m_Name: PriceUIText
+  m_Name: MediumPriceUIText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

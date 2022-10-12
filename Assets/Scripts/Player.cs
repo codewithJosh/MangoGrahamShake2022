@@ -13,15 +13,21 @@ public class Player : MonoBehaviour
     public string playerName;
     public float playerCapital;
 
-    public Dictionary<DateTime, int> resourceMango;
-    public int resourceGraham;
-    public int resourceMilk;
-    public int resourceIceCubes;
-    public int resourceCups;
+    public Dictionary<DateTime, int> mangoLeft;
+    public int grahamLeft;
+    public int milkLeft;
+    public int iceCubesLeft;
+    public int cupsLeft;
 
     public int currentTemperature;
     public float currentPopularity;
     public float currentSatisfaction;
+
+    public int[] mangoes;
+    public int[] graham;
+    public int[] milk;
+    public int[] iceCubes;
+    public int[] cups;
 
     public void OnBackFromNewCareer()
     {
@@ -80,12 +86,12 @@ public class Player : MonoBehaviour
     public void NewPlayer()
     {
 
-        resourceMango = new Dictionary<DateTime, int>();
+        mangoLeft = new Dictionary<DateTime, int>();
         playerCapital = 2000.00f;
-        resourceGraham = 0;
-        resourceMilk = 0;
-        resourceIceCubes = 0;
-        resourceCups = 0;
+        grahamLeft = 0;
+        milkLeft = 0;
+        iceCubesLeft = 0;
+        cupsLeft = 0;
         currentTemperature = 0;
         currentPopularity = 0.1f;
         currentSatisfaction = 1f;
@@ -110,11 +116,11 @@ public class Player : MonoBehaviour
         playerName = player.playerName;
         playerCapital = player.playerCapital;
 
-        resourceMango = player.resourceMango;
-        resourceGraham = player.resourceGraham;
-        resourceMilk = player.resourceMilk;
-        resourceIceCubes = player.resourceIceCubes;
-        resourceCups = player.resourceCups;
+        mangoLeft = player.resourceMango;
+        grahamLeft = player.resourceGraham;
+        milkLeft = player.resourceMilk;
+        iceCubesLeft = player.resourceIceCubes;
+        cupsLeft = player.resourceCups;
 
         currentTemperature = player.currentTemperature;
         currentPopularity = player.currentPopularity;

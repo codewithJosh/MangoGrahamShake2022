@@ -24,11 +24,11 @@ public class PlayerModel
         playerName = _player.playerName;
         playerCapital = _player.playerCapital;
 
-        resourceMango = _player.resourceMango;
-        resourceGraham = _player.resourceGraham;
-        resourceMilk = _player.resourceMilk;
-        resourceIceCubes = _player.resourceIceCubes;
-        resourceCups = _player.resourceCups;
+        resourceMango = _player.mangoLeft;
+        resourceGraham = _player.grahamLeft;
+        resourceMilk = _player.milkLeft;
+        resourceIceCubes = _player.iceCubesLeft;
+        resourceCups = _player.cupsLeft;
 
         currentTemperature = _player.currentTemperature;
         currentPopularity = _player.currentPopularity;
