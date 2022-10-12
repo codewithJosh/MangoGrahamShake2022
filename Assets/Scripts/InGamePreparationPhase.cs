@@ -40,13 +40,6 @@ public class InGamePreparationPhase : MonoBehaviour
     private ResultsStates resultsState;
     private NavigationToRightStates lastNavigationToRightState;
 
-    private int smallQuantityPerPrice;
-    private double smallPrice;
-    private int mediumQuantityPerPrice;
-    private double mediumPrice;
-    private int largeQuantityPerPrice;
-    private double largePrice;
-
     private int[,,] suppliesInt;
     private double[,] suppliesDouble;
     private int suppliesState;
@@ -69,7 +62,9 @@ public class InGamePreparationPhase : MonoBehaviour
         navigationToRightState = NavigationToRightStates.results;
         navigationToLeftState = NavigationToLeftStates.results;
         lastNavigationToRightState = NavigationToRightStates.results;
+
         OnQuantityClear();
+
         //suppliesState, section, unit
         suppliesInt[0, 1, 0] = 12;
         suppliesInt[0, 1, 1] = 24;
@@ -105,7 +100,6 @@ public class InGamePreparationPhase : MonoBehaviour
 
         suppliesState = 0;
 
-        
         OnSuppliesNavigation(0);
 
     }
@@ -243,6 +237,8 @@ public class InGamePreparationPhase : MonoBehaviour
     public void OnSuppliesNavigation(int _supply)
     {
 
+        suppliesState = _supply;
+
         smallSupplyHUD.sprite = resources[_supply];
         mediumSupplyHUD.sprite = resources[_supply];
         largeSupplyHUD.sprite = resources[_supply];
@@ -251,32 +247,42 @@ public class InGamePreparationPhase : MonoBehaviour
         mediumPriceUIText.text = String.Format("{0} {1} {2}", suppliesInt[_supply, 1, 1].ToString(), GetConjuctions(_supply), suppliesDouble[_supply, 1].ToString("0.00"));
         largePriceUIText.text = String.Format("{0} {1} {2}", suppliesInt[_supply, 1, 2].ToString(), GetConjuctions(_supply), suppliesDouble[_supply, 2].ToString("0.00"));
 
-        /*smallQuantityUIText.text = suppliesInt[_supply, 0, 0].ToString();
-        mediumQuantityUIText.text = suppliesInt[_supply, 0, 1].ToString();
-        largeQuantityUIText.text = suppliesInt[_supply, 0, 2].ToString();*/
+        UpdateUIText();
 
     }
 
     public void OnDecrement(int _scale)
     {
 
-        /*int counter = suppliesInt[suppliesState, _scale];
+        int counter = suppliesInt[suppliesState, 0, _scale];
+        int quantity = suppliesInt[suppliesState, 1, _scale];
 
-        if (counter - )
+        if (counter - quantity >= 0)
         {
 
-        }*/
+            suppliesInt[suppliesState, 0, _scale] -= quantity;
+            UpdateUIText();
+
+        }
+
+    }
+
+    private void UpdateUIText()
+    {
+
+        smallQuantityUIText.text = suppliesInt[suppliesState, 0, 0].ToString();
+        mediumQuantityUIText.text = suppliesInt[suppliesState, 0, 1].ToString();
+        largeQuantityUIText.text = suppliesInt[suppliesState, 0, 2].ToString();
 
     }
 
     public void OnIncrement(int _scale)
     {
 
-        /*if (suppliesInt[suppliesState, _scale] == 0)
-        {
+        int quantity = suppliesInt[suppliesState, 1, _scale];
 
-        }*/
-
+        suppliesInt[suppliesState, 0, _scale] += quantity;
+        UpdateUIText();
     }
 
     private void OnQuantityClear()

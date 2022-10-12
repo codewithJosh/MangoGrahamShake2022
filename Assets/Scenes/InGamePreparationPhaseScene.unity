@@ -3762,7 +3762,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 546966388}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1132799837}
+        m_TargetAssemblyTypeName: InGamePreparationPhase, Assembly-CSharp
+        m_MethodName: OnIncrement
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &546966388
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4114,7 +4126,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 686013864}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1132799837}
+        m_TargetAssemblyTypeName: InGamePreparationPhase, Assembly-CSharp
+        m_MethodName: OnDecrement
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &686013864
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9245,7 +9269,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1619570463}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1132799837}
+        m_TargetAssemblyTypeName: InGamePreparationPhase, Assembly-CSharp
+        m_MethodName: OnIncrement
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1619570463
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9933,7 +9969,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1731535117}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1132799837}
+        m_TargetAssemblyTypeName: InGamePreparationPhase, Assembly-CSharp
+        m_MethodName: OnDecrement
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1731535117
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10200,7 +10248,7 @@ MonoBehaviour:
       - m_Target: {fileID: 1132799837}
         m_TargetAssemblyTypeName: InGamePreparationPhase, Assembly-CSharp
         m_MethodName: OnIncrement
-        m_Mode: 1
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

@@ -23,12 +23,6 @@ public class Player : MonoBehaviour
     public float currentPopularity;
     public float currentSatisfaction;
 
-    public int[] mangoes;
-    public int[] graham;
-    public int[] milk;
-    public int[] iceCubes;
-    public int[] cups;
-
     public void OnBackFromNewCareer()
     {
 
