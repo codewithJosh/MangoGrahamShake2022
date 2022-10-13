@@ -47,6 +47,8 @@ public class InGamePreparationPhase : MonoBehaviour
     void Start()
     {
 
+        FindObjectOfType<ResultsUINavButton>().OnToggleTrue();
+
         FindObjectOfType<Player>().LoadPlayer();
 
         capitalUIText.text = "₱ " + FindObjectOfType<Player>().playerCapital.ToString("0.00");
@@ -140,6 +142,14 @@ public class InGamePreparationPhase : MonoBehaviour
             FindObjectOfType<GameManager>().GetAnimator.SetInteger("navigationToRightState", (int) navigationToRightState);
             lastNavigationToRightState = navigationToRightState;
             OnQuantityClear();
+            
+            if (navigationToRightState == NavigationToRightStates.supplies)
+            {
+
+                FindObjectOfType<MangoUINavButton>().OnToggleTrue();
+
+            }
+
 
         }
         else if (lastNavigationToRightState > navigationToRightState)
@@ -148,6 +158,13 @@ public class InGamePreparationPhase : MonoBehaviour
             FindObjectOfType<GameManager>().GetAnimator.SetInteger("navigationToLeftState", (int) navigationToLeftState);
             lastNavigationToRightState = navigationToRightState;
             OnQuantityClear();
+
+            if (navigationToRightState == NavigationToRightStates.supplies)
+            {
+
+                FindObjectOfType<MangoUINavButton>().OnToggleTrue();
+
+            }
 
         }
 
