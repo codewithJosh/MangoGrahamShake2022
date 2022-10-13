@@ -360,7 +360,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   button:
-    m_key: 
+    m_key: BuyUIButton
     value: 0
 --- !u!1 &64800409
 GameObject:
@@ -1834,8 +1834,8 @@ MonoBehaviour:
     m_FadeDuration: 0.1
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 21300000, guid: 793742763512fd742baa648027e9bcc7, type: 3}
+    m_PressedSprite: {fileID: 21300000, guid: 793742763512fd742baa648027e9bcc7, type: 3}
+    m_SelectedSprite: {fileID: 0}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
@@ -1861,7 +1861,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   button:
-    m_key: 
+    m_key: CancelUIButton
     value: 0
 --- !u!1 &242299047
 GameObject:

@@ -39,20 +39,25 @@ public class InGamePreparationPhase : MonoBehaviour
     [SerializeField] private Toggle mangoUINavButton;
     [SerializeField] private ToggleGroup navigationPanel;
     [SerializeField] private ToggleGroup suppliesNavigationPanel;
-    
 
     private enum NavigationToRightStates { results, upgrades, staff, marketing, recipe, supplies };
     private NavigationToRightStates navigationToRightState;
-    // private enum NavigationToLeftStates { results, upgrades, staff, marketing, recipe, supplies };
-    // private NavigationToLeftStates navigationToLeftState;
-    private enum ResultsStates { yesterdaysResults, charts, profitAndLoss, balanceSheet };
-    private ResultsStates resultsState;
+    private enum NavigationToLeftStates { results, upgrades, staff, marketing, recipe, supplies };
+    private NavigationToLeftStates navigationToLeftState;
     private NavigationToRightStates lastNavigationToRightState;
 
-    private int[,,] SUPPLIES_INT;
     private float[,] SUPPLIES_FLOAT;
-    private int suppliesState;
+    private int[,,] SUPPLIES_INT;
+
     private float capital;
+    private float popularity;
+    private float satisfaction;
+    private int suppliesState;
+    private int graham;
+    private int milk;
+    private int iceCubes;
+    private int cups;
+    private int temperature;
 
     void Start()
     {
@@ -78,7 +83,6 @@ public class InGamePreparationPhase : MonoBehaviour
 
         };
 
-        // CONSTANTS
         SUPPLIES_INT[0, 1, 0] = 12;
         SUPPLIES_INT[0, 1, 1] = 24;
         SUPPLIES_INT[0, 1, 2] = 48;
@@ -114,31 +118,38 @@ public class InGamePreparationPhase : MonoBehaviour
         FindObjectOfType<Player>().LoadPlayer();
 
         capital = FindObjectOfType<Player>().playerCapital;
+        graham = FindObjectOfType<Player>().grahamLeft;
+        milk = FindObjectOfType<Player>().milkLeft;
+        iceCubes = FindObjectOfType<Player>().iceCubesLeft;
+        cups = FindObjectOfType<Player>().cupsLeft;
+        temperature = FindObjectOfType<Player>().currentTemperature;
+        popularity = FindObjectOfType<Player>().currentPopularity;
+        satisfaction = FindObjectOfType<Player>().currentSatisfaction;
 
         mangoUIText.text = HandleResourceMango(FindObjectOfType<Player>().mangoLeft).ToString();
-        grahamUIText.text = FindObjectOfType<Player>().grahamLeft.ToString();
-        milkUIText.text = FindObjectOfType<Player>().milkLeft.ToString();
-        iceCubesUIText.text = FindObjectOfType<Player>().iceCubesLeft.ToString();
-        cupsUIText.text = FindObjectOfType<Player>().cupsLeft.ToString();
-        temperatureUIText.text = "Temp " + FindObjectOfType<Player>().currentTemperature.ToString() + " °C";
-        popularityFillHUD.fillAmount = FindObjectOfType<Player>().currentPopularity;
-        satisfactionFillHUD.fillAmount = FindObjectOfType<Player>().currentSatisfaction;
 
         navigationToRightState = NavigationToRightStates.results;
-        // navigationToLeftState = NavigationToLeftStates.results;
+        navigationToLeftState = NavigationToLeftStates.results;
         lastNavigationToRightState = NavigationToRightStates.results;
-
         resultsUINavButton.isOn = true;
         mangoUINavButton.isOn = true;
         suppliesState = 0;
 
     }
 
-    // Update is called once per frame
     void Update()
     {
 
-        capitalUIText.text = "₱ " + capital.ToString("0.00");
+        capitalUIText.text = string.Format("₱ {0}" , capital.ToString("0.00"));
+        grahamUIText.text = graham.ToString();
+        milkUIText.text = milk.ToString();
+        iceCubesUIText.text = iceCubes.ToString();
+        cupsUIText.text = cups.ToString();
+        temperatureUIText.text = string.Format("Temp {0} °C", temperature.ToString());
+        popularityFillHUD.fillAmount = popularity;
+        satisfactionFillHUD.fillAmount = satisfaction;
+
+        bottomNavigationStateUIText.text = GetBottomNavigationState(GetNavigation(navigationPanel));
 
         if (SimpleInput.GetButtonUp("OnNavigation"))
         {
@@ -230,7 +241,14 @@ public class InGamePreparationPhase : MonoBehaviour
             OnQuantityClear();
             capital = FindObjectOfType<Player>().playerCapital;
 
-        }    
+        }
+        
+        if (SimpleInput.GetButtonDown("BuyUIButton"))
+        {
+
+            
+
+        }
 
         if (navigationToRightState == NavigationToRightStates.supplies)
         {     
@@ -342,7 +360,7 @@ public class InGamePreparationPhase : MonoBehaviour
         
         string navigation = GetNavigation(navigationPanel);
         navigationToRightState = GetNavigationToRight(navigation);
-        // navigationToLeftState = GetNavigationToLeft(navigation);
+        navigationToLeftState = GetNavigationToLeft(navigation);
 
         // if (lastNavigationToRightState < navigationToRightState)
         if (lastNavigationToRightState != navigationToRightState)
@@ -370,52 +388,26 @@ public class InGamePreparationPhase : MonoBehaviour
     private NavigationToRightStates GetNavigationToRight(string _navigation)
     {
 
-        if (_navigation.Equals("UpgradesUINavButton"))
+        return _navigation switch
         {
 
-            bottomNavigationStateUIText.text = "Upgrades";
-            return NavigationToRightStates.upgrades;
+            "UpgradesUINavButton" => NavigationToRightStates.upgrades,
 
-        }
-        else if (_navigation.Equals("StaffUINavButton"))
-        {
+            "StaffUINavButton" => NavigationToRightStates.staff,
 
-            bottomNavigationStateUIText.text = "Staff";
-            return NavigationToRightStates.staff;
+            "MarketingUINavButton" => NavigationToRightStates.marketing,
 
-        }
-        else if (_navigation.Equals("MarketingUINavButton"))
-        {
+            "RecipeUINavButton" => NavigationToRightStates.recipe,
 
-            bottomNavigationStateUIText.text = "Marketing";
-            return NavigationToRightStates.marketing;
+            "SuppliesUINavButton" => NavigationToRightStates.supplies,
 
-        }
-        else if (_navigation.Equals("RecipeUINavButton"))
-        {
+            _ => NavigationToRightStates.results,
 
-            bottomNavigationStateUIText.text = "Recipe";
-            return NavigationToRightStates.recipe;
-
-        }
-        else if (_navigation.Equals("SuppliesUINavButton"))
-        {
-
-            bottomNavigationStateUIText.text = "Supplies";
-            return NavigationToRightStates.supplies;
-
-        }
-        else
-        {
-
-            bottomNavigationStateUIText.text = "";
-            return NavigationToRightStates.results;
-
-        }
+        };
 
     }
-    
-    /*private NavigationToLeftStates GetNavigationToLeft(string _navigation)
+
+    private NavigationToLeftStates GetNavigationToLeft(string _navigation)
     {
 
         return _navigation switch
@@ -435,7 +427,29 @@ public class InGamePreparationPhase : MonoBehaviour
 
         };
 
-    }*/
+    }
+
+    private string GetBottomNavigationState(string _navigation)
+    {
+
+        return _navigation switch
+        {
+
+            "UpgradesUINavButton" => "Upgrades",
+
+            "StaffUINavButton" => "Staff",
+
+            "MarketingUINavButton" => "Marketing",
+
+            "RecipeUINavButton" => "Recipe",
+
+            "SuppliesUINavButton" => "Supplies",
+
+            _ => "Results",
+
+        };
+
+    }
 
     public string GetNavigation(ToggleGroup _toggleGroup)
     {
@@ -459,21 +473,6 @@ public class InGamePreparationPhase : MonoBehaviour
         largePriceUIText.text = string.Format("{0} {1} {2}", SUPPLIES_INT[_suppliesNavigationState, 1, 2].ToString(), GetConjuctions(_suppliesNavigationState), SUPPLIES_FLOAT[_suppliesNavigationState, 2].ToString("0.00"));
 
     }
-
-    private int GetSuppliesNavigation(string _navigation) => _navigation switch
-    {
-
-        "GrahamUINavButton" => 1,
-
-        "MilkUINavButton" => 2,
-
-        "IceCubesUINavButton" => 3,
-
-        "CupsUINavButton" => 4,
-
-        _ => 0,
-
-    };
 
     public void OnDecrement(int _scale)
     {
