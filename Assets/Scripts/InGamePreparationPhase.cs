@@ -8,6 +8,18 @@ using System.Linq;
 public class InGamePreparationPhase : MonoBehaviour
 {
 
+    [SerializeField] private Button smallDecrementUIButton;
+    [SerializeField] private Button mediumDecrementUIButton;
+    [SerializeField] private Button largeDecrementUIButton;
+    [SerializeField] private Button smallIncrementUIButton;
+    [SerializeField] private Button mediumIncrementUIButton;
+    [SerializeField] private Button largeIncrementUIButton;
+    [SerializeField] private Image popularityFillHUD;
+    [SerializeField] private Image satisfactionFillHUD;
+    [SerializeField] private Image smallSupplyHUD;
+    [SerializeField] private Image mediumSupplyHUD;
+    [SerializeField] private Image largeSupplyHUD;
+    [SerializeField] private Sprite[] resources;
     [SerializeField] private TextMeshProUGUI mangoUIText;
     [SerializeField] private TextMeshProUGUI grahamUIText;
     [SerializeField] private TextMeshProUGUI milkUIText;
@@ -23,91 +35,308 @@ public class InGamePreparationPhase : MonoBehaviour
     [SerializeField] private TextMeshProUGUI mediumQuantityUIText;
     [SerializeField] private TextMeshProUGUI largePriceUIText;
     [SerializeField] private TextMeshProUGUI largeQuantityUIText;
-    [SerializeField] private Image popularityFillHUD;
-    [SerializeField] private Image satisfactionFillHUD;
-    [SerializeField] private Image smallSupplyHUD;
-    [SerializeField] private Image mediumSupplyHUD;
-    [SerializeField] private Image largeSupplyHUD;
+    [SerializeField] private Toggle resultsUINavButton;
+    [SerializeField] private Toggle mangoUINavButton;
     [SerializeField] private ToggleGroup navigationPanel;
     [SerializeField] private ToggleGroup suppliesNavigationPanel;
-    [SerializeField] private Sprite[] resources;
 
     private enum NavigationToRightStates { results, upgrades, staff, marketing, recipe, supplies };
     private NavigationToRightStates navigationToRightState;
     private enum NavigationToLeftStates { results, upgrades, staff, marketing, recipe, supplies };
     private NavigationToLeftStates navigationToLeftState;
-    private enum ResultsStates { yesterdaysResults, charts, profitAndLoss, balanceSheet };
-    private ResultsStates resultsState;
     private NavigationToRightStates lastNavigationToRightState;
 
-    private int[,,] suppliesInt;
-    private double[,] suppliesDouble;
+    private float[,] SUPPLIES_FLOAT;
+    private int[,,] SUPPLIES_INT;
+
+    private float capital;
+    private float popularity;
+    private float satisfaction;
     private int suppliesState;
+    private int graham;
+    private int milk;
+    private int iceCubes;
+    private int cups;
+    private int temperature;
 
     void Start()
     {
 
+        SUPPLIES_INT = new int[5, 2, 3]
+        {
+            { { 0, 0, 0 }, { 0, 0, 0 } },
+            { { 0, 0, 0 }, { 0, 0, 0 } },
+            { { 0, 0, 0 }, { 0, 0, 0 } },
+            { { 0, 0, 0 }, { 0, 0, 0 } },
+            { { 0, 0, 0 }, { 0, 0, 0 } }
+
+        };
+
+        SUPPLIES_FLOAT = new float[5, 3]
+        {
+
+            { 0, 0, 0 },
+            { 0, 0, 0 },
+            { 0, 0, 0 },
+            { 0, 0, 0 },
+            { 0, 0, 0 }
+
+        };
+
+        SUPPLIES_INT[0, 1, 0] = 12;
+        SUPPLIES_INT[0, 1, 1] = 24;
+        SUPPLIES_INT[0, 1, 2] = 48;
+        SUPPLIES_INT[1, 1, 0] = 12;
+        SUPPLIES_INT[1, 1, 1] = 20;
+        SUPPLIES_INT[1, 1, 2] = 50;
+        SUPPLIES_INT[2, 1, 0] = 12;
+        SUPPLIES_INT[2, 1, 1] = 20;
+        SUPPLIES_INT[2, 1, 2] = 50;
+        SUPPLIES_INT[3, 1, 0] = 50;
+        SUPPLIES_INT[3, 1, 1] = 200;
+        SUPPLIES_INT[3, 1, 2] = 500;
+        SUPPLIES_INT[4, 1, 0] = 75;
+        SUPPLIES_INT[4, 1, 1] = 225;
+        SUPPLIES_INT[4, 1, 2] = 400;
+
+        SUPPLIES_FLOAT[0, 0] = 216.00f;
+        SUPPLIES_FLOAT[0, 1] = 324.00f;
+        SUPPLIES_FLOAT[0, 2] = 432.00f;
+        SUPPLIES_FLOAT[1, 0] = 216.00f;
+        SUPPLIES_FLOAT[1, 1] = 315.00f;
+        SUPPLIES_FLOAT[1, 2] = 675.00f;
+        SUPPLIES_FLOAT[2, 0] = 216.00f;
+        SUPPLIES_FLOAT[2, 1] = 315.00f;
+        SUPPLIES_FLOAT[2, 2] = 675.00f;
+        SUPPLIES_FLOAT[3, 0] = 45.00f;
+        SUPPLIES_FLOAT[3, 1] = 135.00f;
+        SUPPLIES_FLOAT[3, 2] = 225.00f;
+        SUPPLIES_FLOAT[4, 0] = 45.00f;
+        SUPPLIES_FLOAT[4, 1] = 105.75f;
+        SUPPLIES_FLOAT[4, 2] = 168.75f;
+
         FindObjectOfType<Player>().LoadPlayer();
 
-        capitalUIText.text = "₱ " + FindObjectOfType<Player>().playerCapital.ToString("0.00");
+        capital = FindObjectOfType<Player>().playerCapital;
+        graham = FindObjectOfType<Player>().grahamLeft;
+        milk = FindObjectOfType<Player>().milkLeft;
+        iceCubes = FindObjectOfType<Player>().iceCubesLeft;
+        cups = FindObjectOfType<Player>().cupsLeft;
+        temperature = FindObjectOfType<Player>().currentTemperature;
+        popularity = FindObjectOfType<Player>().currentPopularity;
+        satisfaction = FindObjectOfType<Player>().currentSatisfaction;
+
         mangoUIText.text = HandleResourceMango(FindObjectOfType<Player>().mangoLeft).ToString();
-        grahamUIText.text = FindObjectOfType<Player>().grahamLeft.ToString();
-        milkUIText.text = FindObjectOfType<Player>().milkLeft.ToString();
-        iceCubesUIText.text = FindObjectOfType<Player>().iceCubesLeft.ToString();
-        cupsUIText.text = FindObjectOfType<Player>().cupsLeft.ToString();
-        temperatureUIText.text = "Temp " + FindObjectOfType<Player>().currentTemperature.ToString() + " °C";
-        popularityFillHUD.fillAmount = FindObjectOfType<Player>().currentPopularity;
-        satisfactionFillHUD.fillAmount = FindObjectOfType<Player>().currentSatisfaction;
 
         navigationToRightState = NavigationToRightStates.results;
         navigationToLeftState = NavigationToLeftStates.results;
         lastNavigationToRightState = NavigationToRightStates.results;
-
-        OnQuantityClear();
-
-        //suppliesState, section, unit
-        suppliesInt[0, 1, 0] = 12;
-        suppliesInt[0, 1, 1] = 24;
-        suppliesInt[0, 1, 2] = 48;
-        suppliesInt[1, 1, 0] = 12;
-        suppliesInt[1, 1, 1] = 20;
-        suppliesInt[1, 1, 2] = 50;
-        suppliesInt[2, 1, 0] = 12;
-        suppliesInt[2, 1, 1] = 20;
-        suppliesInt[2, 1, 2] = 50;
-        suppliesInt[3, 1, 0] = 50;
-        suppliesInt[3, 1, 1] = 200;
-        suppliesInt[3, 1, 2] = 500;
-        suppliesInt[4, 1, 0] = 75;
-        suppliesInt[4, 1, 1] = 225;
-        suppliesInt[4, 1, 2] = 400;
-
-        suppliesDouble[0, 0] = 216.00;
-        suppliesDouble[0, 1] = 324.00;
-        suppliesDouble[0, 2] = 432.00;
-        suppliesDouble[1, 0] = 216.00;
-        suppliesDouble[1, 1] = 315.00;
-        suppliesDouble[1, 2] = 675.00;
-        suppliesDouble[2, 0] = 216.00;
-        suppliesDouble[2, 1] = 315.00;
-        suppliesDouble[2, 2] = 675.00;
-        suppliesDouble[3, 0] = 45.00;
-        suppliesDouble[3, 1] = 135.00;
-        suppliesDouble[3, 2] = 225.00;
-        suppliesDouble[4, 0] = 45.00;
-        suppliesDouble[4, 1] = 105.75;
-        suppliesDouble[4, 2] = 168.75;
-
+        resultsUINavButton.isOn = true;
+        mangoUINavButton.isOn = true;
         suppliesState = 0;
-
-        OnSuppliesNavigation(0);
 
     }
 
-    // Update is called once per frame
     void Update()
     {
+
+        capitalUIText.text = string.Format("₱ {0}" , capital.ToString("0.00"));
+        grahamUIText.text = graham.ToString();
+        milkUIText.text = milk.ToString();
+        iceCubesUIText.text = iceCubes.ToString();
+        cupsUIText.text = cups.ToString();
+        temperatureUIText.text = string.Format("Temp {0} °C", temperature.ToString());
+        popularityFillHUD.fillAmount = popularity;
+        satisfactionFillHUD.fillAmount = satisfaction;
+
+        bottomNavigationStateUIText.text = GetBottomNavigationState(GetNavigation(navigationPanel));
+
+        if (SimpleInput.GetButtonUp("OnNavigation"))
+        {
+
+            OnNavigation();
+
+        }
+
+        if (SimpleInput.GetButtonUp("MangoUINavButton"))
+        {
+
+            OnSuppliesNavigation(0);
+
+        }
+
+        if (SimpleInput.GetButtonUp("GrahamUINavButton"))
+        {
+
+            OnSuppliesNavigation(1);
+
+        }
+
+        if (SimpleInput.GetButtonUp("MilkUINavButton"))
+        {
+
+            OnSuppliesNavigation(2);
+
+        }
+
+        if (SimpleInput.GetButtonUp("IceCubesUINavButton"))
+        {
+
+            OnSuppliesNavigation(3);
+
+        }
+
+        if (SimpleInput.GetButtonUp("CupsUINavButton"))
+        {
+
+            OnSuppliesNavigation(4);
+
+        }
+
+        if (SimpleInput.GetButtonDown("SmallIncrementUIButton"))
+        {
+
+            OnIncrement(0);
+
+        }
+
+        if (SimpleInput.GetButtonDown("MediumIncrementUIButton"))
+        {
+
+            OnIncrement(1);
+
+        }
+
+        if (SimpleInput.GetButtonDown("LargeIncrementUIButton"))
+        {
+
+            OnIncrement(2);
+
+        }
+
+        if (SimpleInput.GetButtonDown("SmallDecrementUIButton"))
+        {
+
+            OnDecrement(0);
+
+        }
+
+        if (SimpleInput.GetButtonDown("MediumDecrementUIButton"))
+        {
+
+            OnDecrement(1);
+
+        }
+
+        if (SimpleInput.GetButtonDown("LargeDecrementUIButton"))
+        {
+
+            OnDecrement(2);
+
+        }
+
+        if (SimpleInput.GetButtonDown("CancelUIButton"))
+        {
+
+            OnQuantityClear();
+            capital = FindObjectOfType<Player>().playerCapital;
+
+        }
         
+        if (SimpleInput.GetButtonDown("BuyUIButton"))
+        {
+
+            
+
+        }
+
+        if (navigationToRightState == NavigationToRightStates.supplies)
+        {     
+
+            smallQuantityUIText.text = SUPPLIES_INT[suppliesState, 0, 0].ToString();
+            mediumQuantityUIText.text = SUPPLIES_INT[suppliesState, 0, 1].ToString();
+            largeQuantityUIText.text = SUPPLIES_INT[suppliesState, 0, 2].ToString();
+
+            if (SUPPLIES_INT[suppliesState, 0, 0] == 0)
+            {
+
+                smallDecrementUIButton.interactable = false;  
+
+            }
+            else
+            {
+
+                smallDecrementUIButton.interactable = true;
+
+            }
+
+            if (SUPPLIES_INT[suppliesState, 0, 1] == 0)
+            {
+
+                mediumDecrementUIButton.interactable = false;
+
+            }
+            else 
+            {
+
+                mediumDecrementUIButton.interactable = true;
+
+            }
+
+            if (SUPPLIES_INT[suppliesState, 0, 2] == 0)
+            {
+
+                largeDecrementUIButton.interactable = false;
+
+            }
+            else
+            {
+
+                largeDecrementUIButton.interactable = true;
+
+            }
+
+            if (capital - SUPPLIES_FLOAT[suppliesState, 0] >= 0)
+            {
+                
+                smallIncrementUIButton.interactable = true;
+
+            }
+            else
+            {
+
+                smallIncrementUIButton.interactable = false;
+
+            }
+
+            if (capital - SUPPLIES_FLOAT[suppliesState, 1] >= 0)
+            {
+
+                mediumIncrementUIButton.interactable = true;
+
+            }
+            else
+            {
+
+                mediumIncrementUIButton.interactable = false;
+
+            }
+
+            if (capital - SUPPLIES_FLOAT[suppliesState, 2] >= 0)
+            {
+
+                largeIncrementUIButton.interactable = true;
+
+            }
+            else
+            {
+
+                largeIncrementUIButton.interactable = false;
+
+            }
+
+        }
+
     }
 
     private int HandleResourceMango(Dictionary<DateTime, int> _resourceMango)
@@ -128,28 +357,31 @@ public class InGamePreparationPhase : MonoBehaviour
 
     public void OnNavigation()
     {
-
+        
         string navigation = GetNavigation(navigationPanel);
         navigationToRightState = GetNavigationToRight(navigation);
         navigationToLeftState = GetNavigationToLeft(navigation);
-        SetBottomNavigationState(GetNavigation(navigation));
 
-        if (lastNavigationToRightState < navigationToRightState)
+        // if (lastNavigationToRightState < navigationToRightState)
+        if (lastNavigationToRightState != navigationToRightState)
         {
 
             FindObjectOfType<GameManager>().GetAnimator.SetInteger("navigationToRightState", (int) navigationToRightState);
             lastNavigationToRightState = navigationToRightState;
+            mangoUINavButton.isOn = true;
             OnQuantityClear();
+            OnSuppliesNavigation(0);
+            capital = FindObjectOfType<Player>().playerCapital;
 
         }
-        else if (lastNavigationToRightState > navigationToRightState)
+        /*else if (lastNavigationToRightState > navigationToRightState)
         {
 
             FindObjectOfType<GameManager>().GetAnimator.SetInteger("navigationToLeftState", (int) navigationToLeftState);
             lastNavigationToRightState = navigationToRightState;
-            OnQuantityClear();
+            OnNavigateToSupplies();
 
-        }
+        }*/
 
     }
 
@@ -174,7 +406,7 @@ public class InGamePreparationPhase : MonoBehaviour
         };
 
     }
-    
+
     private NavigationToLeftStates GetNavigationToLeft(string _navigation)
     {
 
@@ -196,8 +428,8 @@ public class InGamePreparationPhase : MonoBehaviour
         };
 
     }
-    
-    private string GetNavigation(string _navigation)
+
+    private string GetBottomNavigationState(string _navigation)
     {
 
         return _navigation switch
@@ -213,7 +445,7 @@ public class InGamePreparationPhase : MonoBehaviour
 
             "SuppliesUINavButton" => "Supplies",
 
-            _ => "",
+            _ => "Results",
 
         };
 
@@ -227,85 +459,91 @@ public class InGamePreparationPhase : MonoBehaviour
 
     }
 
-    public void SetBottomNavigationState(string _bottomNavigationState)
+    public void OnSuppliesNavigation(int _suppliesNavigationState)
     {
 
-        bottomNavigationStateUIText.text = _bottomNavigationState;
+        suppliesState = _suppliesNavigationState;
 
-    }
+        smallSupplyHUD.sprite = resources[_suppliesNavigationState];
+        mediumSupplyHUD.sprite = resources[_suppliesNavigationState];
+        largeSupplyHUD.sprite = resources[_suppliesNavigationState];
 
-    public void OnSuppliesNavigation(int _supply)
-    {
-
-        suppliesState = _supply;
-
-        smallSupplyHUD.sprite = resources[_supply];
-        mediumSupplyHUD.sprite = resources[_supply];
-        largeSupplyHUD.sprite = resources[_supply];
-
-        smallPriceUIText.text = String.Format("{0} {1} {2}", suppliesInt[_supply, 1, 0].ToString(), GetConjuctions(_supply), suppliesDouble[_supply, 0].ToString("0.00"));
-        mediumPriceUIText.text = String.Format("{0} {1} {2}", suppliesInt[_supply, 1, 1].ToString(), GetConjuctions(_supply), suppliesDouble[_supply, 1].ToString("0.00"));
-        largePriceUIText.text = String.Format("{0} {1} {2}", suppliesInt[_supply, 1, 2].ToString(), GetConjuctions(_supply), suppliesDouble[_supply, 2].ToString("0.00"));
-
-        UpdateUIText();
+        smallPriceUIText.text = string.Format("{0} {1} {2}", SUPPLIES_INT[_suppliesNavigationState, 1, 0].ToString(), GetConjuctions(_suppliesNavigationState), SUPPLIES_FLOAT[_suppliesNavigationState, 0].ToString("0.00"));
+        mediumPriceUIText.text = string.Format("{0} {1} {2}", SUPPLIES_INT[_suppliesNavigationState, 1, 1].ToString(), GetConjuctions(_suppliesNavigationState), SUPPLIES_FLOAT[_suppliesNavigationState, 1].ToString("0.00"));
+        largePriceUIText.text = string.Format("{0} {1} {2}", SUPPLIES_INT[_suppliesNavigationState, 1, 2].ToString(), GetConjuctions(_suppliesNavigationState), SUPPLIES_FLOAT[_suppliesNavigationState, 2].ToString("0.00"));
 
     }
 
     public void OnDecrement(int _scale)
     {
 
-        int counter = suppliesInt[suppliesState, 0, _scale];
-        int quantity = suppliesInt[suppliesState, 1, _scale];
+        int quantityPerPrice = SUPPLIES_INT[suppliesState, 1, _scale];
+        float price = SUPPLIES_FLOAT[suppliesState, _scale];
 
-        if (counter - quantity >= 0)
+        if (SUPPLIES_INT[suppliesState, 0, _scale] - quantityPerPrice >= 0)
         {
 
-            suppliesInt[suppliesState, 0, _scale] -= quantity;
-            UpdateUIText();
+            SUPPLIES_INT[suppliesState, 0, _scale] -= quantityPerPrice;
+            capital += price;
 
         }
-
-    }
-
-    private void UpdateUIText()
-    {
-
-        smallQuantityUIText.text = suppliesInt[suppliesState, 0, 0].ToString();
-        mediumQuantityUIText.text = suppliesInt[suppliesState, 0, 1].ToString();
-        largeQuantityUIText.text = suppliesInt[suppliesState, 0, 2].ToString();
 
     }
 
     public void OnIncrement(int _scale)
     {
 
-        int quantity = suppliesInt[suppliesState, 1, _scale];
+        int quantityPerPrice = SUPPLIES_INT[suppliesState, 1, _scale];
+        float price = SUPPLIES_FLOAT[suppliesState, _scale];
 
-        suppliesInt[suppliesState, 0, _scale] += quantity;
-        UpdateUIText();
+        if (capital - price >= 0)
+        {
+
+            SUPPLIES_INT[suppliesState, 0, _scale] += quantityPerPrice;
+            capital -= price;
+
+        }
+
     }
 
     private void OnQuantityClear()
     {
 
-        suppliesInt = new int[5, 2, 3] { { { 0, 0, 0 }, { 0, 0, 0 } }, { { 0, 0, 0 }, { 0, 0, 0 } }, { { 0, 0, 0 }, { 0, 0, 0 } }, { { 0, 0, 0 }, { 0, 0, 0 } }, { { 0, 0, 0 }, { 0, 0, 0 } } };
-        suppliesDouble = new double[5, 3] { { 0, 0, 0 }, { 0, 0, 0 }, { 0, 0, 0 }, { 0, 0, 0 }, { 0, 0, 0 } };
+        SUPPLIES_INT[0, 0, 0] = 0;
+        SUPPLIES_INT[0, 0, 1] = 0;
+        SUPPLIES_INT[0, 0, 2] = 0;
+        SUPPLIES_INT[1, 0, 0] = 0;
+        SUPPLIES_INT[1, 0, 1] = 0;
+        SUPPLIES_INT[1, 0, 2] = 0;
+        SUPPLIES_INT[2, 0, 0] = 0;
+        SUPPLIES_INT[2, 0, 1] = 0;
+        SUPPLIES_INT[2, 0, 2] = 0;
+        SUPPLIES_INT[3, 0, 0] = 0;
+        SUPPLIES_INT[3, 0, 1] = 0;
+        SUPPLIES_INT[3, 0, 2] = 0;
+        SUPPLIES_INT[4, 0, 0] = 0;
+        SUPPLIES_INT[4, 0, 1] = 0;
+        SUPPLIES_INT[4, 0, 2] = 0;
 
     }
 
     public string GetConjuctions(int _supply)
     {
 
-        switch (_supply)
+        return _supply switch
         {
 
-            case 0: return "mangoes = ₱";
-            case 1: return "cups = ₱";
-            case 2: return "cups = ₱";
-            case 3: return "cubes = ₱";
+            0 => "mangoes = ₱",
 
-        }
-        return "cups = ₱";
+            1 => "cups = ₱",
+
+            2 => "cups = ₱",
+
+            3 => "cubes = ₱",
+
+            _ => "cups = ₱",
+
+        };
 
     }
 
