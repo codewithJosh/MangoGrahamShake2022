@@ -50,8 +50,9 @@ public class InGamePreparationPhase : MonoBehaviour
     private NavigationToRightStates lastNavigationToRightState;
 
     private int[,,] SUPPLIES_INT;
-    private double[,] SUPPLIES_DOUBLE;
+    private float[,] SUPPLIES_FLOAT;
     private int suppliesState;
+    private float capital;
 
     void Start()
     {
@@ -66,7 +67,7 @@ public class InGamePreparationPhase : MonoBehaviour
 
         };
 
-        SUPPLIES_DOUBLE = new double[5, 3]
+        SUPPLIES_FLOAT = new float[5, 3]
         {
 
             { 0, 0, 0 },
@@ -94,25 +95,26 @@ public class InGamePreparationPhase : MonoBehaviour
         SUPPLIES_INT[4, 1, 1] = 225;
         SUPPLIES_INT[4, 1, 2] = 400;
 
-        SUPPLIES_DOUBLE[0, 0] = 216.00;
-        SUPPLIES_DOUBLE[0, 1] = 324.00;
-        SUPPLIES_DOUBLE[0, 2] = 432.00;
-        SUPPLIES_DOUBLE[1, 0] = 216.00;
-        SUPPLIES_DOUBLE[1, 1] = 315.00;
-        SUPPLIES_DOUBLE[1, 2] = 675.00;
-        SUPPLIES_DOUBLE[2, 0] = 216.00;
-        SUPPLIES_DOUBLE[2, 1] = 315.00;
-        SUPPLIES_DOUBLE[2, 2] = 675.00;
-        SUPPLIES_DOUBLE[3, 0] = 45.00;
-        SUPPLIES_DOUBLE[3, 1] = 135.00;
-        SUPPLIES_DOUBLE[3, 2] = 225.00;
-        SUPPLIES_DOUBLE[4, 0] = 45.00;
-        SUPPLIES_DOUBLE[4, 1] = 105.75;
-        SUPPLIES_DOUBLE[4, 2] = 168.75;
+        SUPPLIES_FLOAT[0, 0] = 216.00f;
+        SUPPLIES_FLOAT[0, 1] = 324.00f;
+        SUPPLIES_FLOAT[0, 2] = 432.00f;
+        SUPPLIES_FLOAT[1, 0] = 216.00f;
+        SUPPLIES_FLOAT[1, 1] = 315.00f;
+        SUPPLIES_FLOAT[1, 2] = 675.00f;
+        SUPPLIES_FLOAT[2, 0] = 216.00f;
+        SUPPLIES_FLOAT[2, 1] = 315.00f;
+        SUPPLIES_FLOAT[2, 2] = 675.00f;
+        SUPPLIES_FLOAT[3, 0] = 45.00f;
+        SUPPLIES_FLOAT[3, 1] = 135.00f;
+        SUPPLIES_FLOAT[3, 2] = 225.00f;
+        SUPPLIES_FLOAT[4, 0] = 45.00f;
+        SUPPLIES_FLOAT[4, 1] = 105.75f;
+        SUPPLIES_FLOAT[4, 2] = 168.75f;
 
         FindObjectOfType<Player>().LoadPlayer();
 
-        capitalUIText.text = "₱ " + FindObjectOfType<Player>().playerCapital.ToString("0.00");
+        capital = FindObjectOfType<Player>().playerCapital;
+
         mangoUIText.text = HandleResourceMango(FindObjectOfType<Player>().mangoLeft).ToString();
         grahamUIText.text = FindObjectOfType<Player>().grahamLeft.ToString();
         milkUIText.text = FindObjectOfType<Player>().milkLeft.ToString();
@@ -127,6 +129,7 @@ public class InGamePreparationPhase : MonoBehaviour
         lastNavigationToRightState = NavigationToRightStates.results;
 
         resultsUINavButton.isOn = true;
+        mangoUINavButton.isOn = true;
         suppliesState = 0;
 
     }
@@ -134,7 +137,9 @@ public class InGamePreparationPhase : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
+        capitalUIText.text = "₱ " + capital.ToString("0.00");
+
         if (SimpleInput.GetButtonUp("OnNavigation"))
         {
 
@@ -174,6 +179,48 @@ public class InGamePreparationPhase : MonoBehaviour
         {
 
             OnSuppliesNavigation(4);
+
+        }
+
+        if (SimpleInput.GetButtonDown("SmallIncrementUIButton"))
+        {
+
+            OnIncrement(0);
+
+        }
+
+        if (SimpleInput.GetButtonDown("MediumIncrementUIButton"))
+        {
+
+            OnIncrement(1);
+
+        }
+
+        if (SimpleInput.GetButtonDown("LargeIncrementUIButton"))
+        {
+
+            OnIncrement(2);
+
+        }
+
+        if (SimpleInput.GetButtonDown("SmallDecrementUIButton"))
+        {
+
+            OnDecrement(0);
+
+        }
+
+        if (SimpleInput.GetButtonDown("MediumDecrementUIButton"))
+        {
+
+            OnDecrement(1);
+
+        }
+
+        if (SimpleInput.GetButtonDown("LargeDecrementUIButton"))
+        {
+
+            OnDecrement(2);
 
         }
 
@@ -223,6 +270,45 @@ public class InGamePreparationPhase : MonoBehaviour
 
             }
 
+            if (capital - SUPPLIES_FLOAT[suppliesState, 0] >= 0)
+            {
+                
+                smallIncrementUIButton.interactable = true;
+
+            }
+            else
+            {
+
+                smallIncrementUIButton.interactable = false;
+
+            }
+
+            if (capital - SUPPLIES_FLOAT[suppliesState, 1] >= 0)
+            {
+
+                mediumIncrementUIButton.interactable = true;
+
+            }
+            else
+            {
+
+                mediumIncrementUIButton.interactable = false;
+
+            }
+
+            if (capital - SUPPLIES_FLOAT[suppliesState, 2] >= 0)
+            {
+
+                largeIncrementUIButton.interactable = true;
+
+            }
+            else
+            {
+
+                largeIncrementUIButton.interactable = false;
+
+            }
+
         }
 
     }
@@ -245,7 +331,7 @@ public class InGamePreparationPhase : MonoBehaviour
 
     public void OnNavigation()
     {
-
+        
         string navigation = GetNavigation(navigationPanel);
         navigationToRightState = GetNavigationToRight(navigation);
         // navigationToLeftState = GetNavigationToLeft(navigation);
@@ -256,10 +342,10 @@ public class InGamePreparationPhase : MonoBehaviour
 
             FindObjectOfType<GameManager>().GetAnimator.SetInteger("navigationToRightState", (int) navigationToRightState);
             lastNavigationToRightState = navigationToRightState;
-
-            
+            mangoUINavButton.isOn = true;
             OnQuantityClear();
-            
+            OnSuppliesNavigation(0);
+            capital = FindObjectOfType<Player>().playerCapital;
 
         }
         /*else if (lastNavigationToRightState > navigationToRightState)
@@ -354,13 +440,15 @@ public class InGamePreparationPhase : MonoBehaviour
     public void OnSuppliesNavigation(int _suppliesNavigationState)
     {
 
+        suppliesState = _suppliesNavigationState;
+
         smallSupplyHUD.sprite = resources[_suppliesNavigationState];
         mediumSupplyHUD.sprite = resources[_suppliesNavigationState];
         largeSupplyHUD.sprite = resources[_suppliesNavigationState];
 
-        smallPriceUIText.text = string.Format("{0} {1} {2}", SUPPLIES_INT[_suppliesNavigationState, 1, 0].ToString(), GetConjuctions(_suppliesNavigationState), SUPPLIES_DOUBLE[_suppliesNavigationState, 0].ToString("0.00"));
-        mediumPriceUIText.text = string.Format("{0} {1} {2}", SUPPLIES_INT[_suppliesNavigationState, 1, 1].ToString(), GetConjuctions(_suppliesNavigationState), SUPPLIES_DOUBLE[_suppliesNavigationState, 1].ToString("0.00"));
-        largePriceUIText.text = string.Format("{0} {1} {2}", SUPPLIES_INT[_suppliesNavigationState, 1, 2].ToString(), GetConjuctions(_suppliesNavigationState), SUPPLIES_DOUBLE[_suppliesNavigationState, 2].ToString("0.00"));
+        smallPriceUIText.text = string.Format("{0} {1} {2}", SUPPLIES_INT[_suppliesNavigationState, 1, 0].ToString(), GetConjuctions(_suppliesNavigationState), SUPPLIES_FLOAT[_suppliesNavigationState, 0].ToString("0.00"));
+        mediumPriceUIText.text = string.Format("{0} {1} {2}", SUPPLIES_INT[_suppliesNavigationState, 1, 1].ToString(), GetConjuctions(_suppliesNavigationState), SUPPLIES_FLOAT[_suppliesNavigationState, 1].ToString("0.00"));
+        largePriceUIText.text = string.Format("{0} {1} {2}", SUPPLIES_INT[_suppliesNavigationState, 1, 2].ToString(), GetConjuctions(_suppliesNavigationState), SUPPLIES_FLOAT[_suppliesNavigationState, 2].ToString("0.00"));
 
     }
 
@@ -382,13 +470,14 @@ public class InGamePreparationPhase : MonoBehaviour
     public void OnDecrement(int _scale)
     {
 
-        int counter = SUPPLIES_INT[suppliesState, 0, _scale];
-        int quantity = SUPPLIES_INT[suppliesState, 1, _scale];
+        int quantityPerPrice = SUPPLIES_INT[suppliesState, 1, _scale];
+        float price = SUPPLIES_FLOAT[suppliesState, _scale];
 
-        if (counter - quantity >= 0)
+        if (SUPPLIES_INT[suppliesState, 0, _scale] - quantityPerPrice >= 0)
         {
 
-            SUPPLIES_INT[suppliesState, 0, _scale] -= quantity;
+            SUPPLIES_INT[suppliesState, 0, _scale] -= quantityPerPrice;
+            capital += price;
 
         }
 
@@ -397,8 +486,17 @@ public class InGamePreparationPhase : MonoBehaviour
     public void OnIncrement(int _scale)
     {
 
-        int quantity = SUPPLIES_INT[suppliesState, 1, _scale];
-        SUPPLIES_INT[suppliesState, 0, _scale] += quantity;
+        int quantityPerPrice = SUPPLIES_INT[suppliesState, 1, _scale];
+        float price = SUPPLIES_FLOAT[suppliesState, _scale];
+
+        if (capital - price >= 0)
+        {
+
+            SUPPLIES_INT[suppliesState, 0, _scale] += quantityPerPrice;
+            capital -= price;
+
+        }
+
     }
 
     private void OnQuantityClear()

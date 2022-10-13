@@ -461,7 +461,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   button:
-    m_key: OnSuppliesNavigation
+    m_key: IceCubesUINavButton
     value: 0
 --- !u!1 &86921079
 GameObject:
@@ -1879,7 +1879,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   button:
-    m_key: OnSuppliesNavigation
+    m_key: GrahamUINavButton
     value: 0
 --- !u!1 &268562799
 GameObject:
@@ -2672,7 +2672,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   button:
-    m_key: OnSuppliesNavigation
+    m_key: MilkUINavButton
     value: 0
 --- !u!1 &398723504
 GameObject:
@@ -3745,6 +3745,7 @@ GameObject:
   - component: {fileID: 546966389}
   - component: {fileID: 546966388}
   - component: {fileID: 546966387}
+  - component: {fileID: 546966390}
   m_Layer: 5
   m_Name: IncrementUIButton
   m_TagString: Untagged
@@ -3854,6 +3855,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 546966385}
   m_CullTransparentMesh: 1
+--- !u!114 &546966390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 546966385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 995f34434fbe45d46aacf4e120446279, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button:
+    m_key: MediumIncrementUIButton
+    value: 0
 --- !u!1 &605550047
 GameObject:
   m_ObjectHideFlags: 0
@@ -4134,6 +4150,7 @@ GameObject:
   - component: {fileID: 686013865}
   - component: {fileID: 686013864}
   - component: {fileID: 686013863}
+  - component: {fileID: 686013866}
   m_Layer: 5
   m_Name: DecrementUIButton
   m_TagString: Untagged
@@ -4243,6 +4260,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 686013861}
   m_CullTransparentMesh: 1
+--- !u!114 &686013866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 686013861}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 995f34434fbe45d46aacf4e120446279, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button:
+    m_key: LargeDecrementUIButton
+    value: 0
 --- !u!1 &706726763
 GameObject:
   m_ObjectHideFlags: 0
@@ -4666,7 +4698,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -191, y: 46.5}
+  m_AnchoredPosition: {x: -191, y: 46.49994}
   m_SizeDelta: {x: 382, y: 93}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &717747583
@@ -6800,9 +6832,9 @@ RectTransform:
   m_Father: {fileID: 823480814}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 750, y: -60.234314}
   m_SizeDelta: {x: 280, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1048229364
@@ -7311,6 +7343,7 @@ GameObject:
   - component: {fileID: 1160337586}
   - component: {fileID: 1160337585}
   - component: {fileID: 1160337584}
+  - component: {fileID: 1160337587}
   m_Layer: 5
   m_Name: DecrementUIButton
   m_TagString: Untagged
@@ -7420,6 +7453,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1160337582}
   m_CullTransparentMesh: 1
+--- !u!114 &1160337587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1160337582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 995f34434fbe45d46aacf4e120446279, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button:
+    m_key: SmallDecrementUIButton
+    value: 0
 --- !u!1 &1210917693
 GameObject:
   m_ObjectHideFlags: 0
@@ -9220,9 +9268,9 @@ RectTransform:
   m_Father: {fileID: 823480814}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 250, y: -60.234314}
   m_SizeDelta: {x: 280, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1604909758
@@ -9542,6 +9590,7 @@ GameObject:
   - component: {fileID: 1619570464}
   - component: {fileID: 1619570463}
   - component: {fileID: 1619570462}
+  - component: {fileID: 1619570465}
   m_Layer: 5
   m_Name: IncrementUIButton
   m_TagString: Untagged
@@ -9651,6 +9700,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1619570460}
   m_CullTransparentMesh: 1
+--- !u!114 &1619570465
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1619570460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 995f34434fbe45d46aacf4e120446279, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button:
+    m_key: LargeIncrementUIButton
+    value: 0
 --- !u!1 &1638236340
 GameObject:
   m_ObjectHideFlags: 0
@@ -10230,6 +10294,7 @@ GameObject:
   - component: {fileID: 1731535118}
   - component: {fileID: 1731535117}
   - component: {fileID: 1731535116}
+  - component: {fileID: 1731535119}
   m_Layer: 5
   m_Name: DecrementUIButton
   m_TagString: Untagged
@@ -10339,6 +10404,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1731535114}
   m_CullTransparentMesh: 1
+--- !u!114 &1731535119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1731535114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 995f34434fbe45d46aacf4e120446279, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button:
+    m_key: MediumDecrementUIButton
+    value: 0
 --- !u!1 &1829569851
 GameObject:
   m_ObjectHideFlags: 0
@@ -10606,6 +10686,7 @@ GameObject:
   - component: {fileID: 1868266090}
   - component: {fileID: 1868266089}
   - component: {fileID: 1868266088}
+  - component: {fileID: 1868266091}
   m_Layer: 5
   m_Name: IncrementUIButton
   m_TagString: Untagged
@@ -10715,6 +10796,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1868266086}
   m_CullTransparentMesh: 1
+--- !u!114 &1868266091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1868266086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 995f34434fbe45d46aacf4e120446279, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button:
+    m_key: SmallIncrementUIButton
+    value: 0
 --- !u!1 &1871775191
 GameObject:
   m_ObjectHideFlags: 0
@@ -11675,7 +11771,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   button:
-    m_key: OnSuppliesNavigation
+    m_key: MangoUINavButton
     value: 0
 --- !u!1 &2056131837
 GameObject:
@@ -12208,7 +12304,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   button:
-    m_key: OnSuppliesNavigation
+    m_key: CupsUINavButton
     value: 0
 --- !u!1 &2118155677
 GameObject:
