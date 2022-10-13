@@ -133,6 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6233021}
   - component: {fileID: 6233022}
+  - component: {fileID: 6233023}
   m_Layer: 5
   m_Name: UpgradesUINavButton
   m_TagString: Untagged
@@ -207,20 +208,23 @@ MonoBehaviour:
   m_Group: {fileID: 86921084}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1132799837}
-        m_TargetAssemblyTypeName: InGamePreparationPhase, Assembly-CSharp
-        m_MethodName: OnNavigation
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_IsOn: 0
+--- !u!114 &6233023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6233020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 995f34434fbe45d46aacf4e120446279, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button:
+    m_key: OnNavigation
+    value: 0
 --- !u!1 &64800409
 GameObject:
   m_ObjectHideFlags: 0
@@ -367,6 +371,7 @@ GameObject:
   m_Component:
   - component: {fileID: 77918647}
   - component: {fileID: 77918648}
+  - component: {fileID: 77918649}
   m_Layer: 5
   m_Name: IceCubesUINavButton
   m_TagString: Untagged
@@ -441,20 +446,23 @@ MonoBehaviour:
   m_Group: {fileID: 961560058}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1132799837}
-        m_TargetAssemblyTypeName: InGamePreparationPhase, Assembly-CSharp
-        m_MethodName: OnSuppliesNavigation
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 3
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_IsOn: 0
+--- !u!114 &77918649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 77918646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 995f34434fbe45d46aacf4e120446279, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button:
+    m_key: OnSuppliesNavigation
+    value: 0
 --- !u!1 &86921079
 GameObject:
   m_ObjectHideFlags: 0
@@ -1781,6 +1789,7 @@ GameObject:
   m_Component:
   - component: {fileID: 258573993}
   - component: {fileID: 258573994}
+  - component: {fileID: 258573995}
   m_Layer: 5
   m_Name: GrahamUINavButton
   m_TagString: Untagged
@@ -1855,20 +1864,23 @@ MonoBehaviour:
   m_Group: {fileID: 961560058}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1132799837}
-        m_TargetAssemblyTypeName: InGamePreparationPhase, Assembly-CSharp
-        m_MethodName: OnSuppliesNavigation
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_IsOn: 0
+--- !u!114 &258573995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 258573992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 995f34434fbe45d46aacf4e120446279, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button:
+    m_key: OnSuppliesNavigation
+    value: 0
 --- !u!1 &268562799
 GameObject:
   m_ObjectHideFlags: 0
@@ -2570,6 +2582,7 @@ GameObject:
   m_Component:
   - component: {fileID: 398548612}
   - component: {fileID: 398548613}
+  - component: {fileID: 398548614}
   m_Layer: 5
   m_Name: MilkUINavButton
   m_TagString: Untagged
@@ -2644,20 +2657,23 @@ MonoBehaviour:
   m_Group: {fileID: 961560058}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1132799837}
-        m_TargetAssemblyTypeName: InGamePreparationPhase, Assembly-CSharp
-        m_MethodName: OnSuppliesNavigation
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 2
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_IsOn: 0
+--- !u!114 &398548614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 398548611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 995f34434fbe45d46aacf4e120446279, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button:
+    m_key: OnSuppliesNavigation
+    value: 0
 --- !u!1 &398723504
 GameObject:
   m_ObjectHideFlags: 0
@@ -3799,19 +3815,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 546966388}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1132799837}
-        m_TargetAssemblyTypeName: InGamePreparationPhase, Assembly-CSharp
-        m_MethodName: OnIncrement
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &546966388
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4200,19 +4204,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 686013864}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1132799837}
-        m_TargetAssemblyTypeName: InGamePreparationPhase, Assembly-CSharp
-        m_MethodName: OnDecrement
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 2
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &686013864
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4470,6 +4462,7 @@ GameObject:
   m_Component:
   - component: {fileID: 710459102}
   - component: {fileID: 710459103}
+  - component: {fileID: 710459104}
   m_Layer: 5
   m_Name: StaffUINavButton
   m_TagString: Untagged
@@ -4544,20 +4537,23 @@ MonoBehaviour:
   m_Group: {fileID: 86921084}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1132799837}
-        m_TargetAssemblyTypeName: InGamePreparationPhase, Assembly-CSharp
-        m_MethodName: OnNavigation
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_IsOn: 0
+--- !u!114 &710459104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 710459101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 995f34434fbe45d46aacf4e120446279, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button:
+    m_key: OnNavigation
+    value: 0
 --- !u!1 &712535193
 GameObject:
   m_ObjectHideFlags: 0
@@ -4670,7 +4666,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -191, y: 46.49994}
+  m_AnchoredPosition: {x: -191, y: 46.5}
   m_SizeDelta: {x: 382, y: 93}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &717747583
@@ -6628,7 +6624,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 500, y: -55.074036}
+  m_AnchoredPosition: {x: 500, y: -55.073975}
   m_SizeDelta: {x: 808.3159, y: 48}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1004829497
@@ -6804,9 +6800,9 @@ RectTransform:
   m_Father: {fileID: 823480814}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 750, y: -60.234314}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 280, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1048229364
@@ -7256,6 +7252,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a29c106d0930e4643bc1ca8e0c832445, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  smallDecrementUIButton: {fileID: 1160337584}
+  mediumDecrementUIButton: {fileID: 1731535116}
+  largeDecrementUIButton: {fileID: 686013863}
+  smallIncrementUIButton: {fileID: 1868266088}
+  mediumIncrementUIButton: {fileID: 546966387}
+  largeIncrementUIButton: {fileID: 1619570462}
+  popularityFillHUD: {fileID: 914593759}
+  satisfactionFillHUD: {fileID: 466612014}
+  smallSupplyHUD: {fileID: 488106777}
+  mediumSupplyHUD: {fileID: 954624347}
+  largeSupplyHUD: {fileID: 255593681}
+  resources:
+  - {fileID: 21300000, guid: ec8fc53de3feb954c8098a6d28352706, type: 3}
+  - {fileID: 21300000, guid: 242e8756f89c1624ea6afa1e50d78e3a, type: 3}
+  - {fileID: 21300000, guid: 815f71291fb0cb843a6ec3fae493da19, type: 3}
+  - {fileID: 21300000, guid: 594a1a1c57157fa4aa25d84e687aad06, type: 3}
+  - {fileID: 21300000, guid: 7b3d852c77a25574db9755c7ccf6cd5a, type: 3}
   mangoUIText: {fileID: 479143272}
   grahamUIText: {fileID: 1126370796}
   milkUIText: {fileID: 1938284344}
@@ -7271,19 +7284,10 @@ MonoBehaviour:
   mediumQuantityUIText: {fileID: 1336877531}
   largePriceUIText: {fileID: 1591754789}
   largeQuantityUIText: {fileID: 996795025}
-  popularityFillHUD: {fileID: 914593759}
-  satisfactionFillHUD: {fileID: 466612014}
-  smallSupplyHUD: {fileID: 488106777}
-  mediumSupplyHUD: {fileID: 954624347}
-  largeSupplyHUD: {fileID: 255593681}
+  resultsUINavButton: {fileID: 1607100743}
+  mangoUINavButton: {fileID: 2052040915}
   navigationPanel: {fileID: 86921084}
   suppliesNavigationPanel: {fileID: 961560058}
-  resources:
-  - {fileID: 21300000, guid: ec8fc53de3feb954c8098a6d28352706, type: 3}
-  - {fileID: 21300000, guid: 242e8756f89c1624ea6afa1e50d78e3a, type: 3}
-  - {fileID: 21300000, guid: 815f71291fb0cb843a6ec3fae493da19, type: 3}
-  - {fileID: 21300000, guid: 594a1a1c57157fa4aa25d84e687aad06, type: 3}
-  - {fileID: 21300000, guid: 7b3d852c77a25574db9755c7ccf6cd5a, type: 3}
 --- !u!114 &1132799838 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5051276427330420291, guid: 0942bf90451ea3a439d1162639e5ba20, type: 3}
@@ -7377,19 +7381,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1160337585}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1132799837}
-        m_TargetAssemblyTypeName: InGamePreparationPhase, Assembly-CSharp
-        m_MethodName: OnDecrement
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1160337585
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8619,6 +8611,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1554264040}
   - component: {fileID: 1554264041}
+  - component: {fileID: 1554264042}
   m_Layer: 5
   m_Name: RecipeUINavButton
   m_TagString: Untagged
@@ -8693,20 +8686,23 @@ MonoBehaviour:
   m_Group: {fileID: 86921084}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1132799837}
-        m_TargetAssemblyTypeName: InGamePreparationPhase, Assembly-CSharp
-        m_MethodName: OnNavigation
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_IsOn: 0
+--- !u!114 &1554264042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1554264039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 995f34434fbe45d46aacf4e120446279, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button:
+    m_key: OnNavigation
+    value: 0
 --- !u!1 &1570338188
 GameObject:
   m_ObjectHideFlags: 0
@@ -9224,9 +9220,9 @@ RectTransform:
   m_Father: {fileID: 823480814}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 250, y: -60.234314}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 280, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1604909758
@@ -9396,19 +9392,7 @@ MonoBehaviour:
   m_Group: {fileID: 86921084}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1132799837}
-        m_TargetAssemblyTypeName: InGamePreparationPhase, Assembly-CSharp
-        m_MethodName: OnNavigation
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_IsOn: 0
 --- !u!114 &1607100744
 MonoBehaviour:
@@ -9419,9 +9403,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1607100741}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8cf66ed715353e84c8b6a18157dc950e, type: 3}
+  m_Script: {fileID: 11500000, guid: 995f34434fbe45d46aacf4e120446279, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  button:
+    m_key: OnNavigation
+    value: 0
 --- !u!1 &1607409060
 GameObject:
   m_ObjectHideFlags: 0
@@ -9625,19 +9612,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1619570463}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1132799837}
-        m_TargetAssemblyTypeName: InGamePreparationPhase, Assembly-CSharp
-        m_MethodName: OnIncrement
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 2
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1619570463
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10325,19 +10300,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1731535117}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1132799837}
-        m_TargetAssemblyTypeName: InGamePreparationPhase, Assembly-CSharp
-        m_MethodName: OnDecrement
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1731535117
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10713,19 +10676,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1868266089}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1132799837}
-        m_TargetAssemblyTypeName: InGamePreparationPhase, Assembly-CSharp
-        m_MethodName: OnIncrement
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1868266089
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11532,6 +11483,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2001506797}
   - component: {fileID: 2001506798}
+  - component: {fileID: 2001506799}
   m_Layer: 5
   m_Name: MarketingUINavButton
   m_TagString: Untagged
@@ -11606,20 +11558,23 @@ MonoBehaviour:
   m_Group: {fileID: 86921084}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1132799837}
-        m_TargetAssemblyTypeName: InGamePreparationPhase, Assembly-CSharp
-        m_MethodName: OnNavigation
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_IsOn: 0
+--- !u!114 &2001506799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2001506796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 995f34434fbe45d46aacf4e120446279, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button:
+    m_key: OnNavigation
+    value: 0
 --- !u!1 &2052040913
 GameObject:
   m_ObjectHideFlags: 0
@@ -11705,19 +11660,7 @@ MonoBehaviour:
   m_Group: {fileID: 961560058}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1132799837}
-        m_TargetAssemblyTypeName: InGamePreparationPhase, Assembly-CSharp
-        m_MethodName: OnSuppliesNavigation
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_IsOn: 0
 --- !u!114 &2052040916
 MonoBehaviour:
@@ -11728,9 +11671,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 2052040913}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f6ecf6c6b4ee01a4b8ad3478ae1d78ff, type: 3}
+  m_Script: {fileID: 11500000, guid: 995f34434fbe45d46aacf4e120446279, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  button:
+    m_key: OnSuppliesNavigation
+    value: 0
 --- !u!1 &2056131837
 GameObject:
   m_ObjectHideFlags: 0
@@ -12172,6 +12118,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2115229122}
   - component: {fileID: 2115229123}
+  - component: {fileID: 2115229124}
   m_Layer: 5
   m_Name: CupsUINavButton
   m_TagString: Untagged
@@ -12246,20 +12193,23 @@ MonoBehaviour:
   m_Group: {fileID: 961560058}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1132799837}
-        m_TargetAssemblyTypeName: InGamePreparationPhase, Assembly-CSharp
-        m_MethodName: OnSuppliesNavigation
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 4
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_IsOn: 0
+--- !u!114 &2115229124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2115229121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 995f34434fbe45d46aacf4e120446279, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button:
+    m_key: OnSuppliesNavigation
+    value: 0
 --- !u!1 &2118155677
 GameObject:
   m_ObjectHideFlags: 0
@@ -12694,6 +12644,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2144800273}
   - component: {fileID: 2144800274}
+  - component: {fileID: 2144800275}
   m_Layer: 5
   m_Name: SuppliesUINavButton
   m_TagString: Untagged
@@ -12768,17 +12719,20 @@ MonoBehaviour:
   m_Group: {fileID: 86921084}
   onValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1132799837}
-        m_TargetAssemblyTypeName: InGamePreparationPhase, Assembly-CSharp
-        m_MethodName: OnNavigation
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_IsOn: 0
+--- !u!114 &2144800275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2144800272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 995f34434fbe45d46aacf4e120446279, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button:
+    m_key: OnNavigation
+    value: 0
