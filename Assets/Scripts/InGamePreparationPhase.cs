@@ -40,12 +40,66 @@ public class InGamePreparationPhase : MonoBehaviour
     private ResultsStates resultsState;
     private NavigationToRightStates lastNavigationToRightState;
 
-    private int[,,] suppliesInt;
-    private double[,] suppliesDouble;
+    private int[,,] SUPPLIES_INT;
+    private double[,] SUPPLIES_DOUBLE;
     private int suppliesState;
 
     void Start()
     {
+
+        SUPPLIES_INT = new int[5, 2, 3]
+        {
+            { { 0, 0, 0 }, { 0, 0, 0 } },
+            { { 0, 0, 0 }, { 0, 0, 0 } },
+            { { 0, 0, 0 }, { 0, 0, 0 } },
+            { { 0, 0, 0 }, { 0, 0, 0 } },
+            { { 0, 0, 0 }, { 0, 0, 0 } }
+
+        };
+
+        SUPPLIES_DOUBLE = new double[5, 3]
+        {
+
+            { 0, 0, 0 },
+            { 0, 0, 0 },
+            { 0, 0, 0 },
+            { 0, 0, 0 },
+            { 0, 0, 0 }
+
+        };
+
+        // CONSTANTS
+        SUPPLIES_INT[0, 1, 0] = 12;
+        SUPPLIES_INT[0, 1, 1] = 24;
+        SUPPLIES_INT[0, 1, 2] = 48;
+        SUPPLIES_INT[1, 1, 0] = 12;
+        SUPPLIES_INT[1, 1, 1] = 20;
+        SUPPLIES_INT[1, 1, 2] = 50;
+        SUPPLIES_INT[2, 1, 0] = 12;
+        SUPPLIES_INT[2, 1, 1] = 20;
+        SUPPLIES_INT[2, 1, 2] = 50;
+        SUPPLIES_INT[3, 1, 0] = 50;
+        SUPPLIES_INT[3, 1, 1] = 200;
+        SUPPLIES_INT[3, 1, 2] = 500;
+        SUPPLIES_INT[4, 1, 0] = 75;
+        SUPPLIES_INT[4, 1, 1] = 225;
+        SUPPLIES_INT[4, 1, 2] = 400;
+
+        SUPPLIES_DOUBLE[0, 0] = 216.00;
+        SUPPLIES_DOUBLE[0, 1] = 324.00;
+        SUPPLIES_DOUBLE[0, 2] = 432.00;
+        SUPPLIES_DOUBLE[1, 0] = 216.00;
+        SUPPLIES_DOUBLE[1, 1] = 315.00;
+        SUPPLIES_DOUBLE[1, 2] = 675.00;
+        SUPPLIES_DOUBLE[2, 0] = 216.00;
+        SUPPLIES_DOUBLE[2, 1] = 315.00;
+        SUPPLIES_DOUBLE[2, 2] = 675.00;
+        SUPPLIES_DOUBLE[3, 0] = 45.00;
+        SUPPLIES_DOUBLE[3, 1] = 135.00;
+        SUPPLIES_DOUBLE[3, 2] = 225.00;
+        SUPPLIES_DOUBLE[4, 0] = 45.00;
+        SUPPLIES_DOUBLE[4, 1] = 105.75;
+        SUPPLIES_DOUBLE[4, 2] = 168.75;
 
         FindObjectOfType<ResultsUINavButton>().OnToggleTrue();
 
@@ -65,40 +119,10 @@ public class InGamePreparationPhase : MonoBehaviour
         navigationToLeftState = NavigationToLeftStates.results;
         lastNavigationToRightState = NavigationToRightStates.results;
 
-        OnQuantityClear();
+        
 
         //suppliesState, section, unit
-        suppliesInt[0, 1, 0] = 12;
-        suppliesInt[0, 1, 1] = 24;
-        suppliesInt[0, 1, 2] = 48;
-        suppliesInt[1, 1, 0] = 12;
-        suppliesInt[1, 1, 1] = 20;
-        suppliesInt[1, 1, 2] = 50;
-        suppliesInt[2, 1, 0] = 12;
-        suppliesInt[2, 1, 1] = 20;
-        suppliesInt[2, 1, 2] = 50;
-        suppliesInt[3, 1, 0] = 50;
-        suppliesInt[3, 1, 1] = 200;
-        suppliesInt[3, 1, 2] = 500;
-        suppliesInt[4, 1, 0] = 75;
-        suppliesInt[4, 1, 1] = 225;
-        suppliesInt[4, 1, 2] = 400;
-
-        suppliesDouble[0, 0] = 216.00;
-        suppliesDouble[0, 1] = 324.00;
-        suppliesDouble[0, 2] = 432.00;
-        suppliesDouble[1, 0] = 216.00;
-        suppliesDouble[1, 1] = 315.00;
-        suppliesDouble[1, 2] = 675.00;
-        suppliesDouble[2, 0] = 216.00;
-        suppliesDouble[2, 1] = 315.00;
-        suppliesDouble[2, 2] = 675.00;
-        suppliesDouble[3, 0] = 45.00;
-        suppliesDouble[3, 1] = 135.00;
-        suppliesDouble[3, 2] = 225.00;
-        suppliesDouble[4, 0] = 45.00;
-        suppliesDouble[4, 1] = 105.75;
-        suppliesDouble[4, 2] = 168.75;
+        
 
         suppliesState = 0;
 
@@ -141,14 +165,7 @@ public class InGamePreparationPhase : MonoBehaviour
 
             FindObjectOfType<GameManager>().GetAnimator.SetInteger("navigationToRightState", (int) navigationToRightState);
             lastNavigationToRightState = navigationToRightState;
-            OnQuantityClear();
-            
-            if (navigationToRightState == NavigationToRightStates.supplies)
-            {
-
-                FindObjectOfType<MangoUINavButton>().OnToggleTrue();
-
-            }
+            OnNavigateToSupplies();
 
 
         }
@@ -157,14 +174,7 @@ public class InGamePreparationPhase : MonoBehaviour
 
             FindObjectOfType<GameManager>().GetAnimator.SetInteger("navigationToLeftState", (int) navigationToLeftState);
             lastNavigationToRightState = navigationToRightState;
-            OnQuantityClear();
-
-            if (navigationToRightState == NavigationToRightStates.supplies)
-            {
-
-                FindObjectOfType<MangoUINavButton>().OnToggleTrue();
-
-            }
+            OnNavigateToSupplies();
 
         }
 
@@ -260,9 +270,9 @@ public class InGamePreparationPhase : MonoBehaviour
         mediumSupplyHUD.sprite = resources[_supply];
         largeSupplyHUD.sprite = resources[_supply];
 
-        smallPriceUIText.text = String.Format("{0} {1} {2}", suppliesInt[_supply, 1, 0].ToString(), GetConjuctions(_supply), suppliesDouble[_supply, 0].ToString("0.00"));
-        mediumPriceUIText.text = String.Format("{0} {1} {2}", suppliesInt[_supply, 1, 1].ToString(), GetConjuctions(_supply), suppliesDouble[_supply, 1].ToString("0.00"));
-        largePriceUIText.text = String.Format("{0} {1} {2}", suppliesInt[_supply, 1, 2].ToString(), GetConjuctions(_supply), suppliesDouble[_supply, 2].ToString("0.00"));
+        smallPriceUIText.text = String.Format("{0} {1} {2}", SUPPLIES_INT[_supply, 1, 0].ToString(), GetConjuctions(_supply), SUPPLIES_DOUBLE[_supply, 0].ToString("0.00"));
+        mediumPriceUIText.text = String.Format("{0} {1} {2}", SUPPLIES_INT[_supply, 1, 1].ToString(), GetConjuctions(_supply), SUPPLIES_DOUBLE[_supply, 1].ToString("0.00"));
+        largePriceUIText.text = String.Format("{0} {1} {2}", SUPPLIES_INT[_supply, 1, 2].ToString(), GetConjuctions(_supply), SUPPLIES_DOUBLE[_supply, 2].ToString("0.00"));
 
         UpdateUIText();
 
@@ -271,13 +281,13 @@ public class InGamePreparationPhase : MonoBehaviour
     public void OnDecrement(int _scale)
     {
 
-        int counter = suppliesInt[suppliesState, 0, _scale];
-        int quantity = suppliesInt[suppliesState, 1, _scale];
+        int counter = SUPPLIES_INT[suppliesState, 0, _scale];
+        int quantity = SUPPLIES_INT[suppliesState, 1, _scale];
 
         if (counter - quantity >= 0)
         {
 
-            suppliesInt[suppliesState, 0, _scale] -= quantity;
+            SUPPLIES_INT[suppliesState, 0, _scale] -= quantity;
             UpdateUIText();
 
         }
@@ -287,26 +297,41 @@ public class InGamePreparationPhase : MonoBehaviour
     private void UpdateUIText()
     {
 
-        smallQuantityUIText.text = suppliesInt[suppliesState, 0, 0].ToString();
-        mediumQuantityUIText.text = suppliesInt[suppliesState, 0, 1].ToString();
-        largeQuantityUIText.text = suppliesInt[suppliesState, 0, 2].ToString();
+        smallQuantityUIText.text = SUPPLIES_INT[suppliesState, 0, 0].ToString();
+        mediumQuantityUIText.text = SUPPLIES_INT[suppliesState, 0, 1].ToString();
+        largeQuantityUIText.text = SUPPLIES_INT[suppliesState, 0, 2].ToString();
 
     }
 
     public void OnIncrement(int _scale)
     {
 
-        int quantity = suppliesInt[suppliesState, 1, _scale];
+        int quantity = SUPPLIES_INT[suppliesState, 1, _scale];
 
-        suppliesInt[suppliesState, 0, _scale] += quantity;
+        SUPPLIES_INT[suppliesState, 0, _scale] += quantity;
         UpdateUIText();
     }
 
     private void OnQuantityClear()
     {
 
-        suppliesInt = new int[5, 2, 3] { { { 0, 0, 0 }, { 0, 0, 0 } }, { { 0, 0, 0 }, { 0, 0, 0 } }, { { 0, 0, 0 }, { 0, 0, 0 } }, { { 0, 0, 0 }, { 0, 0, 0 } }, { { 0, 0, 0 }, { 0, 0, 0 } } };
-        suppliesDouble = new double[5, 3] { { 0, 0, 0 }, { 0, 0, 0 }, { 0, 0, 0 }, { 0, 0, 0 }, { 0, 0, 0 } };
+        SUPPLIES_INT[0, 0, 0] = 0;
+        SUPPLIES_INT[0, 0, 1] = 0;
+        SUPPLIES_INT[0, 0, 2] = 0;
+        SUPPLIES_INT[1, 0, 0] = 0;
+        SUPPLIES_INT[1, 0, 1] = 0;
+        SUPPLIES_INT[1, 0, 2] = 0;
+        SUPPLIES_INT[2, 0, 0] = 0;
+        SUPPLIES_INT[2, 0, 1] = 0;
+        SUPPLIES_INT[2, 0, 2] = 0;
+        SUPPLIES_INT[3, 0, 0] = 0;
+        SUPPLIES_INT[3, 0, 1] = 0;
+        SUPPLIES_INT[3, 0, 2] = 0;
+        SUPPLIES_INT[4, 0, 0] = 0;
+        SUPPLIES_INT[4, 0, 1] = 0;
+        SUPPLIES_INT[4, 0, 2] = 0;
+
+        UpdateUIText();
 
     }
 
@@ -323,6 +348,19 @@ public class InGamePreparationPhase : MonoBehaviour
 
         }
         return "cups = ₱";
+
+    }
+
+    private void OnNavigateToSupplies()
+    {
+
+        if (navigationToRightState == NavigationToRightStates.supplies)
+        {
+
+            OnQuantityClear();
+            FindObjectOfType<MangoUINavButton>().OnToggleTrue();
+
+        }
 
     }
 
