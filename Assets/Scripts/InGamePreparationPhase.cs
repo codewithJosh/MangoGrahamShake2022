@@ -224,6 +224,14 @@ public class InGamePreparationPhase : MonoBehaviour
 
         }
 
+        if (SimpleInput.GetButtonDown("CancelUIButton"))
+        {
+
+            OnQuantityClear();
+            capital = FindObjectOfType<Player>().playerCapital;
+
+        }    
+
         if (navigationToRightState == NavigationToRightStates.supplies)
         {     
 
