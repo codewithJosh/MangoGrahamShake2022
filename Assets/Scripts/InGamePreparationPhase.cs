@@ -279,18 +279,28 @@ public class InGamePreparationPhase : MonoBehaviour
         if (SimpleInput.GetButtonDown("OnCancel"))
         {
 
-            OnCancel();
+            if (cancelUIButton.interactable != false)
+            {
+
+                OnCancel();
+
+            }
 
         }
 
         if (SimpleInput.GetButtonDown("OnBuy"))
         {
 
-            float spend = FindObjectOfType<Player>().playerCapital - capital;
-            confirmationBuyUIText.text = string.Format("Are you sure you want to spend ₱ {0} on goods?", spend.ToString("0.00"));
+            if (buyUIButton.interactable != false)
+            {
 
-            OnAnimateFromInGamePreparationPhase(3);
-            //graham += (SUPPLIES_INT[1, 0, 0] + SUPPLIES_INT[1, 0, 1] + SUPPLIES_INT[1, 0, 2]);
+                float spend = FindObjectOfType<Player>().playerCapital - capital;
+                confirmationBuyUIText.text = string.Format("Are you sure you want to spend ₱ {0} on goods?", spend.ToString("0.00"));
+
+                OnAnimateFromInGamePreparationPhase(3);
+                //graham += (SUPPLIES_INT[1, 0, 0] + SUPPLIES_INT[1, 0, 1] + SUPPLIES_INT[1, 0, 2]);
+
+            }
 
         }
 

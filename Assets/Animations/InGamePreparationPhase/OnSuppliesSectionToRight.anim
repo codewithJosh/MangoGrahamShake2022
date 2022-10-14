@@ -42,7 +42,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_IsActive
-    path: Canvas/Background/Panel/BodyPanel/SubSection/RecipeSection
+    path: Canvas/Background/Panel/BodyPanel/SubSection/SubSection/MarketingSection
     classID: 1
     script: {fileID: 0}
   - curve:
@@ -70,7 +70,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_IsActive
-    path: Canvas/Background/Panel/BodyPanel/SubSection/ResultsSection
+    path: Canvas/Background/Panel/BodyPanel/SubSection/SubSection/RecipeSection
     classID: 1
     script: {fileID: 0}
   - curve:
@@ -98,7 +98,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_IsActive
-    path: Canvas/Background/Panel/BodyPanel/SubSection/StaffSection
+    path: Canvas/Background/Panel/BodyPanel/SubSection/SubSection/ResultsSection
     classID: 1
     script: {fileID: 0}
   - curve:
@@ -126,35 +126,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_IsActive
-    path: Canvas/Background/Panel/BodyPanel/SubSection/MarketingSection
-    classID: 1
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: Infinity
-        outSlope: Infinity
-        tangentMode: 103
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 0.016666668
-        value: 0
-        inSlope: Infinity
-        outSlope: Infinity
-        tangentMode: 103
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_IsActive
-    path: Canvas/Background/Panel/BodyPanel/SubSection/UpgradesSection
+    path: Canvas/Background/Panel/BodyPanel/SubSection/SubSection/StaffSection
     classID: 1
     script: {fileID: 0}
   - curve:
@@ -182,7 +154,35 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_IsActive
-    path: Canvas/Background/Panel/BodyPanel/SubSection/SuppliesSection
+    path: Canvas/Background/Panel/BodyPanel/SubSection/SubSection/SuppliesSection
+    classID: 1
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 103
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.016666668
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 103
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_IsActive
+    path: Canvas/Background/Panel/BodyPanel/SubSection/SubSection/UpgradesSection
     classID: 1
     script: {fileID: 0}
   m_PPtrCurves: []
@@ -194,42 +194,42 @@ AnimationClip:
   m_ClipBindingConstant:
     genericBindings:
     - serializedVersion: 2
-      path: 460276062
+      path: 1177426419
       attribute: 2086281974
       script: {fileID: 0}
       typeID: 1
       customType: 0
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 1403299012
+      path: 2558841069
       attribute: 2086281974
       script: {fileID: 0}
       typeID: 1
       customType: 0
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 2591452244
+      path: 21998947
       attribute: 2086281974
       script: {fileID: 0}
       typeID: 1
       customType: 0
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 3736394130
+      path: 2724337731
       attribute: 2086281974
       script: {fileID: 0}
       typeID: 1
       customType: 0
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 658314771
+      path: 3533801828
       attribute: 2086281974
       script: {fileID: 0}
       typeID: 1
       customType: 0
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 2587972646
+      path: 1876806481
       attribute: 2086281974
       script: {fileID: 0}
       typeID: 1
@@ -282,7 +282,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_IsActive
-    path: Canvas/Background/Panel/BodyPanel/SubSection/RecipeSection
+    path: Canvas/Background/Panel/BodyPanel/SubSection/SubSection/MarketingSection
     classID: 1
     script: {fileID: 0}
   - curve:
@@ -310,7 +310,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_IsActive
-    path: Canvas/Background/Panel/BodyPanel/SubSection/ResultsSection
+    path: Canvas/Background/Panel/BodyPanel/SubSection/SubSection/RecipeSection
     classID: 1
     script: {fileID: 0}
   - curve:
@@ -338,7 +338,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_IsActive
-    path: Canvas/Background/Panel/BodyPanel/SubSection/StaffSection
+    path: Canvas/Background/Panel/BodyPanel/SubSection/SubSection/ResultsSection
     classID: 1
     script: {fileID: 0}
   - curve:
@@ -366,35 +366,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_IsActive
-    path: Canvas/Background/Panel/BodyPanel/SubSection/MarketingSection
-    classID: 1
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: Infinity
-        outSlope: Infinity
-        tangentMode: 103
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 0.016666668
-        value: 0
-        inSlope: Infinity
-        outSlope: Infinity
-        tangentMode: 103
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_IsActive
-    path: Canvas/Background/Panel/BodyPanel/SubSection/UpgradesSection
+    path: Canvas/Background/Panel/BodyPanel/SubSection/SubSection/StaffSection
     classID: 1
     script: {fileID: 0}
   - curve:
@@ -422,7 +394,35 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_IsActive
-    path: Canvas/Background/Panel/BodyPanel/SubSection/SuppliesSection
+    path: Canvas/Background/Panel/BodyPanel/SubSection/SubSection/SuppliesSection
+    classID: 1
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 103
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.016666668
+        value: 0
+        inSlope: Infinity
+        outSlope: Infinity
+        tangentMode: 103
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_IsActive
+    path: Canvas/Background/Panel/BodyPanel/SubSection/SubSection/UpgradesSection
     classID: 1
     script: {fileID: 0}
   m_EulerEditorCurves: []
