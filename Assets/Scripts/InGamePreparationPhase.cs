@@ -154,6 +154,41 @@ public class InGamePreparationPhase : MonoBehaviour
 
         bottomNavigationStateUIText.text = GetBottomNavigationState(GetNavigation(navigationPanel));
 
+        if (SimpleInput.GetButtonDown("OnMainMenu"))
+        {
+
+            OnAnimateFromInGamePreparationPhase(1);
+
+        }
+
+        if (SimpleInput.GetButtonDown("OnMainMenuAffirmative"))
+        {
+
+            OnAnimateFromInGamePreparationPhase(2);
+
+        }
+
+        if (SimpleInput.GetButtonDown("OnMainMenuNegative"))
+        {
+
+            OnAnimateFromInGamePreparationPhase(0);
+
+        }
+
+        if (SimpleInput.GetButtonDown("OnWarningSaveAffirmative"))
+        {
+
+            OnWarningSaveAffirmative();
+
+        }
+
+        if (SimpleInput.GetButtonDown("OnWarningSaveNegative"))
+        {
+
+            OnWarningSaveNegative();
+
+        }
+
         if (SimpleInput.GetButtonUp("OnNavigation"))
         {
 
@@ -238,17 +273,17 @@ public class InGamePreparationPhase : MonoBehaviour
 
         }
 
-        if (SimpleInput.GetButtonDown("CancelUIButton"))
+        if (SimpleInput.GetButtonDown("OnCancel"))
         {
 
-            OnQuantityClear();
-            capital = FindObjectOfType<Player>().playerCapital;
+            OnCancel();
 
         }
-        
-        if (SimpleInput.GetButtonDown("BuyUIButton"))
+
+        if (SimpleInput.GetButtonDown("OnBuy"))
         {
 
+            OnAnimateFromInGamePreparationPhase(3);
             graham += (SUPPLIES_INT[1, 0, 0] + SUPPLIES_INT[1, 0, 1] + SUPPLIES_INT[1, 0, 2]);
 
         }
@@ -342,11 +377,11 @@ public class InGamePreparationPhase : MonoBehaviour
 
     }
 
-    public void OnAnimateFromInGamePreparationPhase(int _inGamePreparationPhaseState)
+    private void OnAnimateFromInGamePreparationPhase(int _inGamePreparationPhaseState)
     {
 
         inGamePreparationPhaseState = GetInGamePreparationPhaseState(_inGamePreparationPhaseState);
-        FindObjectOfType<GameManager>().GetAnimator.SetInteger("inGamePreparationPhaseState", (int)inGamePreparationPhaseState);
+        FindObjectOfType<GameManager>().GetAnimator.SetInteger("inGamePreparationPhaseState", (int) inGamePreparationPhaseState);
 
     }
 
@@ -360,13 +395,15 @@ public class InGamePreparationPhase : MonoBehaviour
 
             2 => InGamePreparationPhaseStates.warningSave,
 
+            3 => InGamePreparationPhaseStates.confirmationBuy,
+
             _ => InGamePreparationPhaseStates.idle,
 
         };
 
     }
 
-    public void OnWarningSaveAffirmative()
+    private void OnWarningSaveAffirmative()
     {
 
         FindObjectOfType<Player>().SavePlayer();
@@ -374,7 +411,7 @@ public class InGamePreparationPhase : MonoBehaviour
 
     }
 
-    public void OnWarningSaveNegative()
+    private void OnWarningSaveNegative()
     {
 
         OnAnimateFromInGamePreparationPhase(0);
@@ -399,7 +436,7 @@ public class InGamePreparationPhase : MonoBehaviour
 
     }
 
-    public void OnNavigation()
+    private void OnNavigation()
     {
         
         string navigation = GetNavigation(navigationPanel);
@@ -495,7 +532,7 @@ public class InGamePreparationPhase : MonoBehaviour
 
     }
 
-    public string GetNavigation(ToggleGroup _toggleGroup)
+    private string GetNavigation(ToggleGroup _toggleGroup)
     {
 
         Toggle navigation = _toggleGroup.ActiveToggles().FirstOrDefault();
@@ -503,7 +540,7 @@ public class InGamePreparationPhase : MonoBehaviour
 
     }
 
-    public void OnSuppliesNavigation(int _suppliesNavigationState)
+    private void OnSuppliesNavigation(int _suppliesNavigationState)
     {
 
         suppliesState = _suppliesNavigationState;
@@ -518,7 +555,7 @@ public class InGamePreparationPhase : MonoBehaviour
 
     }
 
-    public void OnDecrement(int _scale)
+    private void OnDecrement(int _scale)
     {
 
         int quantityPerPrice = SUPPLIES_INT[suppliesState, 1, _scale];
@@ -534,7 +571,7 @@ public class InGamePreparationPhase : MonoBehaviour
 
     }
 
-    public void OnIncrement(int _scale)
+    private void OnIncrement(int _scale)
     {
 
         int quantityPerPrice = SUPPLIES_INT[suppliesState, 1, _scale];
@@ -571,7 +608,7 @@ public class InGamePreparationPhase : MonoBehaviour
 
     }
 
-    public string GetConjuctions(int _supply)
+    private string GetConjuctions(int _supply)
     {
 
         return _supply switch
@@ -588,6 +625,14 @@ public class InGamePreparationPhase : MonoBehaviour
             _ => "cups = ₱",
 
         };
+
+    }
+
+    private void OnCancel()
+    {
+
+        OnQuantityClear();
+        capital = FindObjectOfType<Player>().playerCapital;
 
     }
 

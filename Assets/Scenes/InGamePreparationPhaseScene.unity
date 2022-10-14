@@ -360,7 +360,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   button:
-    m_key: BuyUIButton
+    m_key: OnBuy
     value: 0
 --- !u!1 &64800409
 GameObject:
@@ -374,6 +374,7 @@ GameObject:
   - component: {fileID: 64800413}
   - component: {fileID: 64800412}
   - component: {fileID: 64800411}
+  - component: {fileID: 64800414}
   m_Layer: 5
   m_Name: WarningSaveSection
   m_TagString: Untagged
@@ -447,19 +448,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 64800412}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1132799838}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: OnAnimateFromInGamePreparationPhase
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &64800412
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -498,6 +487,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 64800409}
   m_CullTransparentMesh: 1
+--- !u!114 &64800414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 64800409}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 995f34434fbe45d46aacf4e120446279, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button:
+    m_key: OnMainMenuNegative
+    value: 0
 --- !u!1 &77918646
 GameObject:
   m_ObjectHideFlags: 0
@@ -1996,7 +2000,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   button:
-    m_key: CancelUIButton
+    m_key: OnCancel
     value: 0
 --- !u!1 &242299047
 GameObject:
@@ -2302,6 +2306,7 @@ GameObject:
   - component: {fileID: 268562803}
   - component: {fileID: 268562802}
   - component: {fileID: 268562801}
+  - component: {fileID: 268562804}
   m_Layer: 5
   m_Name: AffirmativeUIButton
   m_TagString: Untagged
@@ -2372,19 +2377,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 268562802}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1132799838}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: OnWarningSaveAffirmative
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &268562802
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2423,6 +2416,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 268562799}
   m_CullTransparentMesh: 1
+--- !u!114 &268562804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 268562799}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 995f34434fbe45d46aacf4e120446279, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button:
+    m_key: OnWarningSaveAffirmative
+    value: 0
 --- !u!1 &303888819
 GameObject:
   m_ObjectHideFlags: 0
@@ -2558,7 +2566,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   button:
-    m_key: ConfirmationBuyNegative
+    m_key: OnConfirmationBuyNegative
     value: 0
 --- !u!1 &312994693
 GameObject:
@@ -4987,6 +4995,7 @@ GameObject:
   - component: {fileID: 710178850}
   - component: {fileID: 710178849}
   - component: {fileID: 710178848}
+  - component: {fileID: 710178851}
   m_Layer: 5
   m_Name: AffirmativeUIButton
   m_TagString: Untagged
@@ -5057,19 +5066,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 710178849}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1132799838}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: OnAnimateFromInGamePreparationPhase
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 2
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &710178849
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5108,6 +5105,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 710178846}
   m_CullTransparentMesh: 1
+--- !u!114 &710178851
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 710178846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 995f34434fbe45d46aacf4e120446279, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button:
+    m_key: OnMainMenuAffirmative
+    value: 0
 --- !u!1 &710459101
 GameObject:
   m_ObjectHideFlags: 0
@@ -5871,6 +5883,7 @@ GameObject:
   - component: {fileID: 833505714}
   - component: {fileID: 833505713}
   - component: {fileID: 833505712}
+  - component: {fileID: 833505715}
   m_Layer: 5
   m_Name: NegativeUIButton
   m_TagString: Untagged
@@ -5941,19 +5954,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 833505713}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1132799838}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: OnAnimateFromInGamePreparationPhase
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: offExit
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &833505713
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5992,6 +5993,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 833505710}
   m_CullTransparentMesh: 1
+--- !u!114 &833505715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 833505710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 995f34434fbe45d46aacf4e120446279, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button:
+    m_key: OnMainMenuNegative
+    value: 0
 --- !u!1 &844792751
 GameObject:
   m_ObjectHideFlags: 0
@@ -7017,6 +7033,7 @@ GameObject:
   - component: {fileID: 975412521}
   - component: {fileID: 975412520}
   - component: {fileID: 975412519}
+  - component: {fileID: 975412522}
   m_Layer: 5
   m_Name: ConfirmationBuySection
   m_TagString: Untagged
@@ -7090,19 +7107,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 975412520}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1132799838}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: OnAnimateFromInGamePreparationPhase
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &975412520
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7141,6 +7146,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 975412517}
   m_CullTransparentMesh: 1
+--- !u!114 &975412522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 975412517}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 995f34434fbe45d46aacf4e120446279, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button:
+    m_key: OnMainMenuNegative
+    value: 0
 --- !u!1 &988542624
 GameObject:
   m_ObjectHideFlags: 0
@@ -7153,6 +7173,7 @@ GameObject:
   - component: {fileID: 988542628}
   - component: {fileID: 988542627}
   - component: {fileID: 988542626}
+  - component: {fileID: 988542629}
   m_Layer: 5
   m_Name: NegativeUIButton
   m_TagString: Untagged
@@ -7223,19 +7244,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 988542627}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1132799838}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: OnWarningSaveNegative
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: offExit
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &988542627
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7274,6 +7283,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 988542624}
   m_CullTransparentMesh: 1
+--- !u!114 &988542629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 988542624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 995f34434fbe45d46aacf4e120446279, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button:
+    m_key: OnWarningSaveNegative
+    value: 0
 --- !u!1 &996795023
 GameObject:
   m_ObjectHideFlags: 0
@@ -7635,6 +7659,7 @@ GameObject:
   - component: {fileID: 1048229366}
   - component: {fileID: 1048229365}
   - component: {fileID: 1048229364}
+  - component: {fileID: 1048229367}
   m_Layer: 5
   m_Name: MainMenuUIButton
   m_TagString: Untagged
@@ -7705,19 +7730,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1048229365}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1132799838}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: OnAnimateFromInGamePreparationPhase
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1048229365
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7756,6 +7769,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1048229362}
   m_CullTransparentMesh: 1
+--- !u!114 &1048229367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1048229362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 995f34434fbe45d46aacf4e120446279, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button:
+    m_key: OnMainMenu
+    value: 0
 --- !u!1 &1095628446
 GameObject:
   m_ObjectHideFlags: 0
@@ -8145,17 +8173,6 @@ MonoBehaviour:
   mangoUINavButton: {fileID: 2052040915}
   navigationPanel: {fileID: 86921084}
   suppliesNavigationPanel: {fileID: 961560058}
---- !u!114 &1132799838 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5051276427330420291, guid: 0942bf90451ea3a439d1162639e5ba20, type: 3}
-  m_PrefabInstance: {fileID: 1132799835}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1132799836}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c8580091ca481b4395ff53f4eccc5fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1160337582
 GameObject:
   m_ObjectHideFlags: 0
@@ -10072,6 +10089,7 @@ GameObject:
   - component: {fileID: 1596824558}
   - component: {fileID: 1596824557}
   - component: {fileID: 1596824556}
+  - component: {fileID: 1596824559}
   m_Layer: 5
   m_Name: MainMenuSection
   m_TagString: Untagged
@@ -10145,19 +10163,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1596824557}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1132799838}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: OnAnimateFromInGamePreparationPhase
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1596824557
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10196,6 +10202,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1596824554}
   m_CullTransparentMesh: 1
+--- !u!114 &1596824559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1596824554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 995f34434fbe45d46aacf4e120446279, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button:
+    m_key: OnMainMenuNegative
+    value: 0
 --- !u!1 &1604909756
 GameObject:
   m_ObjectHideFlags: 0
