@@ -36,6 +36,7 @@ public class InGamePreparationPhase : MonoBehaviour
     [SerializeField] private TextMeshProUGUI mediumQuantityUIText;
     [SerializeField] private TextMeshProUGUI largePriceUIText;
     [SerializeField] private TextMeshProUGUI largeQuantityUIText;
+    [SerializeField] private TextMeshProUGUI confirmationBuyUIText;
     [SerializeField] private Toggle resultsUINavButton;
     [SerializeField] private Toggle mangoUINavButton;
     [SerializeField] private ToggleGroup navigationPanel;
@@ -283,8 +284,25 @@ public class InGamePreparationPhase : MonoBehaviour
         if (SimpleInput.GetButtonDown("OnBuy"))
         {
 
+            float spend = FindObjectOfType<Player>().playerCapital - capital;
+            confirmationBuyUIText.text = string.Format("Are you sure you want to spend ₱ {0} on goods?", spend.ToString("0.00"));
+
             OnAnimateFromInGamePreparationPhase(3);
-            graham += (SUPPLIES_INT[1, 0, 0] + SUPPLIES_INT[1, 0, 1] + SUPPLIES_INT[1, 0, 2]);
+            //graham += (SUPPLIES_INT[1, 0, 0] + SUPPLIES_INT[1, 0, 1] + SUPPLIES_INT[1, 0, 2]);
+
+        }
+
+        if (SimpleInput.GetButtonDown("OnBuyAffirmative"))
+        {
+
+            
+
+        }
+
+        if (SimpleInput.GetButtonDown("OnBuyNegative"))
+        {
+
+            
 
         }
 
