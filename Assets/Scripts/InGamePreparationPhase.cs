@@ -14,6 +14,14 @@ public class InGamePreparationPhase : MonoBehaviour
     [SerializeField] private Button smallIncrementUIButton;
     [SerializeField] private Button mediumIncrementUIButton;
     [SerializeField] private Button largeIncrementUIButton;
+    [SerializeField] private Button recipeDecrementMangoUIButton;
+    [SerializeField] private Button recipeIncrementMangoUIButton;
+    [SerializeField] private Button recipeDecrementGrahamUIButton;
+    [SerializeField] private Button recipeIncrementGrahamUIButton;
+    [SerializeField] private Button recipeDecrementMilkUIButton;
+    [SerializeField] private Button recipeIncrementMilkUIButton;
+    [SerializeField] private Button recipeDecrementIceCubesUIButton;
+    [SerializeField] private Button recipeIncrementIceCubesUIButton;
     [SerializeField] private Button buyUIButton;
     [SerializeField] private Button cancelUIButton;
     [SerializeField] private Image popularityFillHUD;
@@ -38,6 +46,10 @@ public class InGamePreparationPhase : MonoBehaviour
     [SerializeField] private TextMeshProUGUI largePriceUIText;
     [SerializeField] private TextMeshProUGUI largeQuantityUIText;
     [SerializeField] private TextMeshProUGUI confirmationBuyUIText;
+    [SerializeField] private TextMeshProUGUI mangoQuantityUIText;
+    [SerializeField] private TextMeshProUGUI grahamQuantityUIText;
+    [SerializeField] private TextMeshProUGUI milkQuantityUIText;
+    [SerializeField] private TextMeshProUGUI iceCubesQuantityUIText;
     [SerializeField] private Toggle resultsUINavButton;
     [SerializeField] private Toggle mangoUINavButton;
     [SerializeField] private ToggleGroup navigationPanel;
@@ -52,11 +64,13 @@ public class InGamePreparationPhase : MonoBehaviour
     private NavigationToRightStates lastNavigationToRightState;
 
     private float[,] SUPPLIES_FLOAT;
+    private int[,] RECIPE_INT;
     private int[,,] SUPPLIES_INT;
 
     private float capital;
     private float popularity;
     private float satisfaction;
+    private float spend;
     private int suppliesState;
     private int mango;
     private int graham;
@@ -64,14 +78,13 @@ public class InGamePreparationPhase : MonoBehaviour
     private int iceCubes;
     private int cups;
     private int temperature;
-
-    private float spend;
-
+    
     void Start()
     {
 
         SUPPLIES_INT = new int[5, 2, 3]
         {
+
             { { 0, 0, 0 }, { 0, 0, 0 } },
             { { 0, 0, 0 }, { 0, 0, 0 } },
             { { 0, 0, 0 }, { 0, 0, 0 } },
@@ -88,6 +101,16 @@ public class InGamePreparationPhase : MonoBehaviour
             { 0, 0, 0 },
             { 0, 0, 0 },
             { 0, 0, 0 }
+
+        };
+
+        RECIPE_INT = new int[4, 2]
+        {
+
+            { 0, 0 },
+            { 0, 0 },
+            { 0, 0 },
+            { 0, 0 }
 
         };
 
@@ -123,17 +146,26 @@ public class InGamePreparationPhase : MonoBehaviour
         SUPPLIES_FLOAT[4, 1] = 105.75f;
         SUPPLIES_FLOAT[4, 2] = 168.75f;
 
+        RECIPE_INT[0, 1] = 20;
+        RECIPE_INT[1, 1] = 10;
+        RECIPE_INT[2, 1] = 10;
+        RECIPE_INT[3, 1] = 7;
+
         FindObjectOfType<Player>().LoadPlayer();
 
         capital = FindObjectOfType<Player>().playerCapital;
+        popularity = FindObjectOfType<Player>().currentPopularity;
+        satisfaction = FindObjectOfType<Player>().currentSatisfaction;
         milk = FindObjectOfType<Player>().milkLeft;
         graham = FindObjectOfType<Player>().grahamLeft;
         milk = FindObjectOfType<Player>().milkLeft;
         iceCubes = FindObjectOfType<Player>().iceCubesLeft;
         cups = FindObjectOfType<Player>().cupsLeft;
         temperature = FindObjectOfType<Player>().currentTemperature;
-        popularity = FindObjectOfType<Player>().currentPopularity;
-        satisfaction = FindObjectOfType<Player>().currentSatisfaction;
+        RECIPE_INT[0, 0] = FindObjectOfType<Player>().mangoPerServe;
+        RECIPE_INT[1, 0] = FindObjectOfType<Player>().grahamPerServe;
+        RECIPE_INT[2, 0] = FindObjectOfType<Player>().milkPerServe;
+        RECIPE_INT[3, 0] = FindObjectOfType<Player>().iceCubesPerServe;
 
         navigationToRightState = NavigationToRightStates.results;
         navigationToLeftState = NavigationToLeftStates.results;
@@ -147,14 +179,18 @@ public class InGamePreparationPhase : MonoBehaviour
     void Update()
     {
 
+        FindObjectOfType<Player>().currentPopularity = popularity;
+        FindObjectOfType<Player>().currentSatisfaction = satisfaction;
         FindObjectOfType<Player>().mangoLeft = mango;
         FindObjectOfType<Player>().grahamLeft = graham;
         FindObjectOfType<Player>().milkLeft = milk;
         FindObjectOfType<Player>().iceCubesLeft = iceCubes;
         FindObjectOfType<Player>().cupsLeft = cups;
         FindObjectOfType<Player>().currentTemperature = temperature;
-        FindObjectOfType<Player>().currentPopularity = popularity;
-        FindObjectOfType<Player>().currentSatisfaction= satisfaction;
+        FindObjectOfType<Player>().mangoPerServe = RECIPE_INT[0, 0];
+        FindObjectOfType<Player>().grahamPerServe = RECIPE_INT[1, 0];
+        FindObjectOfType<Player>().milkPerServe = RECIPE_INT[2, 0];
+        FindObjectOfType<Player>().iceCubesPerServe = RECIPE_INT[3, 0];
 
         capitalUIText.text = string.Format("₱ {0}" , capital.ToString("0.00"));
         mangoUIText.text = mango.ToString();
@@ -248,42 +284,42 @@ public class InGamePreparationPhase : MonoBehaviour
         if (SimpleInput.GetButtonDown("OnIncrementSmall"))
         {
 
-            OnIncrement(0);
+            OnSuppliesIncrement(0);
 
         }
 
         if (SimpleInput.GetButtonDown("OnIncrementMedium"))
         {
 
-            OnIncrement(1);
+            OnSuppliesIncrement(1);
 
         }
 
         if (SimpleInput.GetButtonDown("OnIncrementLarge"))
         {
 
-            OnIncrement(2);
+            OnSuppliesIncrement(2);
 
         }
 
         if (SimpleInput.GetButtonDown("OnDecrementSmall"))
         {
 
-            OnDecrement(0);
+            OnSuppliesDecrement(0);
 
         }
 
         if (SimpleInput.GetButtonDown("OnDecrementMedium"))
         {
 
-            OnDecrement(1);
+            OnSuppliesDecrement(1);
 
         }
 
         if (SimpleInput.GetButtonDown("OnDecrementLarge"))
         {
 
-            OnDecrement(2);
+            OnSuppliesDecrement(2);
 
         }
 
@@ -326,6 +362,62 @@ public class InGamePreparationPhase : MonoBehaviour
         {
 
             OnConfirmationBuyNegative();
+
+        }
+
+        if (SimpleInput.GetButtonDown("OnRecipeIncrementMango"))
+        {
+
+            OnRecipeIncrement(0);
+
+        }
+
+        if (SimpleInput.GetButtonDown("OnRecipeIncrementGraham"))
+        {
+
+            OnRecipeIncrement(1);
+
+        }
+
+        if (SimpleInput.GetButtonDown("OnRecipeIncrementMilk"))
+        {
+
+            OnRecipeIncrement(2);
+
+        }
+
+        if (SimpleInput.GetButtonDown("OnRecipeIncrementIceCubes"))
+        {
+
+            OnRecipeIncrement(3);
+
+        }
+
+        if (SimpleInput.GetButtonDown("OnRecipeDecrementMango"))
+        {
+
+            OnRecipeDecrement(0);
+
+        }
+
+        if (SimpleInput.GetButtonDown("OnRecipeDecrementGraham"))
+        {
+
+            OnRecipeDecrement(1);
+
+        }
+
+        if (SimpleInput.GetButtonDown("OnRecipeDecrementMilk"))
+        {
+
+            OnRecipeDecrement(2);
+
+        }
+
+        if (SimpleInput.GetButtonDown("OnRecipeDecrementIceCubes"))
+        {
+
+            OnRecipeDecrement(3);
 
         }
 
@@ -431,6 +523,16 @@ public class InGamePreparationPhase : MonoBehaviour
 
         }
 
+        if (navigationToRightState == NavigationToRightStates.recipe)
+        {
+
+            mangoQuantityUIText.text = RECIPE_INT[0, 0].ToString();
+            grahamQuantityUIText.text = RECIPE_INT[1, 0].ToString();
+            milkQuantityUIText.text = RECIPE_INT[2, 0].ToString();
+            iceCubesQuantityUIText.text = RECIPE_INT[3, 0].ToString();
+
+        }
+
     }
 
     private void OnAnimateFromInGamePreparationPhase(int _inGamePreparationPhaseState)
@@ -490,7 +592,7 @@ public class InGamePreparationPhase : MonoBehaviour
             FindObjectOfType<GameManager>().GetAnimator.SetInteger("navigationToRightState", (int) navigationToRightState);
             lastNavigationToRightState = navigationToRightState;
             mangoUINavButton.isOn = true;
-            OnQuantityClear();
+            OnSuppliesQuantityClear();
             OnSuppliesNavigation(0);
             capital = FindObjectOfType<Player>().playerCapital;
 
@@ -595,7 +697,7 @@ public class InGamePreparationPhase : MonoBehaviour
 
     }
 
-    private void OnDecrement(int _scale)
+    private void OnSuppliesDecrement(int _scale)
     {
 
         int quantityPerPrice = SUPPLIES_INT[suppliesState, 1, _scale];
@@ -611,7 +713,7 @@ public class InGamePreparationPhase : MonoBehaviour
 
     }
 
-    private void OnIncrement(int _scale)
+    private void OnSuppliesIncrement(int _scale)
     {
 
         int quantityPerPrice = SUPPLIES_INT[suppliesState, 1, _scale];
@@ -627,7 +729,7 @@ public class InGamePreparationPhase : MonoBehaviour
 
     }
 
-    private void OnQuantityClear()
+    private void OnSuppliesQuantityClear()
     {
 
         SUPPLIES_INT[0, 0, 0] = 0;
@@ -671,7 +773,7 @@ public class InGamePreparationPhase : MonoBehaviour
     private void OnCancel()
     {
 
-        OnQuantityClear();
+        OnSuppliesQuantityClear();
         capital = FindObjectOfType<Player>().playerCapital;
 
     }
@@ -679,7 +781,7 @@ public class InGamePreparationPhase : MonoBehaviour
     {
 
         OnAnimateFromInGamePreparationPhase(0);
-        OnQuantityClear();
+        OnSuppliesQuantityClear();
 
     }
 
@@ -704,6 +806,32 @@ public class InGamePreparationPhase : MonoBehaviour
         }
 
         OnConfirmationBuyNegative();
+
+    }
+
+    private void OnRecipeIncrement(int _recipe)
+    {
+
+        int maxQuantity = RECIPE_INT[_recipe, 1];
+
+        if (RECIPE_INT[_recipe, 0] < maxQuantity)
+        {
+
+            RECIPE_INT[_recipe, 0]++;
+
+        }
+
+    }
+
+    private void OnRecipeDecrement(int _recipe)
+    {
+
+        if (RECIPE_INT[_recipe, 0] != 0)
+        {
+
+            RECIPE_INT[_recipe, 0]--;
+
+        }
 
     }
 
