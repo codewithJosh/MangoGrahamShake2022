@@ -8,8 +8,6 @@ using System.Collections;
 public class Player : MonoBehaviour
 {
 
-    [SerializeField] private GameObject playerNameHUD;
-
     public string playerName;
     public float playerCapital;
 
@@ -23,63 +21,10 @@ public class Player : MonoBehaviour
     public float currentPopularity;
     public float currentSatisfaction;
 
-    public void OnBackFromNewCareer()
+    public void NewPlayer(string _playerName)
     {
 
-        int countdown = 1;
-        StartCoroutine(AnimateToStart(countdown));
-
-    }
-
-    IEnumerator AnimateToStart(int _countdown)
-    {
-
-        FindObjectOfType<GameManager>().OnAnimateFromStartMenu(0);
-
-        while (_countdown > 0)
-        {
-
-            yield return new WaitForSeconds(1f);
-
-            _countdown--;
-
-        }
-
-        playerNameHUD.GetComponent<TMP_InputField>().text = "";
-
-    }
-
-    public void OnStartFromNewCareer()
-    {
-
-        playerName = playerNameHUD.GetComponent<TMP_InputField>().text;
-        PlayerModel player = Database.LoadPlayer();
-
-        if (playerName.Equals(""))
-        {
-
-            FindObjectOfType<GameManager>().OnAnimateFromNewCareer("requiredPlayerName");
-
-        }
-        else if (player != null)
-        {
-
-            FindObjectOfType<GameManager>().OnAnimateFromNewCareer("warningOverwrite");
-
-        }
-        else
-        {
-
-            NewPlayer();
-            FindObjectOfType<GameManager>().OnNewCareer();
-
-        }
-
-    }
-
-    public void NewPlayer()
-    {
-
+        playerName = _playerName;
         mangoLeft = new Dictionary<DateTime, int>();
         playerCapital = 2000.00f;
         grahamLeft = 0;
