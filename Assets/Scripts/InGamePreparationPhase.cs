@@ -59,11 +59,14 @@ public class InGamePreparationPhase : MonoBehaviour
     private float popularity;
     private float satisfaction;
     private int suppliesState;
+    private int mango;
     private int graham;
     private int milk;
     private int iceCubes;
     private int cups;
     private int temperature;
+
+    private float spend;
 
     void Start()
     {
@@ -124,6 +127,7 @@ public class InGamePreparationPhase : MonoBehaviour
         FindObjectOfType<Player>().LoadPlayer();
 
         capital = FindObjectOfType<Player>().playerCapital;
+        milk = FindObjectOfType<Player>().milkLeft;
         graham = FindObjectOfType<Player>().grahamLeft;
         milk = FindObjectOfType<Player>().milkLeft;
         iceCubes = FindObjectOfType<Player>().iceCubesLeft;
@@ -131,8 +135,6 @@ public class InGamePreparationPhase : MonoBehaviour
         temperature = FindObjectOfType<Player>().currentTemperature;
         popularity = FindObjectOfType<Player>().currentPopularity;
         satisfaction = FindObjectOfType<Player>().currentSatisfaction;
-
-        mangoUIText.text = HandleResourceMango(FindObjectOfType<Player>().mangoLeft).ToString();
 
         navigationToRightState = NavigationToRightStates.results;
         navigationToLeftState = NavigationToLeftStates.results;
@@ -146,7 +148,17 @@ public class InGamePreparationPhase : MonoBehaviour
     void Update()
     {
 
+        FindObjectOfType<Player>().milkLeft = milk;
+        FindObjectOfType<Player>().grahamLeft = graham;
+        FindObjectOfType<Player>().milkLeft = milk;
+        FindObjectOfType<Player>().iceCubesLeft = iceCubes;
+        FindObjectOfType<Player>().cupsLeft = cups;
+        FindObjectOfType<Player>().currentTemperature = temperature;
+        FindObjectOfType<Player>().currentPopularity = popularity;
+        FindObjectOfType<Player>().currentSatisfaction= satisfaction;
+
         capitalUIText.text = string.Format("₱ {0}" , capital.ToString("0.00"));
+        mangoUIText.text = milk.ToString();
         grahamUIText.text = graham.ToString();
         milkUIText.text = milk.ToString();
         iceCubesUIText.text = iceCubes.ToString();
@@ -294,24 +306,32 @@ public class InGamePreparationPhase : MonoBehaviour
             if (buyUIButton.interactable != false)
             {
 
-                float spend = FindObjectOfType<Player>().playerCapital - capital;
+                spend = FindObjectOfType<Player>().playerCapital - capital;
                 confirmationBuyUIText.text = string.Format("Are you sure you want to spend ₱ {0} on goods?", spend.ToString("0.00"));
 
                 OnAnimateFromInGamePreparationPhase(3);
-                //graham += (SUPPLIES_INT[1, 0, 0] + SUPPLIES_INT[1, 0, 1] + SUPPLIES_INT[1, 0, 2]);
 
             }
 
         }
 
-        if (SimpleInput.GetButtonDown("OnBuyAffirmative"))
+        if (SimpleInput.GetButtonDown("OnConfirmationBuyAffirmative"))
         {
 
-            
+            FindObjectOfType<Player>().playerCapital -= spend;
+            OnAnimateFromInGamePreparationPhase(0);
+            mango += SUPPLIES_INT[0, 0, 0] + SUPPLIES_INT[0, 0, 1] + SUPPLIES_INT[0, 0, 2];
+            graham += SUPPLIES_INT[1, 0, 0] + SUPPLIES_INT[1, 0, 1] + SUPPLIES_INT[1, 0, 2];
+            milk += SUPPLIES_INT[2, 0, 0] + SUPPLIES_INT[2, 0, 1] + SUPPLIES_INT[2, 0, 2];
+            iceCubes += SUPPLIES_INT[3, 0, 0] + SUPPLIES_INT[3, 0, 1] + SUPPLIES_INT[3, 0, 2];
+            cups += SUPPLIES_INT[4, 0, 0] + SUPPLIES_INT[4, 0, 1] + SUPPLIES_INT[4, 0, 2];
+
+            //graham += (SUPPLIES_INT[1, 0, 0] + SUPPLIES_INT[1, 0, 1] + SUPPLIES_INT[1, 0, 2]);
+            //OnQuantityClear();
 
         }
 
-        if (SimpleInput.GetButtonDown("OnBuyNegative"))
+        if (SimpleInput.GetButtonDown("OnConfirmationBuyNegative"))
         {
 
             
@@ -462,22 +482,6 @@ public class InGamePreparationPhase : MonoBehaviour
         OnAnimateFromInGamePreparationPhase(0);
         PlayerPrefs.SetInt("index", 1);
         SceneManager.LoadScene(0);
-
-    }
-
-    private int HandleResourceMango(Dictionary<DateTime, int> _resourceMango)
-    {
-
-        int mangoes = 0;
-
-        foreach(var x in _resourceMango)
-        {
-
-            mangoes += x.Value;
-
-        }
-
-        return mangoes;
 
     }
 
