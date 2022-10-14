@@ -7682,9 +7682,9 @@ RectTransform:
   m_Father: {fileID: 823480814}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 750, y: -60.234314}
   m_SizeDelta: {x: 280, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1048229364
@@ -8143,6 +8143,8 @@ MonoBehaviour:
   smallIncrementUIButton: {fileID: 1868266088}
   mediumIncrementUIButton: {fileID: 546966387}
   largeIncrementUIButton: {fileID: 1619570462}
+  buyUIButton: {fileID: 16915054}
+  cancelUIButton: {fileID: 238840697}
   popularityFillHUD: {fileID: 914593759}
   satisfactionFillHUD: {fileID: 466612014}
   smallSupplyHUD: {fileID: 488106777}
@@ -8169,6 +8171,7 @@ MonoBehaviour:
   mediumQuantityUIText: {fileID: 1336877531}
   largePriceUIText: {fileID: 1591754789}
   largeQuantityUIText: {fileID: 996795025}
+  confirmationBuyUIText: {fileID: 152534092}
   resultsUINavButton: {fileID: 1607100743}
   mangoUINavButton: {fileID: 2052040915}
   navigationPanel: {fileID: 86921084}
@@ -10251,9 +10254,9 @@ RectTransform:
   m_Father: {fileID: 823480814}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 250, y: -60.234314}
   m_SizeDelta: {x: 280, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1604909758

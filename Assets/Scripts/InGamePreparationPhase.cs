@@ -15,6 +15,8 @@ public class InGamePreparationPhase : MonoBehaviour
     [SerializeField] private Button smallIncrementUIButton;
     [SerializeField] private Button mediumIncrementUIButton;
     [SerializeField] private Button largeIncrementUIButton;
+    [SerializeField] private Button buyUIButton;
+    [SerializeField] private Button cancelUIButton;
     [SerializeField] private Image popularityFillHUD;
     [SerializeField] private Image satisfactionFillHUD;
     [SerializeField] private Image smallSupplyHUD;
@@ -388,6 +390,21 @@ public class InGamePreparationPhase : MonoBehaviour
             {
 
                 largeIncrementUIButton.interactable = false;
+
+            }
+
+            if (FindObjectOfType<Player>().playerCapital != capital)
+            {
+
+                buyUIButton.interactable = true;
+                cancelUIButton.interactable = true;
+
+            }
+            else 
+            {
+
+                buyUIButton.interactable = false;
+                cancelUIButton.interactable = false;
 
             }
 
