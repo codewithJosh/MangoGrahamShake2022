@@ -3,7 +3,6 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
-using System;
 
 public class StartMenu : MonoBehaviour
 {
@@ -135,7 +134,7 @@ public class StartMenu : MonoBehaviour
         if (SimpleInput.GetButtonDown("OnWarningOverwriteAffirmative"))
         {
 
-            OnAnimateFromNewCareer("warningOverwrite");
+            OnWarningOverwriteAffirmative();
 
         }
 

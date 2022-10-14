@@ -8,25 +8,23 @@ using System.Collections;
 public class Player : MonoBehaviour
 {
 
-    public string playerName;
-    public float playerCapital;
-
-    public Dictionary<DateTime, int> mangoLeft;
-    public int grahamLeft;
-    public int milkLeft;
-    public int iceCubesLeft;
-    public int cupsLeft;
-
-    public int currentTemperature;
-    public float currentPopularity;
-    public float currentSatisfaction;
+    [HideInInspector] public string playerName;
+    [HideInInspector] public float playerCapital;
+    [HideInInspector] public int mangoLeft;
+    [HideInInspector] public int grahamLeft;
+    [HideInInspector] public int milkLeft;
+    [HideInInspector] public int iceCubesLeft;
+    [HideInInspector] public int cupsLeft;
+    [HideInInspector] public int currentTemperature;
+    [HideInInspector] public float currentPopularity;
+    [HideInInspector] public float currentSatisfaction;
 
     public void NewPlayer(string _playerName)
     {
 
         playerName = _playerName;
-        mangoLeft = new Dictionary<DateTime, int>();
         playerCapital = 2000.00f;
+        mangoLeft = 0;
         grahamLeft = 0;
         milkLeft = 0;
         iceCubesLeft = 0;
@@ -55,11 +53,11 @@ public class Player : MonoBehaviour
         playerName = player.playerName;
         playerCapital = player.playerCapital;
 
-        mangoLeft = player.resourceMango;
-        grahamLeft = player.resourceGraham;
-        milkLeft = player.resourceMilk;
-        iceCubesLeft = player.resourceIceCubes;
-        cupsLeft = player.resourceCups;
+        mangoLeft = player.mangoLeft;
+        grahamLeft = player.grahamLeft;
+        milkLeft = player.milkLeft;
+        iceCubesLeft = player.iceCubesLeft;
+        cupsLeft = player.cupsLeft;
 
         currentTemperature = player.currentTemperature;
         currentPopularity = player.currentPopularity;

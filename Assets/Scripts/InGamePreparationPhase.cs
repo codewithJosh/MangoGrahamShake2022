@@ -1,8 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using System;
 using TMPro;
 using System.Linq;
 
@@ -148,7 +147,7 @@ public class InGamePreparationPhase : MonoBehaviour
     void Update()
     {
 
-        FindObjectOfType<Player>().milkLeft = milk;
+        FindObjectOfType<Player>().mangoLeft = mango;
         FindObjectOfType<Player>().grahamLeft = graham;
         FindObjectOfType<Player>().milkLeft = milk;
         FindObjectOfType<Player>().iceCubesLeft = iceCubes;
@@ -158,7 +157,7 @@ public class InGamePreparationPhase : MonoBehaviour
         FindObjectOfType<Player>().currentSatisfaction= satisfaction;
 
         capitalUIText.text = string.Format("₱ {0}" , capital.ToString("0.00"));
-        mangoUIText.text = milk.ToString();
+        mangoUIText.text = mango.ToString();
         grahamUIText.text = graham.ToString();
         milkUIText.text = milk.ToString();
         iceCubesUIText.text = iceCubes.ToString();
@@ -308,7 +307,6 @@ public class InGamePreparationPhase : MonoBehaviour
 
                 spend = FindObjectOfType<Player>().playerCapital - capital;
                 confirmationBuyUIText.text = string.Format("Are you sure you want to spend ₱ {0} on goods?", spend.ToString("0.00"));
-
                 OnAnimateFromInGamePreparationPhase(3);
 
             }
@@ -318,23 +316,16 @@ public class InGamePreparationPhase : MonoBehaviour
         if (SimpleInput.GetButtonDown("OnConfirmationBuyAffirmative"))
         {
 
-            FindObjectOfType<Player>().playerCapital -= spend;
-            OnAnimateFromInGamePreparationPhase(0);
-            mango += SUPPLIES_INT[0, 0, 0] + SUPPLIES_INT[0, 0, 1] + SUPPLIES_INT[0, 0, 2];
-            graham += SUPPLIES_INT[1, 0, 0] + SUPPLIES_INT[1, 0, 1] + SUPPLIES_INT[1, 0, 2];
-            milk += SUPPLIES_INT[2, 0, 0] + SUPPLIES_INT[2, 0, 1] + SUPPLIES_INT[2, 0, 2];
-            iceCubes += SUPPLIES_INT[3, 0, 0] + SUPPLIES_INT[3, 0, 1] + SUPPLIES_INT[3, 0, 2];
-            cups += SUPPLIES_INT[4, 0, 0] + SUPPLIES_INT[4, 0, 1] + SUPPLIES_INT[4, 0, 2];
-
-            //graham += (SUPPLIES_INT[1, 0, 0] + SUPPLIES_INT[1, 0, 1] + SUPPLIES_INT[1, 0, 2]);
-            //OnQuantityClear();
+            int countdown = 1;
+            StartCoroutine(ConfirmationBuyAffirmativeToStart(countdown));
+            OnConfirmationBuyNegative();
 
         }
 
         if (SimpleInput.GetButtonDown("OnConfirmationBuyNegative"))
         {
 
-            
+            OnConfirmationBuyNegative();
 
         }
 
@@ -682,6 +673,37 @@ public class InGamePreparationPhase : MonoBehaviour
 
         OnQuantityClear();
         capital = FindObjectOfType<Player>().playerCapital;
+
+    }
+    private void OnConfirmationBuyNegative()
+    {
+
+        OnAnimateFromInGamePreparationPhase(0);
+        OnQuantityClear();
+
+    }
+
+    IEnumerator ConfirmationBuyAffirmativeToStart(int _countdown)
+    {
+
+        FindObjectOfType<Player>().playerCapital -= spend;
+
+        mango += SUPPLIES_INT[0, 0, 0] + SUPPLIES_INT[0, 0, 1] + SUPPLIES_INT[0, 0, 2];
+        graham += SUPPLIES_INT[1, 0, 0] + SUPPLIES_INT[1, 0, 1] + SUPPLIES_INT[1, 0, 2];
+        milk += SUPPLIES_INT[2, 0, 0] + SUPPLIES_INT[2, 0, 1] + SUPPLIES_INT[2, 0, 2];
+        iceCubes += SUPPLIES_INT[3, 0, 0] + SUPPLIES_INT[3, 0, 1] + SUPPLIES_INT[3, 0, 2];
+        cups += SUPPLIES_INT[4, 0, 0] + SUPPLIES_INT[4, 0, 1] + SUPPLIES_INT[4, 0, 2];
+
+        while (_countdown > 0)
+        {
+
+            yield return new WaitForSeconds(1f);
+
+            _countdown--;
+
+        }
+
+        OnConfirmationBuyNegative();
 
     }
 
