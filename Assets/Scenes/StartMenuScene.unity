@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 59994096}
   - component: {fileID: 59994095}
   - component: {fileID: 59994094}
+  - component: {fileID: 59994097}
   m_Layer: 5
   m_Name: WarningOverwriteSection
   m_TagString: Untagged
@@ -158,7 +159,7 @@ RectTransform:
   - {fileID: 1409065993}
   - {fileID: 1461416116}
   m_Father: {fileID: 1210453920}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -208,19 +209,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 59994095}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1016382059}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: OnAnimateFromNewCareer
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: warningOverwrite
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &59994095
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -259,6 +248,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 59994092}
   m_CullTransparentMesh: 1
+--- !u!114 &59994097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 59994092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 995f34434fbe45d46aacf4e120446279, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button:
+    m_key: OnWarningOverwrite
+    value: 0
 --- !u!1 &71732177
 GameObject:
   m_ObjectHideFlags: 0
@@ -372,6 +376,7 @@ GameObject:
   - component: {fileID: 121024405}
   - component: {fileID: 121024404}
   - component: {fileID: 121024403}
+  - component: {fileID: 121024406}
   m_Layer: 5
   m_Name: AffirmativeUIButton
   m_TagString: Untagged
@@ -442,19 +447,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 121024404}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1016382059}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: OnExitAffirmative
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &121024404
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -493,6 +486,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 121024401}
   m_CullTransparentMesh: 1
+--- !u!114 &121024406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 121024401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 995f34434fbe45d46aacf4e120446279, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button:
+    m_key: OnExitAffirmative
+    value: 0
 --- !u!1 &237833430
 GameObject:
   m_ObjectHideFlags: 0
@@ -640,6 +648,7 @@ GameObject:
   - component: {fileID: 344082785}
   - component: {fileID: 344082784}
   - component: {fileID: 344082783}
+  - component: {fileID: 344082786}
   m_Layer: 5
   m_Name: BackUIButton
   m_TagString: Untagged
@@ -710,19 +719,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 344082784}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1016382060}
-        m_TargetAssemblyTypeName: Player, Assembly-CSharp
-        m_MethodName: OnBackFromNewCareer
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &344082784
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -761,6 +758,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 344082781}
   m_CullTransparentMesh: 1
+--- !u!114 &344082786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 344082781}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 995f34434fbe45d46aacf4e120446279, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button:
+    m_key: OnBackFromNewCareer
+    value: 0
 --- !u!1 &350235081
 GameObject:
   m_ObjectHideFlags: 0
@@ -811,6 +823,7 @@ GameObject:
   - component: {fileID: 530128967}
   - component: {fileID: 530128966}
   - component: {fileID: 530128965}
+  - component: {fileID: 530128968}
   m_Layer: 5
   m_Name: ExitSection
   m_TagString: Untagged
@@ -884,19 +897,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 530128966}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1016382059}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: OnAnimateFromStartMenu
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &530128966
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -935,6 +936,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 530128963}
   m_CullTransparentMesh: 1
+--- !u!114 &530128968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 530128963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 995f34434fbe45d46aacf4e120446279, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button:
+    m_key: OnBack
+    value: 0
 --- !u!1 &533760291
 GameObject:
   m_ObjectHideFlags: 0
@@ -1038,6 +1054,7 @@ GameObject:
   - component: {fileID: 625889713}
   - component: {fileID: 625889712}
   - component: {fileID: 625889714}
+  - component: {fileID: 625889715}
   m_Layer: 5
   m_Name: LoadCareerUIButton
   m_TagString: Untagged
@@ -1146,95 +1163,22 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 625889712}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1016382059}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: OnLoadCareer
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!1 &720661647
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 720661648}
-  - component: {fileID: 720661650}
-  - component: {fileID: 720661649}
-  m_Layer: 5
-  m_Name: DialogBox
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!224 &720661648
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 720661647}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1002919817}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 896, y: 467}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &720661649
+      m_Calls: []
+--- !u!114 &625889715
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 720661647}
+  m_GameObject: {fileID: 625889710}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Script: {fileID: 11500000, guid: 995f34434fbe45d46aacf4e120446279, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: a5cccaec5fee5ea43a56345dde57a1ca, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &720661650
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 720661647}
-  m_CullTransparentMesh: 1
+  button:
+    m_key: OnLoadCareer
+    value: 0
 --- !u!1 &795843750
 GameObject:
   m_ObjectHideFlags: 0
@@ -1549,70 +1493,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 891310557}
   m_CullTransparentMesh: 1
---- !u!1 &1002919816
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1002919817}
-  m_Layer: 5
-  m_Name: RequiredPlayerNameSection
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!224 &1002919817
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1002919816}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 720661648}
-  m_Father: {fileID: 1210453920}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1016382057 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5051276427330420289, guid: 0942bf90451ea3a439d1162639e5ba20, type: 3}
   m_PrefabInstance: {fileID: 5051276427538840616}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1016382059 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5051276427330420291, guid: 0942bf90451ea3a439d1162639e5ba20, type: 3}
-  m_PrefabInstance: {fileID: 5051276427538840616}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1016382057}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c8580091ca481b4395ff53f4eccc5fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1016382060 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5051276427330420292, guid: 0942bf90451ea3a439d1162639e5ba20, type: 3}
-  m_PrefabInstance: {fileID: 5051276427538840616}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1016382057}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 950c661f1ac08bd40a42f06d82ff43cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1016382061
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1625,8 +1510,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42e1b96023f7df04cb8a42182178ad58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerNameUIText: {fileID: 1426746430}
   loadCareerUIButton: {fileID: 625889714}
+  startUIButton: {fileID: 1573350323}
+  playerNameUIText: {fileID: 1426746430}
+  playerNameHUD: {fileID: 2038260072}
 --- !u!1 &1064379241
 GameObject:
   m_ObjectHideFlags: 0
@@ -1639,6 +1526,7 @@ GameObject:
   - component: {fileID: 1064379244}
   - component: {fileID: 1064379243}
   - component: {fileID: 1064379245}
+  - component: {fileID: 1064379246}
   m_Layer: 5
   m_Name: NewCareerUIButton
   m_TagString: Untagged
@@ -1747,19 +1635,22 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1064379243}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1016382059}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: OnAnimateFromStartMenu
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
+--- !u!114 &1064379246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1064379241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 995f34434fbe45d46aacf4e120446279, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button:
+    m_key: OnNewCareer
+    value: 0
 --- !u!1 &1200513194
 GameObject:
   m_ObjectHideFlags: 0
@@ -1898,7 +1789,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 530128964}
-  - {fileID: 1002919817}
   - {fileID: 59994093}
   m_Father: {fileID: 1874862785}
   m_RootOrder: 2
@@ -2007,6 +1897,7 @@ GameObject:
   - component: {fileID: 1339693990}
   - component: {fileID: 1339693989}
   - component: {fileID: 1339693988}
+  - component: {fileID: 1339693991}
   m_Layer: 5
   m_Name: NegativeUIButton
   m_TagString: Untagged
@@ -2077,19 +1968,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1339693989}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1016382059}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: OnAnimateFromStartMenu
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: offExit
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1339693989
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2128,6 +2007,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1339693986}
   m_CullTransparentMesh: 1
+--- !u!114 &1339693991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1339693986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 995f34434fbe45d46aacf4e120446279, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button:
+    m_key: OnBack
+    value: 0
 --- !u!1 &1409065992
 GameObject:
   m_ObjectHideFlags: 0
@@ -2140,6 +2034,7 @@ GameObject:
   - component: {fileID: 1409065996}
   - component: {fileID: 1409065995}
   - component: {fileID: 1409065994}
+  - component: {fileID: 1409065997}
   m_Layer: 5
   m_Name: AffirmativeUIButton
   m_TagString: Untagged
@@ -2210,19 +2105,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1409065995}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1016382059}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: OnWarningOverwriteAffirmative
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1409065995
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2261,6 +2144,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1409065992}
   m_CullTransparentMesh: 1
+--- !u!114 &1409065997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1409065992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 995f34434fbe45d46aacf4e120446279, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button:
+    m_key: OnWarningOverwriteAffirmative
+    value: 0
 --- !u!1 &1426746428
 GameObject:
   m_ObjectHideFlags: 0
@@ -2484,6 +2382,7 @@ GameObject:
   - component: {fileID: 1461416119}
   - component: {fileID: 1461416118}
   - component: {fileID: 1461416117}
+  - component: {fileID: 1461416120}
   m_Layer: 5
   m_Name: NegativeUIButton
   m_TagString: Untagged
@@ -2554,19 +2453,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1461416118}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1016382059}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: OnAnimateFromNewCareer
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: warningOverwrite
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1461416118
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2605,6 +2492,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1461416115}
   m_CullTransparentMesh: 1
+--- !u!114 &1461416120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1461416115}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 995f34434fbe45d46aacf4e120446279, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button:
+    m_key: OnWarningOverwrite
+    value: 0
 --- !u!1 &1484487563
 GameObject:
   m_ObjectHideFlags: 0
@@ -2731,6 +2633,7 @@ GameObject:
   - component: {fileID: 1573350325}
   - component: {fileID: 1573350324}
   - component: {fileID: 1573350323}
+  - component: {fileID: 1573350326}
   m_Layer: 5
   m_Name: StartUIButton
   m_TagString: Untagged
@@ -2790,7 +2693,7 @@ MonoBehaviour:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 21300000, guid: 3fc349144557c03478386bfb5903a35a, type: 3}
     m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 21300000, guid: 06776e2a6f6096e4a8bf16df7454f7d5, type: 3}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
     m_HighlightedTrigger: Highlighted
@@ -2801,19 +2704,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1573350324}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1016382060}
-        m_TargetAssemblyTypeName: Player, Assembly-CSharp
-        m_MethodName: OnStartFromNewCareer
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1573350324
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2852,6 +2743,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1573350321}
   m_CullTransparentMesh: 1
+--- !u!114 &1573350326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1573350321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 995f34434fbe45d46aacf4e120446279, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button:
+    m_key: OnStartFromNewCareer
+    value: 0
 --- !u!1 &1619453403
 GameObject:
   m_ObjectHideFlags: 0
@@ -2982,6 +2888,7 @@ GameObject:
   - component: {fileID: 1736917718}
   - component: {fileID: 1736917717}
   - component: {fileID: 1736917719}
+  - component: {fileID: 1736917720}
   m_Layer: 5
   m_Name: ExitUIButton
   m_TagString: Untagged
@@ -3090,19 +2997,22 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1736917717}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1016382059}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: OnAnimateFromStartMenu
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 5
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
+--- !u!114 &1736917720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1736917715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 995f34434fbe45d46aacf4e120446279, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button:
+    m_key: OnExit
+    value: 0
 --- !u!1 &1874862784
 GameObject:
   m_ObjectHideFlags: 0

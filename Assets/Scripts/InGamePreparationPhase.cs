@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using System;
 using TMPro;
 using System.Linq;
 
@@ -14,6 +14,16 @@ public class InGamePreparationPhase : MonoBehaviour
     [SerializeField] private Button smallIncrementUIButton;
     [SerializeField] private Button mediumIncrementUIButton;
     [SerializeField] private Button largeIncrementUIButton;
+    [SerializeField] private Button recipeDecrementMangoUIButton;
+    [SerializeField] private Button recipeIncrementMangoUIButton;
+    [SerializeField] private Button recipeDecrementGrahamUIButton;
+    [SerializeField] private Button recipeIncrementGrahamUIButton;
+    [SerializeField] private Button recipeDecrementMilkUIButton;
+    [SerializeField] private Button recipeIncrementMilkUIButton;
+    [SerializeField] private Button recipeDecrementIceCubesUIButton;
+    [SerializeField] private Button recipeIncrementIceCubesUIButton;
+    [SerializeField] private Button buyUIButton;
+    [SerializeField] private Button cancelUIButton;
     [SerializeField] private Image popularityFillHUD;
     [SerializeField] private Image satisfactionFillHUD;
     [SerializeField] private Image smallSupplyHUD;
@@ -35,11 +45,18 @@ public class InGamePreparationPhase : MonoBehaviour
     [SerializeField] private TextMeshProUGUI mediumQuantityUIText;
     [SerializeField] private TextMeshProUGUI largePriceUIText;
     [SerializeField] private TextMeshProUGUI largeQuantityUIText;
+    [SerializeField] private TextMeshProUGUI confirmationBuyUIText;
+    [SerializeField] private TextMeshProUGUI mangoQuantityUIText;
+    [SerializeField] private TextMeshProUGUI grahamQuantityUIText;
+    [SerializeField] private TextMeshProUGUI milkQuantityUIText;
+    [SerializeField] private TextMeshProUGUI iceCubesQuantityUIText;
     [SerializeField] private Toggle resultsUINavButton;
     [SerializeField] private Toggle mangoUINavButton;
     [SerializeField] private ToggleGroup navigationPanel;
     [SerializeField] private ToggleGroup suppliesNavigationPanel;
 
+    private enum InGamePreparationPhaseStates { idle, mainMenu, warningSave, confirmationBuy };
+    private InGamePreparationPhaseStates inGamePreparationPhaseState = InGamePreparationPhaseStates.idle;
     private enum NavigationToRightStates { results, upgrades, staff, marketing, recipe, supplies };
     private NavigationToRightStates navigationToRightState;
     private enum NavigationToLeftStates { results, upgrades, staff, marketing, recipe, supplies };
@@ -47,23 +64,27 @@ public class InGamePreparationPhase : MonoBehaviour
     private NavigationToRightStates lastNavigationToRightState;
 
     private float[,] SUPPLIES_FLOAT;
+    private int[,] RECIPE_INT;
     private int[,,] SUPPLIES_INT;
 
     private float capital;
     private float popularity;
     private float satisfaction;
+    private float spend;
     private int suppliesState;
+    private int mango;
     private int graham;
     private int milk;
     private int iceCubes;
     private int cups;
     private int temperature;
-
+    
     void Start()
     {
 
         SUPPLIES_INT = new int[5, 2, 3]
         {
+
             { { 0, 0, 0 }, { 0, 0, 0 } },
             { { 0, 0, 0 }, { 0, 0, 0 } },
             { { 0, 0, 0 }, { 0, 0, 0 } },
@@ -80,6 +101,16 @@ public class InGamePreparationPhase : MonoBehaviour
             { 0, 0, 0 },
             { 0, 0, 0 },
             { 0, 0, 0 }
+
+        };
+
+        RECIPE_INT = new int[4, 2]
+        {
+
+            { 0, 0 },
+            { 0, 0 },
+            { 0, 0 },
+            { 0, 0 }
 
         };
 
@@ -115,18 +146,26 @@ public class InGamePreparationPhase : MonoBehaviour
         SUPPLIES_FLOAT[4, 1] = 105.75f;
         SUPPLIES_FLOAT[4, 2] = 168.75f;
 
+        RECIPE_INT[0, 1] = 20;
+        RECIPE_INT[1, 1] = 10;
+        RECIPE_INT[2, 1] = 10;
+        RECIPE_INT[3, 1] = 7;
+
         FindObjectOfType<Player>().LoadPlayer();
 
         capital = FindObjectOfType<Player>().playerCapital;
+        popularity = FindObjectOfType<Player>().currentPopularity;
+        satisfaction = FindObjectOfType<Player>().currentSatisfaction;
+        milk = FindObjectOfType<Player>().milkLeft;
         graham = FindObjectOfType<Player>().grahamLeft;
         milk = FindObjectOfType<Player>().milkLeft;
         iceCubes = FindObjectOfType<Player>().iceCubesLeft;
         cups = FindObjectOfType<Player>().cupsLeft;
         temperature = FindObjectOfType<Player>().currentTemperature;
-        popularity = FindObjectOfType<Player>().currentPopularity;
-        satisfaction = FindObjectOfType<Player>().currentSatisfaction;
-
-        mangoUIText.text = HandleResourceMango(FindObjectOfType<Player>().mangoLeft).ToString();
+        RECIPE_INT[0, 0] = FindObjectOfType<Player>().mangoPerServe;
+        RECIPE_INT[1, 0] = FindObjectOfType<Player>().grahamPerServe;
+        RECIPE_INT[2, 0] = FindObjectOfType<Player>().milkPerServe;
+        RECIPE_INT[3, 0] = FindObjectOfType<Player>().iceCubesPerServe;
 
         navigationToRightState = NavigationToRightStates.results;
         navigationToLeftState = NavigationToLeftStates.results;
@@ -140,7 +179,21 @@ public class InGamePreparationPhase : MonoBehaviour
     void Update()
     {
 
+        FindObjectOfType<Player>().currentPopularity = popularity;
+        FindObjectOfType<Player>().currentSatisfaction = satisfaction;
+        FindObjectOfType<Player>().mangoLeft = mango;
+        FindObjectOfType<Player>().grahamLeft = graham;
+        FindObjectOfType<Player>().milkLeft = milk;
+        FindObjectOfType<Player>().iceCubesLeft = iceCubes;
+        FindObjectOfType<Player>().cupsLeft = cups;
+        FindObjectOfType<Player>().currentTemperature = temperature;
+        FindObjectOfType<Player>().mangoPerServe = RECIPE_INT[0, 0];
+        FindObjectOfType<Player>().grahamPerServe = RECIPE_INT[1, 0];
+        FindObjectOfType<Player>().milkPerServe = RECIPE_INT[2, 0];
+        FindObjectOfType<Player>().iceCubesPerServe = RECIPE_INT[3, 0];
+
         capitalUIText.text = string.Format("₱ {0}" , capital.ToString("0.00"));
+        mangoUIText.text = mango.ToString();
         grahamUIText.text = graham.ToString();
         milkUIText.text = milk.ToString();
         iceCubesUIText.text = iceCubes.ToString();
@@ -151,6 +204,41 @@ public class InGamePreparationPhase : MonoBehaviour
 
         bottomNavigationStateUIText.text = GetBottomNavigationState(GetNavigation(navigationPanel));
 
+        if (SimpleInput.GetButtonDown("OnMainMenu"))
+        {
+
+            OnAnimateFromInGamePreparationPhase(1);
+
+        }
+
+        if (SimpleInput.GetButtonDown("OnMainMenuAffirmative"))
+        {
+
+            OnAnimateFromInGamePreparationPhase(2);
+
+        }
+
+        if (SimpleInput.GetButtonDown("OnMainMenuNegative"))
+        {
+
+            OnAnimateFromInGamePreparationPhase(0);
+
+        }
+
+        if (SimpleInput.GetButtonDown("OnWarningSaveAffirmative"))
+        {
+
+            OnWarningSaveAffirmative();
+
+        }
+
+        if (SimpleInput.GetButtonDown("OnWarningSaveNegative"))
+        {
+
+            OnWarningSaveNegative();
+
+        }
+
         if (SimpleInput.GetButtonUp("OnNavigation"))
         {
 
@@ -158,95 +246,178 @@ public class InGamePreparationPhase : MonoBehaviour
 
         }
 
-        if (SimpleInput.GetButtonUp("MangoUINavButton"))
+        if (SimpleInput.GetButtonUp("OnSuppliesNavigationMango"))
         {
 
             OnSuppliesNavigation(0);
 
         }
 
-        if (SimpleInput.GetButtonUp("GrahamUINavButton"))
+        if (SimpleInput.GetButtonUp("OnSuppliesNavigationGraham"))
         {
 
             OnSuppliesNavigation(1);
 
         }
 
-        if (SimpleInput.GetButtonUp("MilkUINavButton"))
+        if (SimpleInput.GetButtonUp("OnSuppliesNavigationMilk"))
         {
 
             OnSuppliesNavigation(2);
 
         }
 
-        if (SimpleInput.GetButtonUp("IceCubesUINavButton"))
+        if (SimpleInput.GetButtonUp("OnSuppliesNavigationIceCubes"))
         {
 
             OnSuppliesNavigation(3);
 
         }
 
-        if (SimpleInput.GetButtonUp("CupsUINavButton"))
+        if (SimpleInput.GetButtonUp("OnSuppliesNavigationCups"))
         {
 
             OnSuppliesNavigation(4);
 
         }
 
-        if (SimpleInput.GetButtonDown("SmallIncrementUIButton"))
+        if (SimpleInput.GetButtonDown("OnIncrementSmall"))
         {
 
-            OnIncrement(0);
+            OnSuppliesIncrement(0);
 
         }
 
-        if (SimpleInput.GetButtonDown("MediumIncrementUIButton"))
+        if (SimpleInput.GetButtonDown("OnIncrementMedium"))
         {
 
-            OnIncrement(1);
+            OnSuppliesIncrement(1);
 
         }
 
-        if (SimpleInput.GetButtonDown("LargeIncrementUIButton"))
+        if (SimpleInput.GetButtonDown("OnIncrementLarge"))
         {
 
-            OnIncrement(2);
+            OnSuppliesIncrement(2);
 
         }
 
-        if (SimpleInput.GetButtonDown("SmallDecrementUIButton"))
+        if (SimpleInput.GetButtonDown("OnDecrementSmall"))
         {
 
-            OnDecrement(0);
+            OnSuppliesDecrement(0);
 
         }
 
-        if (SimpleInput.GetButtonDown("MediumDecrementUIButton"))
+        if (SimpleInput.GetButtonDown("OnDecrementMedium"))
         {
 
-            OnDecrement(1);
+            OnSuppliesDecrement(1);
 
         }
 
-        if (SimpleInput.GetButtonDown("LargeDecrementUIButton"))
+        if (SimpleInput.GetButtonDown("OnDecrementLarge"))
         {
 
-            OnDecrement(2);
+            OnSuppliesDecrement(2);
 
         }
 
-        if (SimpleInput.GetButtonDown("CancelUIButton"))
+        if (SimpleInput.GetButtonDown("OnCancel"))
         {
 
-            OnQuantityClear();
-            capital = FindObjectOfType<Player>().playerCapital;
+            if (cancelUIButton.interactable != false)
+            {
+
+                OnCancel();
+
+            }
 
         }
-        
-        if (SimpleInput.GetButtonDown("BuyUIButton"))
+
+        if (SimpleInput.GetButtonDown("OnBuy"))
         {
 
-            
+            if (buyUIButton.interactable != false)
+            {
+
+                spend = FindObjectOfType<Player>().playerCapital - capital;
+                confirmationBuyUIText.text = string.Format("Are you sure you want to spend ₱ {0} on goods?", spend.ToString("0.00"));
+                OnAnimateFromInGamePreparationPhase(3);
+
+            }
+
+        }
+
+        if (SimpleInput.GetButtonDown("OnConfirmationBuyAffirmative"))
+        {
+
+            int countdown = 1;
+            StartCoroutine(ConfirmationBuyAffirmativeToStart(countdown));
+            OnConfirmationBuyNegative();
+
+        }
+
+        if (SimpleInput.GetButtonDown("OnConfirmationBuyNegative"))
+        {
+
+            OnConfirmationBuyNegative();
+
+        }
+
+        if (SimpleInput.GetButtonDown("OnRecipeIncrementMango"))
+        {
+
+            OnRecipeIncrement(0);
+
+        }
+
+        if (SimpleInput.GetButtonDown("OnRecipeIncrementGraham"))
+        {
+
+            OnRecipeIncrement(1);
+
+        }
+
+        if (SimpleInput.GetButtonDown("OnRecipeIncrementMilk"))
+        {
+
+            OnRecipeIncrement(2);
+
+        }
+
+        if (SimpleInput.GetButtonDown("OnRecipeIncrementIceCubes"))
+        {
+
+            OnRecipeIncrement(3);
+
+        }
+
+        if (SimpleInput.GetButtonDown("OnRecipeDecrementMango"))
+        {
+
+            OnRecipeDecrement(0);
+
+        }
+
+        if (SimpleInput.GetButtonDown("OnRecipeDecrementGraham"))
+        {
+
+            OnRecipeDecrement(1);
+
+        }
+
+        if (SimpleInput.GetButtonDown("OnRecipeDecrementMilk"))
+        {
+
+            OnRecipeDecrement(2);
+
+        }
+
+        if (SimpleInput.GetButtonDown("OnRecipeDecrementIceCubes"))
+        {
+
+            OnRecipeDecrement(3);
 
         }
 
@@ -335,27 +506,79 @@ public class InGamePreparationPhase : MonoBehaviour
 
             }
 
+            if (FindObjectOfType<Player>().playerCapital != capital)
+            {
+
+                buyUIButton.interactable = true;
+                cancelUIButton.interactable = true;
+
+            }
+            else 
+            {
+
+                buyUIButton.interactable = false;
+                cancelUIButton.interactable = false;
+
+            }
+
         }
 
-    }
-
-    private int HandleResourceMango(Dictionary<DateTime, int> _resourceMango)
-    {
-
-        int mangoes = 0;
-
-        foreach(var x in _resourceMango)
+        if (navigationToRightState == NavigationToRightStates.recipe)
         {
 
-            mangoes += x.Value;
+            mangoQuantityUIText.text = RECIPE_INT[0, 0].ToString();
+            grahamQuantityUIText.text = RECIPE_INT[1, 0].ToString();
+            milkQuantityUIText.text = RECIPE_INT[2, 0].ToString();
+            iceCubesQuantityUIText.text = RECIPE_INT[3, 0].ToString();
 
         }
 
-        return mangoes;
+    }
+
+    private void OnAnimateFromInGamePreparationPhase(int _inGamePreparationPhaseState)
+    {
+
+        inGamePreparationPhaseState = GetInGamePreparationPhaseState(_inGamePreparationPhaseState);
+        FindObjectOfType<GameManager>().GetAnimator.SetInteger("inGamePreparationPhaseState", (int) inGamePreparationPhaseState);
 
     }
 
-    public void OnNavigation()
+    private InGamePreparationPhaseStates GetInGamePreparationPhaseState(int _inGamePreparationPhaseState)
+    {
+
+        return _inGamePreparationPhaseState switch
+        {
+
+            1 => InGamePreparationPhaseStates.mainMenu,
+
+            2 => InGamePreparationPhaseStates.warningSave,
+
+            3 => InGamePreparationPhaseStates.confirmationBuy,
+
+            _ => InGamePreparationPhaseStates.idle,
+
+        };
+
+    }
+
+    private void OnWarningSaveAffirmative()
+    {
+
+        FindObjectOfType<Player>().SavePlayer();
+        OnWarningSaveNegative();
+
+    }
+
+    private void OnWarningSaveNegative()
+    {
+
+        OnAnimateFromInGamePreparationPhase(0);
+        PlayerPrefs.SetInt("index", 1);
+        SceneManager.LoadScene(0);
+
+    }
+
+    private void OnNavigation()
     {
         
         string navigation = GetNavigation(navigationPanel);
@@ -369,7 +592,7 @@ public class InGamePreparationPhase : MonoBehaviour
             FindObjectOfType<GameManager>().GetAnimator.SetInteger("navigationToRightState", (int) navigationToRightState);
             lastNavigationToRightState = navigationToRightState;
             mangoUINavButton.isOn = true;
-            OnQuantityClear();
+            OnSuppliesQuantityClear();
             OnSuppliesNavigation(0);
             capital = FindObjectOfType<Player>().playerCapital;
 
@@ -451,7 +674,7 @@ public class InGamePreparationPhase : MonoBehaviour
 
     }
 
-    public string GetNavigation(ToggleGroup _toggleGroup)
+    private string GetNavigation(ToggleGroup _toggleGroup)
     {
 
         Toggle navigation = _toggleGroup.ActiveToggles().FirstOrDefault();
@@ -459,7 +682,7 @@ public class InGamePreparationPhase : MonoBehaviour
 
     }
 
-    public void OnSuppliesNavigation(int _suppliesNavigationState)
+    private void OnSuppliesNavigation(int _suppliesNavigationState)
     {
 
         suppliesState = _suppliesNavigationState;
@@ -474,7 +697,7 @@ public class InGamePreparationPhase : MonoBehaviour
 
     }
 
-    public void OnDecrement(int _scale)
+    private void OnSuppliesDecrement(int _scale)
     {
 
         int quantityPerPrice = SUPPLIES_INT[suppliesState, 1, _scale];
@@ -490,7 +713,7 @@ public class InGamePreparationPhase : MonoBehaviour
 
     }
 
-    public void OnIncrement(int _scale)
+    private void OnSuppliesIncrement(int _scale)
     {
 
         int quantityPerPrice = SUPPLIES_INT[suppliesState, 1, _scale];
@@ -506,7 +729,7 @@ public class InGamePreparationPhase : MonoBehaviour
 
     }
 
-    private void OnQuantityClear()
+    private void OnSuppliesQuantityClear()
     {
 
         SUPPLIES_INT[0, 0, 0] = 0;
@@ -527,7 +750,7 @@ public class InGamePreparationPhase : MonoBehaviour
 
     }
 
-    public string GetConjuctions(int _supply)
+    private string GetConjuctions(int _supply)
     {
 
         return _supply switch
@@ -544,6 +767,71 @@ public class InGamePreparationPhase : MonoBehaviour
             _ => "cups = ₱",
 
         };
+
+    }
+
+    private void OnCancel()
+    {
+
+        OnSuppliesQuantityClear();
+        capital = FindObjectOfType<Player>().playerCapital;
+
+    }
+    private void OnConfirmationBuyNegative()
+    {
+
+        OnAnimateFromInGamePreparationPhase(0);
+        OnSuppliesQuantityClear();
+
+    }
+
+    IEnumerator ConfirmationBuyAffirmativeToStart(int _countdown)
+    {
+
+        FindObjectOfType<Player>().playerCapital -= spend;
+
+        mango += SUPPLIES_INT[0, 0, 0] + SUPPLIES_INT[0, 0, 1] + SUPPLIES_INT[0, 0, 2];
+        graham += SUPPLIES_INT[1, 0, 0] + SUPPLIES_INT[1, 0, 1] + SUPPLIES_INT[1, 0, 2];
+        milk += SUPPLIES_INT[2, 0, 0] + SUPPLIES_INT[2, 0, 1] + SUPPLIES_INT[2, 0, 2];
+        iceCubes += SUPPLIES_INT[3, 0, 0] + SUPPLIES_INT[3, 0, 1] + SUPPLIES_INT[3, 0, 2];
+        cups += SUPPLIES_INT[4, 0, 0] + SUPPLIES_INT[4, 0, 1] + SUPPLIES_INT[4, 0, 2];
+
+        while (_countdown > 0)
+        {
+
+            yield return new WaitForSeconds(1f);
+
+            _countdown--;
+
+        }
+
+        OnConfirmationBuyNegative();
+
+    }
+
+    private void OnRecipeIncrement(int _recipe)
+    {
+
+        int maxQuantity = RECIPE_INT[_recipe, 1];
+
+        if (RECIPE_INT[_recipe, 0] < maxQuantity)
+        {
+
+            RECIPE_INT[_recipe, 0]++;
+
+        }
+
+    }
+
+    private void OnRecipeDecrement(int _recipe)
+    {
+
+        if (RECIPE_INT[_recipe, 0] != 0)
+        {
+
+            RECIPE_INT[_recipe, 0]--;
+
+        }
 
     }
 
