@@ -9,8 +9,7 @@ public class GameManager : MonoBehaviour
 
     private enum StartMenuStates { idle, newCareer, options, help, about, exit };
     private StartMenuStates startMenuState = StartMenuStates.idle;
-    private enum InGamePreparationPhaseStates { idle, mainMenu, warningSave };
-    private InGamePreparationPhaseStates inGamePreparationPhaseState = InGamePreparationPhaseStates.idle;
+    
     public void OnAnimateFromStartMenu(int _startMenuState)
     {
 
@@ -174,47 +173,6 @@ public class GameManager : MonoBehaviour
         }
 
         OnNewCareer();
-
-    }
-
-    public void OnAnimateFromInGamePreparationPhase(int _inGamePreparationPhaseState)
-    {
-
-        inGamePreparationPhaseState = GetInGamePreparationPhaseState(_inGamePreparationPhaseState);
-        animator.SetInteger("inGamePreparationPhaseState", (int) inGamePreparationPhaseState);
-
-    }
-
-    private InGamePreparationPhaseStates GetInGamePreparationPhaseState(int _inGamePreparationPhaseState)
-    {
-
-        return _inGamePreparationPhaseState switch
-        {
-
-            1 => InGamePreparationPhaseStates.mainMenu,
-
-            2 => InGamePreparationPhaseStates.warningSave,
-
-            _ => InGamePreparationPhaseStates.idle,
-
-        };
-
-    }
-
-    public void OnWarningSaveAffirmative()
-    {
-
-        FindObjectOfType<Player>().SavePlayer();
-        OnWarningSaveNegative();
-
-    }
-
-    public void OnWarningSaveNegative()
-    {
-
-        OnAnimateFromInGamePreparationPhase(0);
-        PlayerPrefs.SetInt("index", 1);
-        SceneManager.LoadScene(0);
 
     }
 

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System;
 using TMPro;
@@ -40,6 +41,8 @@ public class InGamePreparationPhase : MonoBehaviour
     [SerializeField] private ToggleGroup navigationPanel;
     [SerializeField] private ToggleGroup suppliesNavigationPanel;
 
+    private enum InGamePreparationPhaseStates { idle, mainMenu, warningSave, confirmationBuy };
+    private InGamePreparationPhaseStates inGamePreparationPhaseState = InGamePreparationPhaseStates.idle;
     private enum NavigationToRightStates { results, upgrades, staff, marketing, recipe, supplies };
     private NavigationToRightStates navigationToRightState;
     private enum NavigationToLeftStates { results, upgrades, staff, marketing, recipe, supplies };
@@ -158,77 +161,77 @@ public class InGamePreparationPhase : MonoBehaviour
 
         }
 
-        if (SimpleInput.GetButtonUp("MangoUINavButton"))
+        if (SimpleInput.GetButtonUp("OnSuppliesNavigationMango"))
         {
 
             OnSuppliesNavigation(0);
 
         }
 
-        if (SimpleInput.GetButtonUp("GrahamUINavButton"))
+        if (SimpleInput.GetButtonUp("OnSuppliesNavigationGraham"))
         {
 
             OnSuppliesNavigation(1);
 
         }
 
-        if (SimpleInput.GetButtonUp("MilkUINavButton"))
+        if (SimpleInput.GetButtonUp("OnSuppliesNavigationMilk"))
         {
 
             OnSuppliesNavigation(2);
 
         }
 
-        if (SimpleInput.GetButtonUp("IceCubesUINavButton"))
+        if (SimpleInput.GetButtonUp("OnSuppliesNavigationIceCubes"))
         {
 
             OnSuppliesNavigation(3);
 
         }
 
-        if (SimpleInput.GetButtonUp("CupsUINavButton"))
+        if (SimpleInput.GetButtonUp("OnSuppliesNavigationCups"))
         {
 
             OnSuppliesNavigation(4);
 
         }
 
-        if (SimpleInput.GetButtonDown("SmallIncrementUIButton"))
+        if (SimpleInput.GetButtonDown("OnIncrementSmall"))
         {
 
             OnIncrement(0);
 
         }
 
-        if (SimpleInput.GetButtonDown("MediumIncrementUIButton"))
+        if (SimpleInput.GetButtonDown("OnIncrementMedium"))
         {
 
             OnIncrement(1);
 
         }
 
-        if (SimpleInput.GetButtonDown("LargeIncrementUIButton"))
+        if (SimpleInput.GetButtonDown("OnIncrementLarge"))
         {
 
             OnIncrement(2);
 
         }
 
-        if (SimpleInput.GetButtonDown("SmallDecrementUIButton"))
+        if (SimpleInput.GetButtonDown("OnDecrementSmall"))
         {
 
             OnDecrement(0);
 
         }
 
-        if (SimpleInput.GetButtonDown("MediumDecrementUIButton"))
+        if (SimpleInput.GetButtonDown("OnDecrementMedium"))
         {
 
             OnDecrement(1);
 
         }
 
-        if (SimpleInput.GetButtonDown("LargeDecrementUIButton"))
+        if (SimpleInput.GetButtonDown("OnDecrementLarge"))
         {
 
             OnDecrement(2);
@@ -246,7 +249,7 @@ public class InGamePreparationPhase : MonoBehaviour
         if (SimpleInput.GetButtonDown("BuyUIButton"))
         {
 
-            
+            graham += (SUPPLIES_INT[1, 0, 0] + SUPPLIES_INT[1, 0, 1] + SUPPLIES_INT[1, 0, 2]);
 
         }
 
@@ -336,6 +339,47 @@ public class InGamePreparationPhase : MonoBehaviour
             }
 
         }
+
+    }
+
+    public void OnAnimateFromInGamePreparationPhase(int _inGamePreparationPhaseState)
+    {
+
+        inGamePreparationPhaseState = GetInGamePreparationPhaseState(_inGamePreparationPhaseState);
+        FindObjectOfType<GameManager>().GetAnimator.SetInteger("inGamePreparationPhaseState", (int)inGamePreparationPhaseState);
+
+    }
+
+    private InGamePreparationPhaseStates GetInGamePreparationPhaseState(int _inGamePreparationPhaseState)
+    {
+
+        return _inGamePreparationPhaseState switch
+        {
+
+            1 => InGamePreparationPhaseStates.mainMenu,
+
+            2 => InGamePreparationPhaseStates.warningSave,
+
+            _ => InGamePreparationPhaseStates.idle,
+
+        };
+
+    }
+
+    public void OnWarningSaveAffirmative()
+    {
+
+        FindObjectOfType<Player>().SavePlayer();
+        OnWarningSaveNegative();
+
+    }
+
+    public void OnWarningSaveNegative()
+    {
+
+        OnAnimateFromInGamePreparationPhase(0);
+        PlayerPrefs.SetInt("index", 1);
+        SceneManager.LoadScene(0);
 
     }
 
