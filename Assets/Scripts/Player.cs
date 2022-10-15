@@ -6,6 +6,8 @@ public class Player : MonoBehaviour
     [HideInInspector] public float playerCapital;
     [HideInInspector] public float currentPopularity;
     [HideInInspector] public float currentSatisfaction;
+    [HideInInspector] public float price;
+    [HideInInspector] public float advertisement;
     [HideInInspector] public int mangoLeft;
     [HideInInspector] public int grahamLeft;
     [HideInInspector] public int milkLeft;
@@ -24,6 +26,8 @@ public class Player : MonoBehaviour
         playerCapital = 2000.00f;
         currentPopularity = 0.1f;
         currentSatisfaction = 1f;
+        price = 1f;
+        advertisement = 0f;
         mangoLeft = 0;
         grahamLeft = 0;
         milkLeft = 0;
@@ -55,6 +59,8 @@ public class Player : MonoBehaviour
         playerCapital = player.playerCapital;
         currentPopularity = player.currentPopularity;
         currentSatisfaction = player.currentSatisfaction;
+        price = player.price;
+        advertisement = player.advertisement;
         mangoLeft = player.mangoLeft;
         grahamLeft = player.grahamLeft;
         milkLeft = player.milkLeft;
