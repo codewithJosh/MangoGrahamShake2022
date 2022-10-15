@@ -5,6 +5,8 @@ public class PlayerModel
     public float currentPopularity;
     public float currentSatisfaction;
     public float playerCapital;
+    public float price;
+    public float advertisement;
     public int mangoLeft;
     public int grahamLeft;
     public int milkLeft;
@@ -23,6 +25,8 @@ public class PlayerModel
         playerCapital = _player.playerCapital;
         currentPopularity = _player.currentPopularity;
         currentSatisfaction = _player.currentSatisfaction;
+        price = _player.price;
+        advertisement = _player.advertisement;
         mangoLeft = _player.mangoLeft;
         grahamLeft = _player.grahamLeft;
         milkLeft = _player.milkLeft;

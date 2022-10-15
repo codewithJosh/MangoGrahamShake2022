@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
 using System.Linq;
+using System;
 
 public class InGamePreparationPhase : MonoBehaviour
 {
@@ -22,6 +23,10 @@ public class InGamePreparationPhase : MonoBehaviour
     [SerializeField] private Button recipeIncrementMilkUIButton;
     [SerializeField] private Button recipeDecrementIceCubesUIButton;
     [SerializeField] private Button recipeIncrementIceCubesUIButton;
+    [SerializeField] private Button marketingDecrementPriceUIButton;
+    [SerializeField] private Button marketingIncrementPriceUIButton;
+    [SerializeField] private Button marketingDecrementAdvertisementUIButton;
+    [SerializeField] private Button marketingIncrementAdvertisementUIButton;
     [SerializeField] private Button buyUIButton;
     [SerializeField] private Button cancelUIButton;
     [SerializeField] private Image popularityFillHUD;
@@ -50,6 +55,9 @@ public class InGamePreparationPhase : MonoBehaviour
     [SerializeField] private TextMeshProUGUI grahamQuantityUIText;
     [SerializeField] private TextMeshProUGUI milkQuantityUIText;
     [SerializeField] private TextMeshProUGUI iceCubesQuantityUIText;
+    [SerializeField] private TextMeshProUGUI cupsPerPitcherUIText;
+    [SerializeField] private TextMeshProUGUI priceUIText;
+    [SerializeField] private TextMeshProUGUI advertisementUIText;
     [SerializeField] private Toggle resultsUINavButton;
     [SerializeField] private Toggle mangoUINavButton;
     [SerializeField] private ToggleGroup navigationPanel;
@@ -78,6 +86,9 @@ public class InGamePreparationPhase : MonoBehaviour
     private int iceCubes;
     private int cups;
     private int temperature;
+    private int cupsPerPitcher;
+    private float price;
+    private float advertisement;
     
     void Start()
     {
@@ -156,6 +167,8 @@ public class InGamePreparationPhase : MonoBehaviour
         capital = FindObjectOfType<Player>().playerCapital;
         popularity = FindObjectOfType<Player>().currentPopularity;
         satisfaction = FindObjectOfType<Player>().currentSatisfaction;
+        price = FindObjectOfType<Player>().price;
+        advertisement = FindObjectOfType<Player>().advertisement;
         milk = FindObjectOfType<Player>().milkLeft;
         graham = FindObjectOfType<Player>().grahamLeft;
         milk = FindObjectOfType<Player>().milkLeft;
@@ -187,10 +200,6 @@ public class InGamePreparationPhase : MonoBehaviour
         FindObjectOfType<Player>().iceCubesLeft = iceCubes;
         FindObjectOfType<Player>().cupsLeft = cups;
         FindObjectOfType<Player>().currentTemperature = temperature;
-        FindObjectOfType<Player>().mangoPerServe = RECIPE_INT[0, 0];
-        FindObjectOfType<Player>().grahamPerServe = RECIPE_INT[1, 0];
-        FindObjectOfType<Player>().milkPerServe = RECIPE_INT[2, 0];
-        FindObjectOfType<Player>().iceCubesPerServe = RECIPE_INT[3, 0];
 
         capitalUIText.text = string.Format("₱ {0}" , capital.ToString("0.00"));
         mangoUIText.text = mango.ToString();
@@ -365,62 +374,6 @@ public class InGamePreparationPhase : MonoBehaviour
 
         }
 
-        if (SimpleInput.GetButtonDown("OnRecipeIncrementMango"))
-        {
-
-            OnRecipeIncrement(0);
-
-        }
-
-        if (SimpleInput.GetButtonDown("OnRecipeIncrementGraham"))
-        {
-
-            OnRecipeIncrement(1);
-
-        }
-
-        if (SimpleInput.GetButtonDown("OnRecipeIncrementMilk"))
-        {
-
-            OnRecipeIncrement(2);
-
-        }
-
-        if (SimpleInput.GetButtonDown("OnRecipeIncrementIceCubes"))
-        {
-
-            OnRecipeIncrement(3);
-
-        }
-
-        if (SimpleInput.GetButtonDown("OnRecipeDecrementMango"))
-        {
-
-            OnRecipeDecrement(0);
-
-        }
-
-        if (SimpleInput.GetButtonDown("OnRecipeDecrementGraham"))
-        {
-
-            OnRecipeDecrement(1);
-
-        }
-
-        if (SimpleInput.GetButtonDown("OnRecipeDecrementMilk"))
-        {
-
-            OnRecipeDecrement(2);
-
-        }
-
-        if (SimpleInput.GetButtonDown("OnRecipeDecrementIceCubes"))
-        {
-
-            OnRecipeDecrement(3);
-
-        }
-
         if (navigationToRightState == NavigationToRightStates.supplies)
         {     
 
@@ -526,10 +479,112 @@ public class InGamePreparationPhase : MonoBehaviour
         if (navigationToRightState == NavigationToRightStates.recipe)
         {
 
+            FindObjectOfType<Player>().mangoPerServe = RECIPE_INT[0, 0];
+            FindObjectOfType<Player>().grahamPerServe = RECIPE_INT[1, 0];
+            FindObjectOfType<Player>().milkPerServe = RECIPE_INT[2, 0];
+            FindObjectOfType<Player>().iceCubesPerServe = RECIPE_INT[3, 0];
+            cupsPerPitcher = GetCupsPerPitcher(RECIPE_INT[3, 0]);
+
             mangoQuantityUIText.text = RECIPE_INT[0, 0].ToString();
             grahamQuantityUIText.text = RECIPE_INT[1, 0].ToString();
             milkQuantityUIText.text = RECIPE_INT[2, 0].ToString();
             iceCubesQuantityUIText.text = RECIPE_INT[3, 0].ToString();
+            cupsPerPitcherUIText.text = string.Format("Cups per pitcher:\n{0}", cupsPerPitcher.ToString());
+
+            if (SimpleInput.GetButtonDown("OnRecipeIncrementMango"))
+            {
+
+                OnRecipeIncrement(0);
+
+            }
+
+            if (SimpleInput.GetButtonDown("OnRecipeIncrementGraham"))
+            {
+
+                OnRecipeIncrement(1);
+
+            }
+
+            if (SimpleInput.GetButtonDown("OnRecipeIncrementMilk"))
+            {
+
+                OnRecipeIncrement(2);
+
+            }
+
+            if (SimpleInput.GetButtonDown("OnRecipeIncrementIceCubes"))
+            {
+
+                OnRecipeIncrement(3);
+
+            }
+
+            if (SimpleInput.GetButtonDown("OnRecipeDecrementMango"))
+            {
+
+                OnRecipeDecrement(0);
+
+            }
+
+            if (SimpleInput.GetButtonDown("OnRecipeDecrementGraham"))
+            {
+
+                OnRecipeDecrement(1);
+
+            }
+
+            if (SimpleInput.GetButtonDown("OnRecipeDecrementMilk"))
+            {
+
+                OnRecipeDecrement(2);
+
+            }
+
+            if (SimpleInput.GetButtonDown("OnRecipeDecrementIceCubes"))
+            {
+
+                OnRecipeDecrement(3);
+
+            }
+
+        }
+
+        if (navigationToRightState == NavigationToRightStates.marketing)
+        {
+
+            FindObjectOfType<Player>().price = price;
+            FindObjectOfType<Player>().advertisement = advertisement;
+            priceUIText.text = price.ToString("0.00");
+            advertisementUIText.text = advertisement.ToString("0.00");
+
+
+            if (SimpleInput.GetButtonDown("OnMarketingDecrementPrice"))
+            {
+
+                OnPriceDecrement();
+
+            }
+
+            if (SimpleInput.GetButtonDown("OnMarketingIncrementPrice"))
+            {
+
+                OnPriceIncrement();
+
+            }
+
+            if (SimpleInput.GetButtonDown("OnMarketingDecrementAdvertisement"))
+            {
+
+                OnAdvertisementDecrement();
+
+            }
+
+            if (SimpleInput.GetButtonDown("OnMarketingIncrementAdvertisement"))
+            {
+
+                OnAdvertisementIncrement();
+
+            }
 
         }
 
@@ -830,6 +885,82 @@ public class InGamePreparationPhase : MonoBehaviour
         {
 
             RECIPE_INT[_recipe, 0]--;
+
+        }
+
+    }
+
+    private int GetCupsPerPitcher(int _iceCubes)
+    {
+
+        int cupsPerPitcher = 10;
+
+        return _iceCubes switch
+        {
+
+            1 => cupsPerPitcher += 1,
+
+            2 => cupsPerPitcher += 2,
+
+            3 => cupsPerPitcher += 4,
+
+            4 => cupsPerPitcher += 6,
+
+            5 => cupsPerPitcher += 10,
+
+            6 => cupsPerPitcher += 15,
+
+            7 => cupsPerPitcher += 23,
+
+            _ => cupsPerPitcher,
+
+        };
+
+    }
+
+    private void OnPriceIncrement()
+    {
+
+        if (price + 0.1f < 5f)
+        {
+            
+            price += 0.1f;
+
+        }
+
+    }
+
+    private void OnPriceDecrement()
+    {
+        
+        if (price > 0f)
+        {
+
+            price -= 0.1f;
+
+        }
+
+    }
+
+    private void OnAdvertisementIncrement()
+    {
+
+        if (advertisement < 20f)
+        {
+
+            advertisement += 1f;
+
+        }
+
+    }
+
+    private void OnAdvertisementDecrement()
+    {
+
+        if (advertisement > 0f)
+        {
+
+            advertisement -= 1f;
 
         }
 
